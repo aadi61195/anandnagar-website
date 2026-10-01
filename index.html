@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>नगर पंचायत आनंदनगर | महाराजगंज</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
+      background: #f4f7fa;
+      color: #17344c;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      background: #eef2f5;
+      padding: 8px 4%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+
+    /* HEADER */
+    header {
+      background: white;
+      padding: 18px 4%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-title {
+      color: #063b63;
+    }
+
+    .logo-title h1 {
+      font-size: 34px;
+    }
+
+    .logo-title p {
+      color: #0878b5;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .search {
+      padding: 10px;
+      border: 1px solid #ccd8df;
+      border-radius: 7px;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: #063b63;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 7px 4%;
+      gap: 4px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      padding: 11px 13px;
+      border-radius: 7px;
+    }
+
+    nav a:hover {
+      background: #0b638f;
+    }
+
+    .complaint-button {
+      background: #0aaa5b;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 410px;
+      position: relative;
+      background:
+        linear-gradient(90deg, #063b63, #28708e);
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 7%;
+      max-width: 850px;
+    }
+
+    .hero h2 {
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.05;
+      margin: 12px 0;
+    }
+
+    .hero h2 span {
+      color: #72e99e;
+    }
+
+    .hero p {
+      font-size: 19px;
+      margin-bottom: 25px;
+    }
+
+    /* SECTIONS */
+    .container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 28px 4%;
+    }
+
+    .section-title {
+      color: #063b63;
+      margin-bottom: 15px;
+      font-size: 26px;
+    }
+
+    /* SERVICES */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .service {
+      background: white;
+      border: 1px solid #dfe8ee;
+      border-radius: 14px;
+      padding: 20px 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .service:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px #ccd8df;
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      margin: auto;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 28px;
+    }
+
+    .green { background: #2caf52; }
+    .yellow { background: #f2ad16; }
+    .blue { background: #2d83d7; }
+    .red { background: #e34f54; }
+    .purple { background: #8848ca; }
+
+    .service b {
+      display: block;
+      margin-top: 9px;
+    }
+
+    /* CONTENT GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr .65fr;
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #dfe8ee;
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .card h2 {
+      color: #063b63;
+      margin-bottom: 15px;
+    }
+
+    .notice {
+      padding: 13px 0;
+      border-bottom: 1px solid #edf1f4;
+    }
+
+    .notice:last-child {
+      border-bottom: none;
+    }
+
+    .date {
+      color: #0878b5;
+      font-weight: bold;
+    }
+
+    /* QR */
+    .qr-card {
+      text-align: center;
+      background: #effaff;
+    }
+
+    .qr {
+      width: 150px;
+      height: 150px;
+      margin: 15px auto;
+      background: white;
+      border: 8px solid white;
+      box-shadow: 0 0 0 1px #d9e4ea;
+      display: grid;
+      place-items: center;
+      font-size: 60px;
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      background: white;
+      border: 1px solid #dfe8ee;
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      font-size: 27px;
+      color: #0878b5;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #022c4b;
+      color: white;
+      padding: 35px 5%;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    footer p {
+      margin-top: 8px;
+      color: #d9e6ee;
+    }
+
+    .copyright {
+      background: #021f35;
+      color: #d9e6ee;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 1000px) {
+      .services {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .search {
+        display: none;
+      }
+    }
+
+    @media (max-width: 650px) {
+      header {
+        display: block;
+      }
+
+      .logo-title h1 {
+        font-size: 27px;
+      }
+
+      .services,
+      .stats,
+      footer {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .topbar {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>उत्तर प्रदेश सरकार | नगर विकास विभाग</span>
+
+  <span>
+    स्क्रीन रीडर &nbsp; | &nbsp;
+    साइट मैप &nbsp; | &nbsp;
+    A− &nbsp; A &nbsp; A+
+    &nbsp;
+    <b>हिंदी</b> / English
+  </span>
+</div>
+
+<!-- HEADER -->
+<header>
+
+  <div class="logo-title">
+    <h1>नगर पंचायत आनंदनगर</h1>
+    <p>महाराजगंज, उत्तर प्रदेश</p>
+    <p>स्वच्छ • सुंदर • विकसित • जनहित में समर्पित</p>
+  </div>
+
+  <div>
+    <input
+      class="search"
+      type="text"
+      placeholder="खोजें..."
+    >
+  </div>
+
+</header>
+
+<!-- NAVIGATION -->
+<nav>
+
+  <a href="#home">⌂ मुख्य पृष्ठ</a>
+
+  <a href="#about">हमारे बारे में</a>
+
+  <a href="#officials">अधिकारी एवं कर्मचारी</a>
+
+  <a href="#notices">सूचनाएं</a>
+
+  <a href="#services">जन सेवाएं</a>
+
+  <a href="#works">विकास कार्य</a>
+
+  <a href="#gallery">गैलरी</a>
+
+  <a href="#contact">संपर्क करें</a>
+
+  <a class="complaint-button" href="#complaint">
+    📝 शिकायत दर्ज करें
+  </a>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <b>हमारा संकल्प</b>
+
+    <h2>
+      स्वच्छ, सुंदर और विकसित
+      <span>आनंदनगर</span>
+    </h2>
+
+    <p>
+      एक स्वच्छ, सुरक्षित, आधुनिक और नागरिकों के अनुकूल
+      नगर पंचायत की दिशा में निरंतर प्रयास।
+    </p>
+
+    <a class="complaint-button" href="#complaint">
+      📝 शिकायत दर्ज करें →
+    </a>
+
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="container" id="services">
+
+  <h2 class="section-title">
+    ⚙ त्वरित जन सेवाएं
+  </h2>
+
+  <div class="services">
+
+    <div class="service">
+      <div class="icon green">🗑</div>
+      <b>सफाई संबंधी शिकायत</b>
+      <small>Sanitation Complaint</small>
+    </div>
+
+    <div class="service">
+      <div class="icon yellow">⚑</div>
+      <b>स्ट्रीट लाइट शिकायत</b>
+      <small>Street Light Complaint</small>
+    </div>
+
+    <div class="service">
+      <div class="icon blue">♒</div>
+      <b>जलापूर्ति शिकायत</b>
+      <small>Water Supply Complaint</small>
+    </div>
+
+    <div class="service">
+      <div class="icon red">▥</div>
+      <b>सड़क / नाली शिकायत</b>
+      <small>Road / Drainage Complaint</small>
+    </div>
+
+    <div class="service">
+      <div class="icon purple">🏢</div>
+      <b>अन्य शिकायत</b>
+      <small>Other Complaint</small>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="container grid">
+
+  <!-- NOTICES -->
+  <div class="card" id="notices">
+
+    <h2>📢 महत्वपूर्ण सूचनाएं</h2>
+
+    <div class="notice">
+      <span class="date">12 सितंबर 2026</span>
+      <br>
+      नगर पंचायत क्षेत्र में विशेष स्वच्छता अभियान
+    </div>
+
+    <div class="notice">
+      <span class="date">08 सितंबर 2026</span>
+      <br>
+      स्ट्रीट लाइट मरम्मत कार्य हेतु सूचना
+    </div>
+
+    <div class="notice">
+      <span class="date">02 सितंबर 2026</span>
+      <br>
+      संपत्ति कर जमा करने संबंधी महत्वपूर्ण सूचना
+    </div>
+
+    <div class="notice">
+      <span class="date">25 अगस्त 2026</span>
+      <br>
+      नगर पंचायत क्षेत्र में प्लास्टिक मुक्त अभियान
+    </div>
+
+  </div>
+
+  <!-- DEVELOPMENT -->
+  <div class="card" id="works">
+
+    <h2>⚙ विकास कार्य</h2>
+
+    <p>
+      आनंदनगर में सड़क, नाली, स्ट्रीट लाइट,
+      पार्क तथा सार्वजनिक सुविधाओं से जुड़े
+      विकास कार्यों की जानकारी यहां उपलब्ध होगी।
+    </p>
+
+    <br>
+
+    <b style="color:#11814a">
+      ● विकास कार्य प्रगति पर
+    </b>
+
+  </div>
+
+  <!-- QR -->
+  <div class="card qr-card" id="complaint">
+
+    <h2>अपनी शिकायत दर्ज करें</h2>
+
+    <p>
+      QR स्कैन करके नागरिक अपनी शिकायत दर्ज कर सकते हैं।
+    </p>
+
+    <div class="qr">
+      ▦
+    </div>
+
+    <b>
+      सार्वजनिक शिकायत सेवा
+    </b>
+
+    <br><br>
+
+    <a class="complaint-button" href="#">
+      शिकायत दर्ज करें
+    </a>
+
+  </div>
+
+</section>
+
+<!-- STATS -->
+<section class="container">
+
+  <div class="stats">
+
+    <div class="stat">
+      <b>13,872</b>
+      <span>कुल जनसंख्या (2011)</span>
+    </div>
+
+    <div class="stat">
+      <b>15</b>
+      <span>कुल वार्ड</span>
+    </div>
+
+    <div class="stat">
+      <b>4.12</b>
+      <span>वर्ग कि.मी. क्षेत्रफल</span>
+    </div>
+
+    <div class="stat">
+      <b>1994</b>
+      <span>स्थापना वर्ष</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- INFORMATION -->
+<section class="container contact-grid">
+
+  <div class="card" id="about">
+
+    <h2>अध्यक्ष का संदेश</h2>
+
+    <p>
+      नगर पंचायत आनंदनगर का लक्ष्य सभी नागरिकों
+      को स्वच्छ, सुरक्षित, सुविधाजनक और बेहतर
+      नागरिक सेवाएं उपलब्ध कराना है।
+    </p>
+
+    <br>
+
+    <a href="#">
+      और पढ़ें →
+    </a>
+
+  </div>
+
+  <div class="card" id="contact">
+
+    <h2>☎ त्वरित संपर्क</h2>
+
+    <p>
+      📍 नगर पंचायत आनंदनगर,
+      महाराजगंज, उत्तर प्रदेश
+    </p>
+
+    <p>
+      ☎ कार्यालय फोन:
+      +91-XXXXXXXXXX
+    </p>
+
+    <p>
+      ✉ Email:
+      npanandnagar@gmail.com
+    </p>
+
+    <p>
+      ◷ सोमवार–शनिवार:
+      9:00 AM – 5:00 PM
+    </p>
+
+  </div>
+
+  <div class="card" id="officials">
+
+    <h2>🔗 उपयोगी लिंक</h2>
+
+    <p>अधिकारी एवं कर्मचारी</p>
+
+    <p>सभासद</p>
+
+    <p>नागरिक प्रपत्र</p>
+
+    <p>निविदाएं</p>
+
+    <p>RTI</p>
+
+    <p>जनसुनवाई</p>
+
+  </div>
+
+</section>
+
+<!-- GALLERY -->
+<section class="container" id="gallery">
+
+  <h2 class="section-title">
+    🖼 नगर की झलक
+  </h2>
+
+  <div class="card">
+
+    <p>
+      यहां आनंदनगर की वास्तविक तस्वीरें,
+      विकास कार्यों की तस्वीरें तथा कार्यक्रमों
+      की फोटो गैलरी प्रदर्शित की जाएगी।
+    </p>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+  <div>
+    <h2>नगर पंचायत आनंदनगर</h2>
+
+    <p>
+      स्वच्छ • सुंदर • विकसित
+      • जनहित में समर्पित
+    </p>
+  </div>
+
+  <div>
+
+    <h3>त्वरित लिंक</h3>
+
+    <p>मुख्य पृष्ठ</p>
+    <p>सूचनाएं</p>
+    <p>जन सेवाएं</p>
+    <p>विकास कार्य</p>
+
+  </div>
+
+  <div>
+
+    <h3>कानूनी जानकारी</h3>
+
+    <p>गोपनीयता नीति</p>
+    <p>अस्वीकरण</p>
+    <p>साइटमैप</p>
+
+  </div>
+
+</footer>
+
+<div class="copyright">
+
+  © 2026 नगर पंचायत आनंदनगर,
+  महाराजगंज, उत्तर प्रदेश।
+  सर्वाधिकार सुरक्षित।
+
+</div>
+
+</body>
+</html>
