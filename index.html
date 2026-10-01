@@ -1,586 +1,1071 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>नगर पंचायत आनंदनगर | महाराजगंज</title>
+<title>नगर पंचायत आनंदनगर | महाराजगंज, उत्तर प्रदेश</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    body {
-      font-family: Arial, "Noto Sans Devanagari", sans-serif;
-      background: #f4f7fa;
-      color: #17344c;
-    }
+body{
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#f3f7fa;
+  color:#17344c;
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
-    /* TOP BAR */
-    .topbar {
-      background: #eef2f5;
-      padding: 8px 4%;
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-    }
+/* TOP BAR */
+.topbar{
+  background:#edf2f5;
+  padding:7px 4%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:13px;
+}
 
-    /* HEADER */
-    header {
-      background: white;
-      padding: 18px 4%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.language button{
+  border:1px solid #ccd7df;
+  background:white;
+  padding:5px 10px;
+  border-radius:5px;
+  cursor:pointer;
+}
 
-    .logo-title {
-      color: #063b63;
-    }
+.language .active{
+  background:#063b63;
+  color:white;
+}
 
-    .logo-title h1 {
-      font-size: 34px;
-    }
+/* HEADER */
+.header{
+  background:white;
+  padding:15px 4%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
 
-    .logo-title p {
-      color: #0878b5;
-      font-weight: bold;
-      margin-top: 4px;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  flex:1;
+}
 
-    .search {
-      padding: 10px;
-      border: 1px solid #ccd8df;
-      border-radius: 7px;
-    }
+/* REPLACE THIS IMAGE LATER WITH YOUR REAL LOGO */
+.logo{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+}
 
-    /* NAVIGATION */
-    nav {
-      background: #063b63;
-      color: white;
-      display: flex;
-      flex-wrap: wrap;
-      padding: 7px 4%;
-      gap: 4px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+.brand h1{
+  color:#063b63;
+  font-size:34px;
+}
 
-    nav a {
-      padding: 11px 13px;
-      border-radius: 7px;
-    }
+.brand h3{
+  color:#0878b5;
+  margin-top:4px;
+}
 
-    nav a:hover {
-      background: #0b638f;
-    }
+.tagline{
+  color:#13864a;
+  font-weight:bold;
+  margin-top:4px;
+}
 
-    .complaint-button {
-      background: #0aaa5b;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-weight: bold;
-      display: inline-block;
-    }
+.search{
+  display:flex;
+}
 
-    /* HERO */
-    .hero {
-      min-height: 410px;
-      position: relative;
-      background:
-        linear-gradient(90deg, #063b63, #28708e);
-      color: white;
-      overflow: hidden;
-    }
+.search input{
+  padding:10px;
+  border:1px solid #ccd8df;
+  border-radius:7px 0 0 7px;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 80px 7%;
-      max-width: 850px;
-    }
+.search button{
+  background:#063b63;
+  color:white;
+  border:0;
+  padding:0 15px;
+  border-radius:0 7px 7px 0;
+}
 
-    .hero h2 {
-      font-size: clamp(38px, 5vw, 64px);
-      line-height: 1.05;
-      margin: 12px 0;
-    }
+.complaint-btn{
+  background:#10a957;
+  color:white;
+  padding:13px 18px;
+  border-radius:9px;
+  font-weight:bold;
+}
 
-    .hero h2 span {
-      color: #72e99e;
-    }
+/* NAVIGATION */
+.nav{
+  background:#063b63;
+  color:white;
+  display:flex;
+  align-items:center;
+  gap:2px;
+  padding:7px 4%;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
 
-    .hero p {
-      font-size: 19px;
-      margin-bottom: 25px;
-    }
+.nav a{
+  padding:11px 12px;
+  border-radius:7px;
+  font-size:14px;
+}
 
-    /* SECTIONS */
-    .container {
-      max-width: 1400px;
-      margin: auto;
-      padding: 28px 4%;
-    }
+.nav a:hover{
+  background:#0878b5;
+}
 
-    .section-title {
-      color: #063b63;
-      margin-bottom: 15px;
-      font-size: 26px;
-    }
+.nav .complaint{
+  margin-left:auto;
+  background:#10a957;
+}
 
-    /* SERVICES */
-    .services {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
+/* HERO */
+.hero{
+  min-height:420px;
+  position:relative;
+  background:
+    linear-gradient(90deg,#00385ee8,#063b6388,#0002),
+    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85")
+    center/cover;
+  color:white;
+}
 
-    .service {
-      background: white;
-      border: 1px solid #dfe8ee;
-      border-radius: 14px;
-      padding: 20px 10px;
-      text-align: center;
-      cursor: pointer;
-    }
+.hero-content{
+  padding:75px 7%;
+  max-width:850px;
+}
 
-    .service:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px #ccd8df;
-    }
+.hero h2{
+  font-size:clamp(42px,5vw,65px);
+  line-height:1.05;
+  margin:12px 0;
+}
 
-    .icon {
-      width: 58px;
-      height: 58px;
-      margin: auto;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: white;
-      font-size: 28px;
-    }
+.hero h2 span{
+  color:#70e99b;
+}
 
-    .green { background: #2caf52; }
-    .yellow { background: #f2ad16; }
-    .blue { background: #2d83d7; }
-    .red { background: #e34f54; }
-    .purple { background: #8848ca; }
+.hero p{
+  font-size:20px;
+  margin-bottom:25px;
+}
 
-    .service b {
-      display: block;
-      margin-top: 9px;
-    }
+.hero-btn{
+  display:inline-block;
+  background:#10a957;
+  color:white;
+  padding:14px 23px;
+  border-radius:10px;
+  font-weight:bold;
+}
 
-    /* CONTENT GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr .65fr;
-      gap: 15px;
-    }
+.dots{
+  position:absolute;
+  bottom:15px;
+  width:100%;
+  text-align:center;
+}
 
-    .card {
-      background: white;
-      border: 1px solid #dfe8ee;
-      border-radius: 14px;
-      padding: 20px;
-    }
+.dots span{
+  display:inline-block;
+  width:12px;
+  height:12px;
+  background:white;
+  opacity:.55;
+  border-radius:50%;
+  margin:4px;
+}
 
-    .card h2 {
-      color: #063b63;
-      margin-bottom: 15px;
-    }
+.dots span:first-child{
+  opacity:1;
+}
 
-    .notice {
-      padding: 13px 0;
-      border-bottom: 1px solid #edf1f4;
-    }
+/* COMMON */
+.container{
+  max-width:1450px;
+  margin:auto;
+  padding:25px 4%;
+}
 
-    .notice:last-child {
-      border-bottom: none;
-    }
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
 
-    .date {
-      color: #0878b5;
-      font-weight: bold;
-    }
+.section-title h2{
+  color:#063b63;
+}
 
-    /* QR */
-    .qr-card {
-      text-align: center;
-      background: #effaff;
-    }
+/* SERVICES */
+.services{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:13px;
+}
 
-    .qr {
-      width: 150px;
-      height: 150px;
-      margin: 15px auto;
-      background: white;
-      border: 8px solid white;
-      box-shadow: 0 0 0 1px #d9e4ea;
-      display: grid;
-      place-items: center;
-      font-size: 60px;
-    }
+.service{
+  background:white;
+  border:1px solid #dbe6ed;
+  border-radius:14px;
+  padding:18px 8px;
+  text-align:center;
+  transition:.2s;
+}
 
-    /* STATS */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
+.service:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px #78909c30;
+}
 
-    .stat {
-      background: white;
-      border: 1px solid #dfe8ee;
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-    }
+.icon{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin:auto;
+  color:white;
+  font-size:27px;
+}
 
-    .stat b {
-      display: block;
-      font-size: 27px;
-      color: #0878b5;
-    }
+.green{background:#32ad4d}
+.yellow{background:#efad14}
+.blue{background:#2c83d7}
+.red{background:#e34f54}
+.purple{background:#8848ca}
 
-    /* CONTACT */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 15px;
-    }
+.service strong{
+  display:block;
+  margin-top:10px;
+  font-size:16px;
+}
 
-    /* FOOTER */
-    footer {
-      background: #022c4b;
-      color: white;
-      padding: 35px 5%;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 30px;
-    }
+.service small{
+  color:#70818e;
+}
 
-    footer p {
-      margin-top: 8px;
-      color: #d9e6ee;
-    }
+/* MAIN CONTENT */
+.main-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr .65fr;
+  gap:15px;
+}
 
-    .copyright {
-      background: #021f35;
-      color: #d9e6ee;
-      text-align: center;
-      padding: 10px;
-      font-size: 12px;
-    }
+.card{
+  background:white;
+  border:1px solid #dbe6ed;
+  border-radius:14px;
+  padding:18px;
+}
 
-    /* MOBILE */
-    @media (max-width: 1000px) {
-      .services {
-        grid-template-columns: repeat(3, 1fr);
-      }
+.card h2{
+  color:#063b63;
+  margin-bottom:14px;
+}
 
-      .grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
+.notice{
+  padding:11px 0;
+  border-bottom:1px solid #edf1f4;
+}
 
-      .search {
-        display: none;
-      }
-    }
+.notice:last-child{
+  border-bottom:0;
+}
 
-    @media (max-width: 650px) {
-      header {
-        display: block;
-      }
+.date{
+  color:#0878b5;
+  font-weight:bold;
+}
 
-      .logo-title h1 {
-        font-size: 27px;
-      }
+.work-image{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+}
 
-      .services,
-      .stats,
-      footer {
-        grid-template-columns: 1fr 1fr;
-      }
+.work-thumbs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:10px;
+}
 
-      .topbar {
-        font-size: 10px;
-      }
-    }
-  </style>
+.work-thumbs img{
+  width:100%;
+  height:75px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+/* QR */
+.qr-card{
+  text-align:center;
+  background:#eefaff;
+}
+
+.qr{
+  width:165px;
+  height:165px;
+  margin:15px auto;
+  background:white;
+  padding:5px;
+}
+
+.qr img{
+  width:100%;
+  height:100%;
+}
+
+/* STATISTICS */
+.statistics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+}
+
+.stat{
+  background:white;
+  border:1px solid #dbe6ed;
+  border-radius:14px;
+  text-align:center;
+  padding:20px;
+}
+
+.stat strong{
+  display:block;
+  color:#0878b5;
+  font-size:28px;
+  margin-bottom:5px;
+}
+
+/* INFO */
+.info-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr;
+  gap:15px;
+}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:10px;
+}
+
+.gallery img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.gallery img:first-child{
+  height:310px;
+  grid-row:span 2;
+}
+
+/* FOOTER */
+.footer{
+  background:#032f50;
+  color:white;
+  padding:35px 5%;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:30px;
+}
+
+.footer p{
+  color:#d6e5ed;
+  margin:8px 0;
+}
+
+.copyright{
+  background:#021f35;
+  color:#d6e5ed;
+  text-align:center;
+  padding:10px;
+  font-size:13px;
+}
+
+/* ENGLISH */
+.en{
+  display:none;
+}
+
+body.english .hi{
+  display:none;
+}
+
+body.english .en{
+  display:inline;
+}
+
+/* MOBILE */
+@media(max-width:1000px){
+
+  .brand h1{
+    font-size:27px;
+  }
+
+  .search{
+    display:none;
+  }
+
+  .services{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .main-grid,
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:650px){
+
+  .topbar{
+    font-size:10px;
+  }
+
+  .header{
+    display:block;
+  }
+
+  .brand{
+    margin-bottom:12px;
+  }
+
+  .brand h1{
+    font-size:23px;
+  }
+
+  .logo{
+    width:70px;
+    height:70px;
+  }
+
+  .nav{
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+
+  .nav .complaint{
+    margin-left:0;
+  }
+
+  .hero-content{
+    padding:55px 7%;
+  }
+
+  .hero h2{
+    font-size:42px;
+  }
+
+  .services{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .statistics{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery img:first-child{
+    height:220px;
+    grid-row:auto;
+  }
+
+  .footer{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <span>उत्तर प्रदेश सरकार | नगर विकास विभाग</span>
-
-  <span>
-    स्क्रीन रीडर &nbsp; | &nbsp;
-    साइट मैप &nbsp; | &nbsp;
-    A− &nbsp; A &nbsp; A+
-    &nbsp;
-    <b>हिंदी</b> / English
-  </span>
-</div>
-
-<!-- HEADER -->
-<header>
-
-  <div class="logo-title">
-    <h1>नगर पंचायत आनंदनगर</h1>
-    <p>महाराजगंज, उत्तर प्रदेश</p>
-    <p>स्वच्छ • सुंदर • विकसित • जनहित में समर्पित</p>
-  </div>
 
   <div>
+    <span class="hi">उत्तर प्रदेश सरकार | नगर विकास विभाग</span>
+    <span class="en">Government of Uttar Pradesh | Urban Development Department</span>
+  </div>
+
+  <div class="language">
+    <button id="hindiButton" class="active" onclick="setLanguage('hi')">
+      हिंदी
+    </button>
+
+    <button id="englishButton" onclick="setLanguage('en')">
+      English
+    </button>
+  </div>
+
+</div>
+
+
+<!-- HEADER -->
+<header class="header">
+
+  <div class="brand">
+
+    <!-- CHANGE THIS FILE LATER TO YOUR REAL LOGO -->
+    <img
+      class="logo"
+      src="https://via.placeholder.com/150?text=NP"
+      alt="Nagar Panchayat Logo"
+    >
+
+    <div>
+
+      <h1 class="hi">नगर पंचायत आनंदनगर</h1>
+      <h1 class="en">Nagar Panchayat Anandnagar</h1>
+
+      <h3 class="hi">महाराजगंज, उत्तर प्रदेश</h3>
+      <h3 class="en">Maharajganj, Uttar Pradesh</h3>
+
+      <div class="tagline hi">
+        स्वच्छ • सुंदर • विकसित • जनहित में समर्पित
+      </div>
+
+      <div class="tagline en">
+        Clean • Beautiful • Developed • Dedicated to Public Service
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="search">
     <input
-      class="search"
+      class="hi"
       type="text"
       placeholder="खोजें..."
     >
+
+    <input
+      class="en"
+      type="text"
+      placeholder="Search..."
+    >
+
+    <button>⌕</button>
   </div>
+
+
+  <a href="grievance.html" class="complaint-btn">
+
+    <span class="hi">📝 शिकायत दर्ज करें</span>
+
+    <span class="en">📝 Register Complaint</span>
+
+  </a>
 
 </header>
 
+
 <!-- NAVIGATION -->
-<nav>
+<nav class="nav">
 
-  <a href="#home">⌂ मुख्य पृष्ठ</a>
+  <a href="#home">
+    🏠
+    <span class="hi">मुख्य पृष्ठ</span>
+    <span class="en">Home</span>
+  </a>
 
-  <a href="#about">हमारे बारे में</a>
+  <a href="#about">
+    <span class="hi">हमारे बारे में</span>
+    <span class="en">About Us</span>
+  </a>
 
-  <a href="#officials">अधिकारी एवं कर्मचारी</a>
+  <a href="#officials">
+    <span class="hi">अधिकारी एवं कर्मचारी</span>
+    <span class="en">Officials</span>
+  </a>
 
-  <a href="#notices">सूचनाएं</a>
+  <a href="#notices">
+    <span class="hi">सूचनाएं</span>
+    <span class="en">Notices</span>
+  </a>
 
-  <a href="#services">जन सेवाएं</a>
+  <a href="#services">
+    <span class="hi">जन सेवाएं</span>
+    <span class="en">Citizen Services</span>
+  </a>
 
-  <a href="#works">विकास कार्य</a>
+  <a href="#works">
+    <span class="hi">विकास कार्य</span>
+    <span class="en">Development</span>
+  </a>
 
-  <a href="#gallery">गैलरी</a>
+  <a href="#gallery">
+    <span class="hi">गैलरी</span>
+    <span class="en">Gallery</span>
+  </a>
 
-  <a href="#contact">संपर्क करें</a>
+  <a href="#contact">
+    <span class="hi">संपर्क करें</span>
+    <span class="en">Contact</span>
+  </a>
 
-  <a class="complaint-button" href="#complaint">
-    📝 शिकायत दर्ज करें
+  <a class="complaint" href="grievance.html">
+    📝
+    <span class="hi">शिकायत दर्ज करें</span>
+    <span class="en">Register Complaint</span>
   </a>
 
 </nav>
+
 
 <!-- HERO -->
 <section class="hero" id="home">
 
   <div class="hero-content">
 
-    <b>हमारा संकल्प</b>
+    <strong class="hi">हमारा संकल्प</strong>
+    <strong class="en">Our Commitment</strong>
 
-    <h2>
+    <h2 class="hi">
       स्वच्छ, सुंदर और विकसित
       <span>आनंदनगर</span>
     </h2>
 
-    <p>
+    <h2 class="en">
+      Clean, Beautiful & Developed
+      <span>Anandnagar</span>
+    </h2>
+
+    <p class="hi">
       एक स्वच्छ, सुरक्षित, आधुनिक और नागरिकों के अनुकूल
-      नगर पंचायत की दिशा में निरंतर प्रयास।
+      नगर पंचायत की दिशा में निरंतर प्रयासरत।
     </p>
 
-    <a class="complaint-button" href="#complaint">
-      📝 शिकायत दर्ज करें →
+    <p class="en">
+      Working continuously towards a clean, safe,
+      modern and citizen-friendly Nagar Panchayat.
+    </p>
+
+    <a href="grievance.html" class="hero-btn">
+
+      <span class="hi">📝 शिकायत दर्ज करें →</span>
+
+      <span class="en">📝 Register Complaint →</span>
+
     </a>
 
   </div>
 
+  <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
 </section>
+
 
 <!-- SERVICES -->
 <section class="container" id="services">
 
-  <h2 class="section-title">
-    ⚙ त्वरित जन सेवाएं
-  </h2>
+  <div class="section-title">
+
+    <h2>
+      ⚙
+      <span class="hi">त्वरित जन सेवाएं</span>
+      <span class="en">Quick Citizen Services</span>
+    </h2>
+
+  </div>
+
 
   <div class="services">
 
-    <div class="service">
+    <a href="grievance.html?type=sanitation" class="service">
+
       <div class="icon green">🗑</div>
-      <b>सफाई संबंधी शिकायत</b>
-      <small>Sanitation Complaint</small>
-    </div>
 
-    <div class="service">
-      <div class="icon yellow">⚑</div>
-      <b>स्ट्रीट लाइट शिकायत</b>
-      <small>Street Light Complaint</small>
-    </div>
+      <strong class="hi">सफाई संबंधी शिकायत</strong>
+      <strong class="en">Sanitation Complaint</strong>
 
-    <div class="service">
-      <div class="icon blue">♒</div>
-      <b>जलापूर्ति शिकायत</b>
-      <small>Water Supply Complaint</small>
-    </div>
+      <small class="hi">Sanitation Complaint</small>
 
-    <div class="service">
-      <div class="icon red">▥</div>
-      <b>सड़क / नाली शिकायत</b>
-      <small>Road / Drainage Complaint</small>
-    </div>
+    </a>
 
-    <div class="service">
+
+    <a href="grievance.html?type=streetlight" class="service">
+
+      <div class="icon yellow">💡</div>
+
+      <strong class="hi">स्ट्रीट लाइट शिकायत</strong>
+      <strong class="en">Street Light Complaint</strong>
+
+    </a>
+
+
+    <a href="grievance.html?type=water" class="service">
+
+      <div class="icon blue">💧</div>
+
+      <strong class="hi">जलापूर्ति शिकायत</strong>
+      <strong class="en">Water Supply Complaint</strong>
+
+    </a>
+
+
+    <a href="grievance.html?type=road" class="service">
+
+      <div class="icon red">🛣</div>
+
+      <strong class="hi">सड़क / नाली शिकायत</strong>
+      <strong class="en">Road / Drainage</strong>
+
+    </a>
+
+
+    <a href="grievance.html?type=other" class="service">
+
       <div class="icon purple">🏢</div>
-      <b>अन्य शिकायत</b>
-      <small>Other Complaint</small>
-    </div>
+
+      <strong class="hi">अन्य शिकायत</strong>
+      <strong class="en">Other Complaint</strong>
+
+    </a>
 
   </div>
 
 </section>
 
-<!-- MAIN CONTENT -->
-<section class="container grid">
+
+<!-- NOTICES + DEVELOPMENT + QR -->
+<section class="container main-grid">
+
 
   <!-- NOTICES -->
   <div class="card" id="notices">
 
-    <h2>📢 महत्वपूर्ण सूचनाएं</h2>
+    <h2>
+      📢
+      <span class="hi">महत्वपूर्ण सूचनाएं</span>
+      <span class="en">Important Notices</span>
+    </h2>
+
 
     <div class="notice">
+
       <span class="date">12 सितंबर 2026</span>
+
       <br>
-      नगर पंचायत क्षेत्र में विशेष स्वच्छता अभियान
+
+      <span class="hi">
+        नगर पंचायत क्षेत्र में विशेष स्वच्छता अभियान
+      </span>
+
+      <span class="en">
+        Special cleanliness campaign in Nagar Panchayat area
+      </span>
+
     </div>
 
+
     <div class="notice">
+
       <span class="date">08 सितंबर 2026</span>
+
       <br>
-      स्ट्रीट लाइट मरम्मत कार्य हेतु सूचना
+
+      <span class="hi">
+        स्ट्रीट लाइट मरम्मत कार्य हेतु निविदा सूचना
+      </span>
+
+      <span class="en">
+        Street light repair tender notice
+      </span>
+
     </div>
 
+
     <div class="notice">
+
       <span class="date">02 सितंबर 2026</span>
+
       <br>
-      संपत्ति कर जमा करने संबंधी महत्वपूर्ण सूचना
+
+      <span class="hi">
+        संपत्ति कर जमा करने की अंतिम तिथि संबंधी सूचना
+      </span>
+
+      <span class="en">
+        Property tax payment deadline notice
+      </span>
+
     </div>
 
+
     <div class="notice">
+
       <span class="date">25 अगस्त 2026</span>
+
       <br>
-      नगर पंचायत क्षेत्र में प्लास्टिक मुक्त अभियान
+
+      <span class="hi">
+        नगर पंचायत क्षेत्र में प्लास्टिक मुक्त अभियान
+      </span>
+
+      <span class="en">
+        Plastic-free campaign
+      </span>
+
     </div>
 
   </div>
+
 
   <!-- DEVELOPMENT -->
   <div class="card" id="works">
 
-    <h2>⚙ विकास कार्य</h2>
+    <h2>
+      ⚙
+      <span class="hi">विकास कार्य</span>
+      <span class="en">Development Works</span>
+    </h2>
 
-    <p>
-      आनंदनगर में सड़क, नाली, स्ट्रीट लाइट,
-      पार्क तथा सार्वजनिक सुविधाओं से जुड़े
-      विकास कार्यों की जानकारी यहां उपलब्ध होगी।
+
+    <!-- CHANGE THESE IMAGES LATER -->
+    <img
+      class="work-image"
+      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1100&q=85"
+      alt="Development Work"
+    >
+
+
+    <h3 class="hi">
+      नया पार्क एवं सामुदायिक स्थल विकास
+    </h3>
+
+    <h3 class="en">
+      New Park & Community Space Development
+    </h3>
+
+
+    <p class="hi">
+      सड़क, नाली, स्ट्रीट लाइट और सार्वजनिक सुविधाओं
+      के विकास कार्यों की जानकारी यहां प्रदर्शित की जाएगी।
     </p>
 
-    <br>
+    <p class="en">
+      Details of roads, drainage, street lights and
+      public facility development works will appear here.
+    </p>
 
-    <b style="color:#11814a">
-      ● विकास कार्य प्रगति पर
-    </b>
+
+    <div class="work-thumbs">
+
+      <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=500&q=85">
+
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=500&q=85">
+
+      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=500&q=85">
+
+    </div>
 
   </div>
 
+
   <!-- QR -->
-  <div class="card qr-card" id="complaint">
+  <div class="card qr-card">
 
-    <h2>अपनी शिकायत दर्ज करें</h2>
+    <h2 class="hi">
+      अपनी शिकायत दर्ज करें
+    </h2>
 
-    <p>
-      QR स्कैन करके नागरिक अपनी शिकायत दर्ज कर सकते हैं।
+    <h2 class="en">
+      Register Your Complaint
+    </h2>
+
+
+    <p class="hi">
+      QR स्कैन करके नागरिक शिकायत दर्ज कर सकते हैं।
     </p>
 
+    <p class="en">
+      Scan the QR code to register a civic complaint.
+    </p>
+
+
     <div class="qr">
-      ▦
+
+      <img
+        src="https://quickchart.io/qr?text=https%3A%2F%2Faadi61195.github.io%2Fanandnagar-website%2Fgrievance.html&size=160"
+        alt="Complaint QR Code"
+      >
+
     </div>
 
-    <b>
+
+    <strong class="hi">
       सार्वजनिक शिकायत सेवा
-    </b>
+    </strong>
+
+    <strong class="en">
+      Public Grievance Service
+    </strong>
+
 
     <br><br>
 
-    <a class="complaint-button" href="#">
-      शिकायत दर्ज करें
+    <a href="grievance.html" class="complaint-btn">
+
+      📱
+      <span class="hi">शिकायत दर्ज करें</span>
+      <span class="en">Register Complaint</span>
+
     </a>
 
   </div>
 
 </section>
 
-<!-- STATS -->
+
+<!-- STATISTICS -->
 <section class="container">
 
-  <div class="stats">
+  <div class="statistics">
 
     <div class="stat">
-      <b>13,872</b>
-      <span>कुल जनसंख्या (2011)</span>
+
+      <strong>13,872</strong>
+
+      <span class="hi">
+        कुल जनसंख्या (2011)
+      </span>
+
+      <span class="en">
+        Total Population (2011)
+      </span>
+
     </div>
 
-    <div class="stat">
-      <b>15</b>
-      <span>कुल वार्ड</span>
-    </div>
 
     <div class="stat">
-      <b>4.12</b>
-      <span>वर्ग कि.मी. क्षेत्रफल</span>
+
+      <strong>15</strong>
+
+      <span class="hi">
+        कुल वार्ड
+      </span>
+
+      <span class="en">
+        Total Wards
+      </span>
+
     </div>
 
+
     <div class="stat">
-      <b>1994</b>
-      <span>स्थापना वर्ष</span>
+
+      <strong>4.12</strong>
+
+      <span class="hi">
+        वर्ग कि.मी. क्षेत्रफल
+      </span>
+
+      <span class="en">
+        Area in sq. km.
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <strong>1994</strong>
+
+      <span class="hi">
+        स्थापना वर्ष
+      </span>
+
+      <span class="en">
+        Year of Establishment
+      </span>
+
     </div>
 
   </div>
 
 </section>
 
-<!-- INFORMATION -->
-<section class="container contact-grid">
 
+<!-- INFORMATION -->
+<section class="container info-grid">
+
+
+  <!-- CHAIRPERSON -->
   <div class="card" id="about">
 
-    <h2>अध्यक्ष का संदेश</h2>
+    <h2>
+      👥
+      <span class="hi">अध्यक्ष का संदेश</span>
+      <span class="en">Message from the Chairperson</span>
+    </h2>
 
-    <p>
-      नगर पंचायत आनंदनगर का लक्ष्य सभी नागरिकों
-      को स्वच्छ, सुरक्षित, सुविधाजनक और बेहतर
-      नागरिक सेवाएं उपलब्ध कराना है।
+
+    <p class="hi">
+      नगर पंचायत आनंदनगर का लक्ष्य सभी नागरिकों को
+      स्वच्छ, सुरक्षित, सुविधाजनक और बेहतर नागरिक सेवाएं
+      उपलब्ध कराना है। आपकी सहभागिता से हम आनंदनगर को
+      और बेहतर बनाने के लिए प्रतिबद्ध हैं।
     </p>
 
-    <br>
 
-    <a href="#">
-      और पढ़ें →
-    </a>
+    <p class="en">
+      Our goal is to provide clean, safe, convenient and
+      better civic services to every citizen. With your
+      participation, we remain committed to making
+      Anandnagar better.
+    </p>
 
   </div>
 
+
+  <!-- CONTACT -->
   <div class="card" id="contact">
 
-    <h2>☎ त्वरित संपर्क</h2>
+    <h2>
+      ☎
+      <span class="hi">त्वरित संपर्क</span>
+      <span class="en">Quick Contact</span>
+    </h2>
+
 
     <p>
       📍 नगर पंचायत आनंदनगर,
@@ -588,35 +1073,36 @@
     </p>
 
     <p>
-      ☎ कार्यालय फोन:
-      +91-XXXXXXXXXX
+      ☎ +91-XXXXXXXXXX
     </p>
 
     <p>
-      ✉ Email:
-      npanandnagar@gmail.com
+      ✉ npanandnagar@gmail.com
     </p>
 
     <p>
-      ◷ सोमवार–शनिवार:
-      9:00 AM – 5:00 PM
+      🕘 सोमवार–शनिवार, 9:00 AM–5:00 PM
     </p>
 
   </div>
 
+
+  <!-- LINKS -->
   <div class="card" id="officials">
 
-    <h2>🔗 उपयोगी लिंक</h2>
+    <h2>
+      🔗
+      <span class="hi">उपयोगी लिंक</span>
+      <span class="en">Useful Links</span>
+    </h2>
 
     <p>अधिकारी एवं कर्मचारी</p>
-
-    <p>सभासद</p>
 
     <p>नागरिक प्रपत्र</p>
 
     <p>निविदाएं</p>
 
-    <p>RTI</p>
+    <p>RTI / सूचना का अधिकार</p>
 
     <p>जनसुनवाई</p>
 
@@ -624,67 +1110,136 @@
 
 </section>
 
+
 <!-- GALLERY -->
 <section class="container" id="gallery">
 
-  <h2 class="section-title">
-    🖼 नगर की झलक
-  </h2>
+  <div class="section-title">
 
-  <div class="card">
+    <h2>
+      🖼
+      <span class="hi">नगर की झलक</span>
+      <span class="en">Anandnagar Gallery</span>
+    </h2>
 
-    <p>
-      यहां आनंदनगर की वास्तविक तस्वीरें,
-      विकास कार्यों की तस्वीरें तथा कार्यक्रमों
-      की फोटो गैलरी प्रदर्शित की जाएगी।
-    </p>
+  </div>
+
+
+  <div class="gallery">
+
+    <!-- REPLACE ALL THESE WITH ACTUAL ANANDNAGAR PHOTOS LATER -->
+
+    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85">
+
+    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=700&q=85">
+
+    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=85">
+
+    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=85">
+
+    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=700&q=85">
 
   </div>
 
 </section>
 
+
 <!-- FOOTER -->
-<footer>
+<footer class="footer">
 
   <div>
-    <h2>नगर पंचायत आनंदनगर</h2>
+
+    <h2>
+      नगर पंचायत आनंदनगर
+    </h2>
 
     <p>
-      स्वच्छ • सुंदर • विकसित
-      • जनहित में समर्पित
+      महाराजगंज, उत्तर प्रदेश
     </p>
+
+    <p>
+      स्वच्छ • सुंदर • विकसित • जनहित में समर्पित
+    </p>
+
   </div>
+
 
   <div>
 
     <h3>त्वरित लिंक</h3>
 
     <p>मुख्य पृष्ठ</p>
+
     <p>सूचनाएं</p>
+
     <p>जन सेवाएं</p>
+
     <p>विकास कार्य</p>
 
   </div>
+
 
   <div>
 
     <h3>कानूनी जानकारी</h3>
 
     <p>गोपनीयता नीति</p>
+
     <p>अस्वीकरण</p>
+
     <p>साइटमैप</p>
 
   </div>
 
 </footer>
 
+
 <div class="copyright">
 
-  © 2026 नगर पंचायत आनंदनगर,
-  महाराजगंज, उत्तर प्रदेश।
-  सर्वाधिकार सुरक्षित।
+© 2026 नगर पंचायत आनंदनगर, महाराजगंज, उत्तर प्रदेश।
+सर्वाधिकार सुरक्षित।
 
 </div>
+
+
+<script>
+
+function setLanguage(language){
+
+  document.body.classList.toggle(
+    "english",
+    language === "en"
+  );
+
+  document.getElementById("hindiButton")
+    .classList.toggle(
+      "active",
+      language === "hi"
+    );
+
+  document.getElementById("englishButton")
+    .classList.toggle(
+      "active",
+      language === "en"
+    );
+
+  localStorage.setItem(
+    "siteLanguage",
+    language
+  );
+
+}
+
+
+if(
+  localStorage.getItem("siteLanguage") === "en"
+){
+
+  setLanguage("en");
+
+}
+
+</script>
 
 </body>
 </html>
