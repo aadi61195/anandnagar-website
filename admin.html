@@ -15,6 +15,7 @@
  --green:#10a957;
  --orange:#e88b22;
  --red:#dc4c4c;
+ --purple:#7657d9;
  --bg:#f3f7fa;
  --white:#fff;
  --text:#18384d;
@@ -34,12 +35,7 @@ body{
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 
-.app{
- display:flex;
- min-height:100vh;
-}
-
-/* SIDEBAR */
+.app{display:flex;min-height:100vh}
 
 .sidebar{
  width:245px;
@@ -50,6 +46,7 @@ button{cursor:pointer}
  top:0;
  bottom:0;
  left:0;
+ z-index:20;
 }
 
 .brand{
@@ -58,16 +55,8 @@ button{cursor:pointer}
  margin-bottom:15px;
 }
 
-.brand-title{
- font-size:18px;
- font-weight:800;
-}
-
-.brand-sub{
- color:#9fc0d1;
- font-size:10px;
- margin-top:3px;
-}
+.brand-title{font-size:18px;font-weight:800}
+.brand-sub{color:#9fc0d1;font-size:10px;margin-top:3px}
 
 .role{
  display:inline-block;
@@ -120,18 +109,8 @@ button{cursor:pointer}
  padding:12px;
 }
 
-.user-name{
- font-size:12px;
- font-weight:700;
-}
-
-.user-role{
- color:#9fc0d1;
- font-size:9px;
- margin-top:2px;
-}
-
-/* MAIN */
+.user-name{font-size:12px;font-weight:700}
+.user-role{color:#9fc0d1;font-size:9px;margin-top:2px}
 
 .main{
  margin-left:245px;
@@ -148,16 +127,8 @@ button{cursor:pointer}
  padding:0 28px;
 }
 
-.top h1{
- font-size:20px;
- color:var(--navy);
-}
-
-.top p{
- font-size:10px;
- color:var(--muted);
- margin-top:2px;
-}
+.top h1{font-size:20px;color:var(--navy)}
+.top p{font-size:10px;color:var(--muted);margin-top:2px}
 
 .top-right{
  display:flex;
@@ -198,7 +169,7 @@ button{cursor:pointer}
 
 .content{
  padding:27px;
- max-width:1450px;
+ max-width:1500px;
 }
 
 .page-head{
@@ -208,16 +179,8 @@ button{cursor:pointer}
  margin-bottom:22px;
 }
 
-.page-head h2{
- color:var(--navy);
- font-size:23px;
-}
-
-.page-head p{
- color:var(--muted);
- font-size:11px;
- margin-top:3px;
-}
+.page-head h2{color:var(--navy);font-size:23px}
+.page-head p{color:var(--muted);font-size:11px;margin-top:3px}
 
 .primary{
  border:0;
@@ -229,11 +192,31 @@ button{cursor:pointer}
  font-size:11px;
 }
 
-/* STATS */
+.primary:hover{filter:brightness(.96)}
+
+.danger{
+ background:var(--red);
+ color:white;
+ border:0;
+ padding:10px 15px;
+ border-radius:7px;
+ font-weight:800;
+ font-size:10px;
+}
+
+.warning{
+ background:var(--orange);
+ color:white;
+ border:0;
+ padding:10px 15px;
+ border-radius:7px;
+ font-weight:800;
+ font-size:10px;
+}
 
 .stats{
  display:grid;
- grid-template-columns:repeat(5,1fr);
+ grid-template-columns:repeat(6,1fr);
  gap:13px;
  margin-bottom:22px;
 }
@@ -268,22 +251,12 @@ button{cursor:pointer}
  margin-top:8px;
 }
 
-.stat label{
- color:var(--muted);
- font-size:10px;
-}
-
-.stat .change{
- font-size:9px;
- color:var(--green);
- margin-top:6px;
-}
-
-/* GRID */
+.stat label{color:var(--muted);font-size:10px}
+.stat .change{font-size:9px;color:var(--green);margin-top:6px}
 
 .dashboard-grid{
  display:grid;
- grid-template-columns:1.55fr .8fr;
+ grid-template-columns:1.6fr .8fr;
  gap:17px;
 }
 
@@ -302,26 +275,12 @@ button{cursor:pointer}
  align-items:center;
 }
 
-.card-head h3{
- color:var(--navy);
- font-size:15px;
-}
+.card-head h3{color:var(--navy);font-size:15px}
+.card-head small{color:var(--muted);font-size:9px}
 
-.card-head small{
- color:var(--muted);
- font-size:9px;
-}
+.table-wrap{overflow-x:auto}
 
-/* TABLE */
-
-.table-wrap{
- overflow-x:auto;
-}
-
-table{
- width:100%;
- border-collapse:collapse;
-}
+table{width:100%;border-collapse:collapse}
 
 th{
  background:#f7fafb;
@@ -339,10 +298,7 @@ td{
  white-space:nowrap;
 }
 
-.ref{
- color:var(--blue);
- font-weight:800;
-}
+.ref{color:var(--blue);font-weight:800}
 
 .status{
  display:inline-block;
@@ -352,30 +308,13 @@ td{
  font-weight:800;
 }
 
-.status.new{
- background:#edf4ff;
- color:#2873bb;
-}
-
-.status.pending{
- background:#fff5df;
- color:#a56a13;
-}
-
-.status.progress{
- background:#e9f4fb;
- color:#0875aa;
-}
-
-.status.complete{
- background:#e6f8ef;
- color:#078947;
-}
-
-.status.overdue{
- background:#ffecec;
- color:#c13e3e;
-}
+.status.new{background:#edf4ff;color:#2873bb}
+.status.pending{background:#fff5df;color:#a56a13}
+.status.progress{background:#e9f4fb;color:#0875aa}
+.status.complete{background:#e6f8ef;color:#078947}
+.status.verify{background:#eeeafd;color:#6849c8}
+.status.returned{background:#fff0e5;color:#c66a20}
+.status.overdue{background:#ffecec;color:#c13e3e}
 
 .assign{
  border:1px solid var(--border);
@@ -387,24 +326,16 @@ td{
  font-weight:800;
 }
 
-.assign:hover{
- background:#eef7fb;
-}
+.assign:hover{background:#eef7fb}
 
-/* RIGHT PANEL */
-
-.queue{
- padding:17px;
-}
+.queue{padding:17px}
 
 .queue-item{
  padding:13px 0;
  border-bottom:1px solid #edf2f4;
 }
 
-.queue-item:last-child{
- border-bottom:0;
-}
+.queue-item:last-child{border-bottom:0}
 
 .queue-head{
  display:flex;
@@ -412,10 +343,7 @@ td{
  gap:8px;
 }
 
-.queue-head strong{
- color:var(--navy);
- font-size:11px;
-}
+.queue-head strong{color:var(--navy);font-size:11px}
 
 .queue-item p{
  color:var(--muted);
@@ -433,9 +361,7 @@ td{
  font-size:8px;
 }
 
-.workflow{
- padding:18px;
-}
+.workflow{padding:18px}
 
 .workflow-step{
  display:flex;
@@ -474,18 +400,34 @@ td{
  color:var(--green);
 }
 
-.workflow-step h4{
+.workflow-step h4{font-size:10px;color:var(--navy)}
+.workflow-step p{font-size:8px;color:var(--muted);margin-top:3px}
+
+.verification-card{
+ margin-top:17px;
+ border:1px solid #e2dafa;
+ background:#faf9ff;
+}
+
+.verification-card .card-head{
+ border-bottom-color:#e8e2f8;
+}
+
+.verify-alert{
+ padding:15px 18px;
+ color:#5e4aa8;
  font-size:10px;
- color:var(--navy);
+ line-height:1.7;
 }
 
-.workflow-step p{
- font-size:8px;
- color:var(--muted);
- margin-top:3px;
+.photo-preview{
+ width:100%;
+ max-height:240px;
+ object-fit:cover;
+ border-radius:9px;
+ margin-top:10px;
+ border:1px solid var(--border);
 }
-
-/* MODAL */
 
 .modal{
  display:none;
@@ -499,7 +441,7 @@ td{
 }
 
 .modal-box{
- width:min(600px,100%);
+ width:min(650px,100%);
  max-height:90vh;
  overflow:auto;
  background:white;
@@ -515,10 +457,7 @@ td{
  align-items:center;
 }
 
-.modal-head h3{
- color:var(--navy);
- font-size:17px;
-}
+.modal-head h3{color:var(--navy);font-size:17px}
 
 .close{
  border:0;
@@ -528,9 +467,7 @@ td{
  border-radius:50%;
 }
 
-.modal-body{
- padding:21px;
-}
+.modal-body{padding:21px}
 
 .info-box{
  background:#f4f9fb;
@@ -548,17 +485,10 @@ td{
  font-size:10px;
 }
 
-.info-row span:first-child{
- color:var(--muted);
-}
+.info-row span:first-child{color:var(--muted)}
+.info-row strong{color:var(--navy)}
 
-.info-row strong{
- color:var(--navy);
-}
-
-.form-group{
- margin-bottom:15px;
-}
+.form-group{margin-bottom:15px}
 
 .form-group label{
  display:block;
@@ -569,13 +499,15 @@ td{
 }
 
 .form-group select,
-.form-group textarea{
+.form-group textarea,
+.form-group input{
  width:100%;
  border:1px solid var(--border);
  border-radius:8px;
  padding:10px;
  outline:none;
  font-size:11px;
+ background:white;
 }
 
 .form-group textarea{
@@ -583,11 +515,22 @@ td{
  resize:vertical;
 }
 
+.file-box{
+ border:1px dashed #b9ccd6;
+ background:#f8fbfc;
+ border-radius:9px;
+ padding:15px;
+ text-align:center;
+}
+
+.file-box input{border:0;padding:5px}
+
 .modal-actions{
  display:flex;
  justify-content:flex-end;
  gap:8px;
  margin-top:18px;
+ flex-wrap:wrap;
 }
 
 .secondary{
@@ -599,8 +542,6 @@ td{
  font-size:10px;
  font-weight:800;
 }
-
-/* NOTIFICATION */
 
 .toast{
  position:fixed;
@@ -614,7 +555,7 @@ td{
  display:none;
  z-index:200;
  font-size:11px;
- max-width:330px;
+ max-width:350px;
 }
 
 .toast strong{
@@ -623,73 +564,52 @@ td{
  margin-bottom:3px;
 }
 
-/* LANGUAGE */
-
 .en{display:none}
 
 body.english .hi{display:none}
 body.english .en{display:inline}
 
-/* MOBILE */
+.empty{
+ text-align:center;
+ padding:35px;
+ color:#789;
+ font-size:10px;
+}
 
-@media(max-width:1050px){
+.audit{
+ font-size:8px;
+ color:var(--muted);
+ margin-top:8px;
+ line-height:1.6;
+}
 
- .sidebar{
-  width:205px;
- }
-
- .main{
-  margin-left:205px;
-  width:calc(100% - 205px);
- }
-
- .stats{
-  grid-template-columns:repeat(3,1fr);
- }
-
- .dashboard-grid{
-  grid-template-columns:1fr;
- }
-
+@media(max-width:1150px){
+ .sidebar{width:205px}
+ .main{margin-left:205px;width:calc(100% - 205px)}
+ .stats{grid-template-columns:repeat(3,1fr)}
+ .dashboard-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:700px){
-
  .sidebar{
   position:static;
   width:100%;
   height:auto;
  }
 
- .app{
-  display:block;
- }
-
- .main{
-  margin-left:0;
-  width:100%;
- }
+ .app{display:block}
+ .main{margin-left:0;width:100%}
 
  .sidebar .menu,
- .sidebar .user-box{
-  display:none;
- }
+ .sidebar .user-box{display:none}
 
- .brand{
-  text-align:center;
- }
+ .brand{text-align:center}
 
- .top{
-  padding:0 15px;
- }
+ .top{padding:0 15px}
 
- .content{
-  padding:17px;
- }
+ .content{padding:17px}
 
- .stats{
-  grid-template-columns:1fr 1fr;
- }
+ .stats{grid-template-columns:1fr 1fr}
 
  .stats .stat:last-child{
   grid-column:span 2;
@@ -700,19 +620,8 @@ body.english .en{display:inline}
   gap:10px;
  }
 
- .page-head .primary{
-  padding:9px;
-  font-size:9px;
- }
-
- .dashboard-grid{
-  display:block;
- }
-
- .card{
-  margin-bottom:15px;
- }
-
+ .dashboard-grid{display:block}
+ .card{margin-bottom:15px}
 }
 </style>
 </head>
@@ -721,555 +630,398 @@ body.english .en{display:inline}
 
 <div class="app">
 
-<!-- SIDEBAR -->
-
 <aside class="sidebar">
 
-  <div class="brand">
+ <div class="brand">
+  <div class="brand-title">नगर पंचायत आनंदनगर</div>
+  <div class="brand-sub">ULB Digital Management System</div>
+  <div class="role">EO / AUTHORISED OFFICER</div>
+ </div>
 
-    <div class="brand-title">
-      नगर पंचायत आनंदनगर
-    </div>
+ <div class="menu-title">
+  <span class="hi">मुख्य मेनू</span>
+  <span class="en">Main Menu</span>
+ </div>
 
-    <div class="brand-sub">
-      ULB Digital Management System
-    </div>
+ <div class="menu">
 
-    <div class="role">
-      EO / AUTHORISED OFFICER
-    </div>
+  <button class="active" onclick="loadComplaints()">
+   <span class="menu-icon">📊</span>
+   <span class="hi">डैशबोर्ड</span>
+   <span class="en">Dashboard</span>
+  </button>
 
-  </div>
+  <button onclick="filterComplaints('all')">
+   <span class="menu-icon">📝</span>
+   <span class="hi">सभी शिकायतें</span>
+   <span class="en">All Complaints</span>
+  </button>
 
+  <button onclick="filterComplaints('pending')">
+   <span class="menu-icon">🟡</span>
+   <span class="hi">लंबित</span>
+   <span class="en">Pending</span>
+  </button>
 
-  <div class="menu-title">
-    <span class="hi">मुख्य मेनू</span>
-    <span class="en">Main Menu</span>
-  </div>
+  <button onclick="filterComplaints('progress')">
+   <span class="menu-icon">🔵</span>
+   <span class="hi">कार्य प्रगति पर</span>
+   <span class="en">In Progress</span>
+  </button>
 
-  <div class="menu">
+  <button onclick="filterComplaints('verify')">
+   <span class="menu-icon">🟣</span>
+   <span class="hi">सत्यापन लंबित</span>
+   <span class="en">Verification</span>
+  </button>
 
-    <button class="active">
-      <span class="menu-icon">📊</span>
-      <span class="hi">डैशबोर्ड</span>
-      <span class="en">Dashboard</span>
-    </button>
+  <button onclick="filterComplaints('complete')">
+   <span class="menu-icon">🟢</span>
+   <span class="hi">पूर्ण / बंद</span>
+   <span class="en">Completed / Closed</span>
+  </button>
 
-    <button onclick="filterComplaints('all')">
-      <span class="menu-icon">📝</span>
-      <span class="hi">सभी शिकायतें</span>
-      <span class="en">All Complaints</span>
-    </button>
+ </div>
 
-    <button onclick="filterComplaints('pending')">
-      <span class="menu-icon">🟡</span>
-      <span class="hi">लंबित</span>
-      <span class="en">Pending</span>
-    </button>
+ <div class="menu-title">
+  <span class="hi">प्रशासन</span>
+  <span class="en">Administration</span>
+ </div>
 
-    <button onclick="filterComplaints('progress')">
-      <span class="menu-icon">🔵</span>
-      <span class="hi">कार्य प्रगति पर</span>
-      <span class="en">In Progress</span>
-    </button>
+ <div class="menu">
 
-    <button onclick="filterComplaints('complete')">
-      <span class="menu-icon">🟢</span>
-      <span class="hi">पूर्ण</span>
-      <span class="en">Completed</span>
-    </button>
+  <button>
+   <span class="menu-icon">👥</span>
+   <span class="hi">कर्मचारी</span>
+   <span class="en">Staff</span>
+  </button>
 
-  </div>
+  <button>
+   <span class="menu-icon">📈</span>
+   <span class="hi">रिपोर्ट</span>
+   <span class="en">Reports</span>
+  </button>
 
+  <button>
+   <span class="menu-icon">⚙️</span>
+   <span class="hi">सेटिंग्स</span>
+   <span class="en">Settings</span>
+  </button>
 
-  <div class="menu-title">
-    <span class="hi">प्रशासन</span>
-    <span class="en">Administration</span>
-  </div>
+ </div>
 
-  <div class="menu">
-
-    <button>
-      <span class="menu-icon">👥</span>
-      <span class="hi">कर्मचारी</span>
-      <span class="en">Staff</span>
-    </button>
-
-    <button>
-      <span class="menu-icon">📈</span>
-      <span class="hi">रिपोर्ट</span>
-      <span class="en">Reports</span>
-    </button>
-
-    <button>
-      <span class="menu-icon">⚙️</span>
-      <span class="hi">सेटिंग्स</span>
-      <span class="en">Settings</span>
-    </button>
-
-  </div>
-
-
-  <div class="user-box">
-
-    <div class="user-name">
-      👤 EO / अधिकृत अधिकारी
-    </div>
-
-    <div class="user-role">
-      Nagar Panchayat Anandnagar
-    </div>
-
-  </div>
+ <div class="user-box">
+  <div class="user-name">👤 EO / अधिकृत अधिकारी</div>
+  <div class="user-role">Nagar Panchayat Anandnagar</div>
+ </div>
 
 </aside>
 
 
-<!-- MAIN -->
-
 <main class="main">
 
-
-  <header class="top">
-
-    <div>
-
-      <h1>
-        <span class="hi">शिकायत प्रबंधन</span>
-        <span class="en">Grievance Management</span>
-      </h1>
-
-      <p>
-        <span class="hi">
-          नागरिक शिकायतों की निगरानी एवं कार्यवाही
-        </span>
-
-        <span class="en">
-          Monitor and manage citizen grievances
-        </span>
-      </p>
-
-    </div>
-
-
-    <div class="top-right">
-
-      <div class="notification">
-        🔔
-        <span id="notificationCount">1</span>
-      </div>
-
-      <div class="language">
-
-        <button
-          id="hiBtn"
-          class="active"
-          onclick="setLanguage('hi')"
-        >
-          हिंदी
-        </button>
-
-        <button
-          id="enBtn"
-          onclick="setLanguage('en')"
-        >
-          EN
-        </button>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-  <div class="content">
-
-
-    <div class="page-head">
-
-      <div>
-
-        <h2>
-          <span class="hi">आज का अवलोकन</span>
-          <span class="en">Today's Overview</span>
-        </h2>
-
-        <p>
-          <span class="hi">
-            शिकायतों की वर्तमान स्थिति
-          </span>
-
-          <span class="en">
-            Current grievance status
-          </span>
-        </p>
-
-      </div>
-
-      <button
-        class="primary"
-        onclick="openAssignmentFromLatest()"
-      >
-        + <span class="hi">शिकायत आवंटित करें</span>
-        <span class="en">Assign Complaint</span>
-      </button>
-
-    </div>
-
-
-    <!-- STATS -->
-
-    <div class="stats">
-
-      <div class="stat">
-
-        <div class="stat-top">
-          <label>
-            <span class="hi">नई शिकायतें</span>
-            <span class="en">New</span>
-          </label>
-
-          <div class="stat-icon">🆕</div>
-        </div>
-
-        <strong id="newCount">1</strong>
-
-        <div class="change">
-          ● आज प्राप्त
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-top">
-
-          <label>
-            <span class="hi">लंबित</span>
-            <span class="en">Pending</span>
-          </label>
-
-          <div class="stat-icon">🟡</div>
-
-        </div>
-
-        <strong id="pendingCount">1</strong>
-
-        <div class="change">
-          Action required
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-top">
-
-          <label>
-            <span class="hi">कार्य प्रगति पर</span>
-            <span class="en">In Progress</span>
-          </label>
-
-          <div class="stat-icon">🔵</div>
-
-        </div>
-
-        <strong id="progressCount">0</strong>
-
-        <div class="change">
-          Active cases
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-top">
-
-          <label>
-            <span class="hi">पूर्ण</span>
-            <span class="en">Completed</span>
-          </label>
-
-          <div class="stat-icon">🟢</div>
-
-        </div>
-
-        <strong id="completeCount">0</strong>
-
-        <div class="change">
-          Resolved
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-top">
-
-          <label>
-            <span class="hi">ओवरड्यू</span>
-            <span class="en">Overdue</span>
-          </label>
-
-          <div class="stat-icon">⚠️</div>
-
-        </div>
-
-        <strong id="overdueCount">0</strong>
-
-        <div class="change">
-          Needs attention
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="dashboard-grid">
-
-
-      <!-- COMPLAINT TABLE -->
-
-      <section class="card">
-
-        <div class="card-head">
-
-          <h3>
-            <span class="hi">हाल की शिकायतें</span>
-            <span class="en">Recent Complaints</span>
-          </h3>
-
-          <small>
-            <span class="hi">नवीनतम पहले</span>
-            <span class="en">Latest first</span>
-          </small>
-
-        </div>
-
-
-        <div class="table-wrap">
-
-          <table>
-
-            <thead>
-
-              <tr>
-
-                <th>REFERENCE</th>
-                <th>
-                  <span class="hi">श्रेणी</span>
-                  <span class="en">CATEGORY</span>
-                </th>
-
-                <th>
-                  <span class="hi">वार्ड</span>
-                  <span class="en">WARD</span>
-                </th>
-
-                <th>
-                  <span class="hi">स्थिति</span>
-                  <span class="en">STATUS</span>
-                </th>
-
-                <th>
-                  <span class="hi">आवंटन</span>
-                  <span class="en">ASSIGN</span>
-                </th>
-
-              </tr>
-
-            </thead>
-
-            <tbody id="complaintTable">
-
-              <tr id="emptyRow" style="display:none">
-                <td colspan="5" style="text-align:center;padding:35px;color:#789">
-                  कोई शिकायत उपलब्ध नहीं
-                </td>
-              </tr>
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </section>
-
-
-      <!-- RIGHT COLUMN -->
-
-      <div>
-
-
-        <!-- REMINDER QUEUE -->
-
-        <section class="card">
-
-          <div class="card-head">
-
-            <h3>
-              ⏰
-              <span class="hi">रिमाइंडर / ध्यान आवश्यक</span>
-              <span class="en">Reminder Queue</span>
-            </h3>
-
-          </div>
-
-
-          <div class="queue" id="reminderQueue">
-
-            <div class="queue-item">
-
-              <div class="queue-head">
-
-                <strong>
-                  <span class="hi">नई शिकायत</span>
-                  <span class="en">New Complaint</span>
-                </strong>
-
-                <span class="status pending">
-                  ACTION
-                </span>
-
-              </div>
-
-              <p>
-                <span class="hi">
-                  EO द्वारा कर्मचारी को आवंटित किया जाना बाकी है।
-                </span>
-
-                <span class="en">
-                  Waiting for EO assignment.
-                </span>
-              </p>
-
-              <div class="reminder">
-                ⚠️ Assignment required
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- WORKFLOW -->
-
-        <section class="card" style="margin-top:17px">
-
-          <div class="card-head">
-
-            <h3>
-              🔄
-              <span class="hi">कार्यप्रवाह</span>
-              <span class="en">Workflow</span>
-            </h3>
-
-          </div>
-
-
-          <div class="workflow">
-
-            <div class="workflow-step done">
-
-              <div class="workflow-number">1</div>
-
-              <div>
-
-                <h4>
-                  <span class="hi">नागरिक शिकायत</span>
-                  <span class="en">Citizen Complaint</span>
-                </h4>
-
-                <p>
-                  Complaint registered online
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div class="workflow-step">
-
-              <div class="workflow-number">2</div>
-
-              <div>
-
-                <h4>
-                  <span class="hi">EO द्वारा आवंटन</span>
-                  <span class="en">EO Assignment</span>
-                </h4>
-
-                <p>
-                  Assign responsible staff
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div class="workflow-step">
-
-              <div class="workflow-number">3</div>
-
-              <div>
-
-                <h4>
-                  <span class="hi">कार्य प्रगति</span>
-                  <span class="en">Work in Progress</span>
-                </h4>
-
-                <p>
-                  Staff works on complaint
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div class="workflow-step">
-
-              <div class="workflow-number">4</div>
-
-              <div>
-
-                <h4>
-                  <span class="hi">पूर्ण एवं सत्यापन</span>
-                  <span class="en">Completion & Verification</span>
-                </h4>
-
-                <p>
-                  EO verifies and closes
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-      </div>
-
-    </div>
-
+<header class="top">
+
+ <div>
+  <h1>
+   <span class="hi">शिकायत प्रबंधन</span>
+   <span class="en">Grievance Management</span>
+  </h1>
+
+  <p>
+   <span class="hi">नागरिक शिकायतों की निगरानी एवं कार्यवाही</span>
+   <span class="en">Monitor and manage citizen grievances</span>
+  </p>
+ </div>
+
+ <div class="top-right">
+
+  <div class="notification">
+   🔔
+   <span id="notificationCount">0</span>
   </div>
 
-</main>
+  <div class="language">
+   <button id="hiBtn" class="active" onclick="setLanguage('hi')">हिंदी</button>
+   <button id="enBtn" onclick="setLanguage('en')">EN</button>
+  </div>
 
+ </div>
+
+</header>
+
+
+<div class="content">
+
+<div class="page-head">
+
+ <div>
+  <h2>
+   <span class="hi">आज का अवलोकन</span>
+   <span class="en">Today's Overview</span>
+  </h2>
+
+  <p>
+   <span class="hi">शिकायतों की वर्तमान स्थिति</span>
+   <span class="en">Current grievance status</span>
+  </p>
+ </div>
+
+ <button class="primary" onclick="openAssignmentFromLatest()">
+  + <span class="hi">शिकायत आवंटित करें</span>
+  <span class="en">Assign Complaint</span>
+ </button>
+
+</div>
+
+
+<div class="stats">
+
+ <div class="stat">
+  <div class="stat-top">
+   <label>
+    <span class="hi">नई शिकायतें</span>
+    <span class="en">New</span>
+   </label>
+   <div class="stat-icon">🆕</div>
+  </div>
+  <strong id="newCount">0</strong>
+  <div class="change">● आज प्राप्त</div>
+ </div>
+
+ <div class="stat">
+  <div class="stat-top">
+   <label>
+    <span class="hi">लंबित</span>
+    <span class="en">Pending</span>
+   </label>
+   <div class="stat-icon">🟡</div>
+  </div>
+  <strong id="pendingCount">0</strong>
+  <div class="change">Action required</div>
+ </div>
+
+ <div class="stat">
+  <div class="stat-top">
+   <label>
+    <span class="hi">कार्य प्रगति पर</span>
+    <span class="en">In Progress</span>
+   </label>
+   <div class="stat-icon">🔵</div>
+  </div>
+  <strong id="progressCount">0</strong>
+  <div class="change">Active cases</div>
+ </div>
+
+ <div class="stat">
+  <div class="stat-top">
+   <label>
+    <span class="hi">सत्यापन लंबित</span>
+    <span class="en">Verification</span>
+   </label>
+   <div class="stat-icon">🟣</div>
+  </div>
+  <strong id="verifyCount">0</strong>
+  <div class="change">EO action required</div>
+ </div>
+
+ <div class="stat">
+  <div class="stat-top">
+   <label>
+    <span class="hi">पूर्ण / बंद</span>
+    <span class="en">Completed</span>
+   </label>
+   <div class="stat-icon">🟢</div>
+  </div>
+  <strong id="completeCount">0</strong>
+  <div class="change">Resolved</div>
+ </div>
+
+ <div class="stat">
+  <div class="stat-top">
+   <label>
+    <span class="hi">ओवरड्यू</span>
+    <span class="en">Overdue</span>
+   </label>
+   <div class="stat-icon">⚠️</div>
+  </div>
+  <strong id="overdueCount">0</strong>
+  <div class="change">Needs attention</div>
+ </div>
+
+</div>
+
+
+<div class="dashboard-grid">
+
+<section class="card">
+
+ <div class="card-head">
+  <h3>
+   <span class="hi">हाल की शिकायतें</span>
+   <span class="en">Recent Complaints</span>
+  </h3>
+
+  <small>
+   <span class="hi">नवीनतम पहले</span>
+   <span class="en">Latest first</span>
+  </small>
+ </div>
+
+ <div class="table-wrap">
+
+  <table>
+
+   <thead>
+    <tr>
+     <th>REFERENCE</th>
+     <th>
+      <span class="hi">श्रेणी</span>
+      <span class="en">CATEGORY</span>
+     </th>
+     <th>
+      <span class="hi">वार्ड</span>
+      <span class="en">WARD</span>
+     </th>
+     <th>
+      <span class="hi">स्थिति</span>
+      <span class="en">STATUS</span>
+     </th>
+     <th>
+      <span class="hi">कर्मचारी</span>
+      <span class="en">STAFF</span>
+     </th>
+     <th>ACTION</th>
+    </tr>
+   </thead>
+
+   <tbody id="complaintTable"></tbody>
+
+  </table>
+
+ </div>
+
+</section>
+
+
+<div>
+
+<section class="card">
+
+ <div class="card-head">
+  <h3>
+   ⏰
+   <span class="hi">रिमाइंडर / ध्यान आवश्यक</span>
+   <span class="en">Reminder Queue</span>
+  </h3>
+ </div>
+
+ <div class="queue" id="reminderQueue"></div>
+
+</section>
+
+
+<section class="card" style="margin-top:17px">
+
+ <div class="card-head">
+  <h3>
+   🔄
+   <span class="hi">कार्यप्रवाह</span>
+   <span class="en">Workflow</span>
+  </h3>
+ </div>
+
+ <div class="workflow">
+
+  <div class="workflow-step done">
+   <div class="workflow-number">1</div>
+   <div>
+    <h4>
+     <span class="hi">नागरिक शिकायत</span>
+     <span class="en">Citizen Complaint</span>
+    </h4>
+    <p>Complaint registered online</p>
+   </div>
+  </div>
+
+  <div class="workflow-step">
+   <div class="workflow-number">2</div>
+   <div>
+    <h4>
+     <span class="hi">EO द्वारा आवंटन</span>
+     <span class="en">EO Assignment</span>
+    </h4>
+    <p>Assign responsible staff</p>
+   </div>
+  </div>
+
+  <div class="workflow-step">
+   <div class="workflow-number">3</div>
+   <div>
+    <h4>
+     <span class="hi">कार्य प्रगति</span>
+     <span class="en">Work in Progress</span>
+    </h4>
+    <p>Staff works on complaint</p>
+   </div>
+  </div>
+
+  <div class="workflow-step">
+   <div class="workflow-number">4</div>
+   <div>
+    <h4>
+     <span class="hi">पूर्णता रिपोर्ट</span>
+     <span class="en">Completion Report</span>
+    </h4>
+    <p>Staff submits completion</p>
+   </div>
+  </div>
+
+  <div class="workflow-step">
+   <div class="workflow-number">5</div>
+   <div>
+    <h4>
+     <span class="hi">EO सत्यापन एवं बंद</span>
+     <span class="en">EO Verification & Closure</span>
+    </h4>
+    <p>EO verifies and closes</p>
+   </div>
+  </div>
+
+ </div>
+
+</section>
+
+
+<section class="card verification-card">
+
+ <div class="card-head">
+  <h3>
+   🔎
+   <span class="hi">सत्यापन लंबित</span>
+   <span class="en">Awaiting Verification</span>
+  </h3>
+ </div>
+
+ <div id="verificationPanel" class="verify-alert">
+  <span class="hi">
+   अभी कोई शिकायत सत्यापन के लिए लंबित नहीं है।
+  </span>
+
+  <span class="en">
+   No complaint is currently awaiting verification.
+  </span>
+ </div>
+
+</section>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
 </div>
 
 
@@ -1277,275 +1029,445 @@ body.english .en{display:inline}
 
 <div class="modal" id="assignmentModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <div class="modal-head">
+ <div class="modal-head">
 
-      <h3>
-        <span class="hi">शिकायत आवंटित करें</span>
-        <span class="en">Assign Complaint</span>
-      </h3>
+  <h3>
+   <span class="hi">शिकायत आवंटित करें</span>
+   <span class="en">Assign Complaint</span>
+  </h3>
 
-      <button class="close" onclick="closeModal()">×</button>
+  <button class="close" onclick="closeModal('assignmentModal')">×</button>
 
-    </div>
+ </div>
 
+ <div class="modal-body">
 
-    <div class="modal-body">
+  <div class="info-box">
 
+   <div class="info-row">
+    <span>Reference</span>
+    <strong id="modalReference">—</strong>
+   </div>
 
-      <div class="info-box">
+   <div class="info-row">
+    <span>
+     <span class="hi">श्रेणी</span>
+     <span class="en">Category</span>
+    </span>
+    <strong id="modalCategory">—</strong>
+   </div>
 
-        <div class="info-row">
+   <div class="info-row">
+    <span>
+     <span class="hi">वार्ड</span>
+     <span class="en">Ward</span>
+    </span>
+    <strong id="modalWard">—</strong>
+   </div>
 
-          <span>Reference</span>
-
-          <strong id="modalReference">
-            —
-          </strong>
-
-        </div>
-
-        <div class="info-row">
-
-          <span>
-            <span class="hi">श्रेणी</span>
-            <span class="en">Category</span>
-          </span>
-
-          <strong id="modalCategory">
-            —
-          </strong>
-
-        </div>
-
-        <div class="info-row">
-
-          <span>
-            <span class="hi">वार्ड</span>
-            <span class="en">Ward</span>
-          </span>
-
-          <strong id="modalWard">
-            —
-          </strong>
-
-        </div>
-
-        <div class="info-row">
-
-          <span>
-            <span class="hi">स्थान</span>
-            <span class="en">Location</span>
-          </span>
-
-          <strong id="modalLocation">
-            —
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          <span class="hi">जिम्मेदार कर्मचारी</span>
-          <span class="en">Responsible Staff</span>
-        </label>
-
-        <select id="staffSelect">
-
-          <option value="">
-            कर्मचारी चुनें
-          </option>
-
-          <option>
-            सफाई निरीक्षक — Team 1
-          </option>
-
-          <option>
-            सफाई निरीक्षक — Team 2
-          </option>
-
-          <option>
-            स्वच्छता कर्मचारी — Team 3
-          </option>
-
-          <option>
-            विद्युत कर्मचारी — Team 1
-          </option>
-
-          <option>
-            जलापूर्ति कर्मचारी — Team 1
-          </option>
-
-          <option>
-            निर्माण / सड़क टीम
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          <span class="hi">रिमाइंडर अंतराल</span>
-          <span class="en">Reminder Interval</span>
-        </label>
-
-        <select id="reminderSelect">
-
-          <option value="6">
-            प्रत्येक 6 घंटे
-          </option>
-
-          <option value="12">
-            प्रत्येक 12 घंटे
-          </option>
-
-          <option value="24" selected>
-            प्रत्येक 24 घंटे
-          </option>
-
-          <option value="48">
-            प्रत्येक 48 घंटे
-          </option>
-
-          <option value="72">
-            प्रत्येक 72 घंटे
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          <span class="hi">EO निर्देश / टिप्पणी</span>
-          <span class="en">EO Instructions / Remarks</span>
-        </label>
-
-        <textarea
-          id="assignmentRemarks"
-          placeholder="कर्मचारी के लिए निर्देश..."
-        ></textarea>
-
-      </div>
-
-
-      <div class="modal-actions">
-
-        <button
-          class="secondary"
-          onclick="closeModal()"
-        >
-          <span class="hi">रद्द करें</span>
-          <span class="en">Cancel</span>
-        </button>
-
-        <button
-          class="primary"
-          onclick="assignComplaint()"
-        >
-          ✓
-          <span class="hi">आवंटित करें</span>
-          <span class="en">Assign</span>
-        </button>
-
-      </div>
-
-    </div>
+   <div class="info-row">
+    <span>
+     <span class="hi">स्थान</span>
+     <span class="en">Location</span>
+    </span>
+    <strong id="modalLocation">—</strong>
+   </div>
 
   </div>
 
+
+  <div class="form-group">
+
+   <label>
+    <span class="hi">जिम्मेदार कर्मचारी</span>
+    <span class="en">Responsible Staff</span>
+   </label>
+
+   <select id="staffSelect">
+
+    <option value="">कर्मचारी चुनें</option>
+
+    <option>सफाई निरीक्षक — Team 1</option>
+    <option>सफाई निरीक्षक — Team 2</option>
+    <option>स्वच्छता कर्मचारी — Team 3</option>
+    <option>विद्युत कर्मचारी — Team 1</option>
+    <option>विद्युत कर्मचारी — Team 2</option>
+    <option>जलापूर्ति कर्मचारी — Team 1</option>
+    <option>जलापूर्ति कर्मचारी — Team 2</option>
+    <option>निर्माण / सड़क टीम</option>
+    <option>नाली / जलनिकासी टीम</option>
+
+   </select>
+
+  </div>
+
+
+  <div class="form-group">
+
+   <label>
+    <span class="hi">रिमाइंडर अंतराल</span>
+    <span class="en">Reminder Interval</span>
+   </label>
+
+   <select id="reminderSelect">
+
+    <option value="6">प्रत्येक 6 घंटे</option>
+    <option value="12">प्रत्येक 12 घंटे</option>
+    <option value="24" selected>प्रत्येक 24 घंटे</option>
+    <option value="48">प्रत्येक 48 घंटे</option>
+    <option value="72">प्रत्येक 72 घंटे</option>
+
+   </select>
+
+  </div>
+
+
+  <div class="form-group">
+
+   <label>
+    <span class="hi">EO निर्देश / टिप्पणी</span>
+    <span class="en">EO Instructions / Remarks</span>
+   </label>
+
+   <textarea
+    id="assignmentRemarks"
+    placeholder="कर्मचारी के लिए निर्देश..."
+   ></textarea>
+
+  </div>
+
+
+  <div class="modal-actions">
+
+   <button class="secondary" onclick="closeModal('assignmentModal')">
+    <span class="hi">रद्द करें</span>
+    <span class="en">Cancel</span>
+   </button>
+
+   <button class="primary" onclick="assignComplaint()">
+    ✓
+    <span class="hi">आवंटित करें</span>
+    <span class="en">Assign</span>
+   </button>
+
+  </div>
+
+ </div>
+</div>
 </div>
 
 
-<!-- TOAST -->
+<!-- COMPLETION / VERIFICATION MODAL -->
+
+<div class="modal" id="verificationModal">
+
+<div class="modal-box">
+
+ <div class="modal-head">
+
+  <h3>
+   🔎
+   <span class="hi">शिकायत सत्यापन</span>
+   <span class="en">Complaint Verification</span>
+  </h3>
+
+  <button class="close" onclick="closeModal('verificationModal')">×</button>
+
+ </div>
+
+ <div class="modal-body">
+
+  <div class="info-box">
+
+   <div class="info-row">
+    <span>Reference</span>
+    <strong id="verifyReference">—</strong>
+   </div>
+
+   <div class="info-row">
+    <span>
+     <span class="hi">कर्मचारी</span>
+     <span class="en">Staff</span>
+    </span>
+    <strong id="verifyStaff">—</strong>
+   </div>
+
+   <div class="info-row">
+    <span>
+     <span class="hi">वार्ड</span>
+     <span class="en">Ward</span>
+    </span>
+    <strong id="verifyWard">—</strong>
+   </div>
+
+  </div>
+
+
+  <div class="form-group">
+
+   <label>
+    <span class="hi">कर्मचारी की पूर्णता टिप्पणी</span>
+    <span class="en">Staff Completion Remarks</span>
+   </label>
+
+   <textarea id="verifyRemarks" readonly></textarea>
+
+  </div>
+
+
+  <div class="form-group">
+
+   <label>
+    <span class="hi">पूर्णता फोटो</span>
+    <span class="en">Completion Photograph</span>
+   </label>
+
+   <div id="verifyPhotoContainer"></div>
+
+  </div>
+
+
+  <div class="form-group">
+
+   <label>
+    <span class="hi">EO सत्यापन टिप्पणी</span>
+    <span class="en">EO Verification Remarks</span>
+   </label>
+
+   <textarea
+    id="eoVerificationRemarks"
+    placeholder="सत्यापन संबंधी टिप्पणी..."
+   ></textarea>
+
+  </div>
+
+
+  <div class="modal-actions">
+
+   <button class="warning" onclick="sendBackForRework()">
+    ↩
+    <span class="hi">पुनः कार्य हेतु भेजें</span>
+    <span class="en">Send Back</span>
+   </button>
+
+   <button class="primary" onclick="verifyAndClose()">
+    ✓
+    <span class="hi">सत्यापित एवं बंद करें</span>
+    <span class="en">Verify & Close</span>
+   </button>
+
+  </div>
+
+ </div>
+
+</div>
+</div>
+
+
+<!-- COMPLETION DEMO MODAL -->
+
+<div class="modal" id="staffDemoModal">
+
+<div class="modal-box">
+
+ <div class="modal-head">
+
+  <h3>
+   🧑‍🔧
+   <span class="hi">कर्मचारी कार्य पूर्णता</span>
+   <span class="en">Staff Completion</span>
+  </h3>
+
+  <button class="close" onclick="closeModal('staffDemoModal')">×</button>
+
+ </div>
+
+ <div class="modal-body">
+
+  <div class="info-box">
+
+   <div class="info-row">
+    <span>Reference</span>
+    <strong id="staffReference">—</strong>
+   </div>
+
+   <div class="info-row">
+    <span>
+     <span class="hi">आवंटित कर्मचारी</span>
+     <span class="en">Assigned Staff</span>
+    </span>
+    <strong id="staffAssigned">—</strong>
+   </div>
+
+  </div>
+
+
+  <div class="form-group">
+
+   <label>
+    <span class="hi">कार्य पूर्णता टिप्पणी</span>
+    <span class="en">Completion Remarks</span>
+   </label>
+
+   <textarea
+    id="staffCompletionRemarks"
+    placeholder="किए गए कार्य का विवरण..."
+   ></textarea>
+
+  </div>
+
+
+  <div class="form-group">
+
+   <label>
+    <span class="hi">कार्य पूर्ण होने की फोटो</span>
+    <span class="en">Completion Photograph</span>
+   </label>
+
+   <div class="file-box">
+
+    <div style="font-size:25px">📷</div>
+
+    <div style="font-size:9px;color:#718594;margin:5px 0 8px">
+     <span class="hi">डेमो के लिए फोटो चुनें</span>
+     <span class="en">Choose completion photo for demo</span>
+    </div>
+
+    <input
+     type="file"
+     id="completionPhoto"
+     accept="image/*"
+    >
+
+   </div>
+
+  </div>
+
+
+  <div class="modal-actions">
+
+   <button class="secondary" onclick="closeModal('staffDemoModal')">
+    <span class="hi">रद्द करें</span>
+    <span class="en">Cancel</span>
+   </button>
+
+   <button class="primary" onclick="submitCompletion()">
+    ✓
+    <span class="hi">कार्य पूर्ण करें</span>
+    <span class="en">Submit Completion</span>
+   </button>
+
+  </div>
+
+ </div>
+
+</div>
+</div>
+
 
 <div class="toast" id="toast">
-
-  <strong id="toastTitle">
-    Notification
-  </strong>
-
-  <span id="toastMessage"></span>
-
+ <strong id="toastTitle">Notification</strong>
+ <span id="toastMessage"></span>
 </div>
 
 
 <script>
 
 let currentComplaint = null;
+let currentFilter = "all";
 
 
 /* LANGUAGE */
 
 function setLanguage(language){
 
- document.body.classList.toggle(
-  "english",
-  language === "en"
- );
+ document.body.classList.toggle("english",language==="en");
 
  document.getElementById("hiBtn")
-  .classList.toggle(
-   "active",
-   language === "hi"
-  );
+  .classList.toggle("active",language==="hi");
 
  document.getElementById("enBtn")
-  .classList.toggle(
-   "active",
-   language === "en"
-  );
+  .classList.toggle("active",language==="en");
 
- localStorage.setItem(
-  "anandnagar-language",
-  language
- );
+ localStorage.setItem("anandnagar-language",language);
 }
 
 const savedLanguage =
  localStorage.getItem("anandnagar-language");
 
-if(savedLanguage === "en"){
+if(savedLanguage==="en"){
  setLanguage("en");
 }
 
 
-/* CATEGORY */
+/* CATEGORIES */
 
-const categoryNames = {
-
+const categoryNames={
  sanitation:"सफाई / कूड़ा",
  streetlight:"स्ट्रीट लाइट",
  water:"जलापूर्ति",
  road:"सड़क / नाली",
  other:"अन्य नागरिक समस्या"
-
 };
 
 
-/* LOAD CITIZEN COMPLAINT */
+/* STORAGE */
 
-function loadComplaints(){
+function getComplaint(){
 
- const saved =
-  JSON.parse(
-   localStorage.getItem(
-    "anandnagar-last-complaint"
-   )
-  );
+ return JSON.parse(
+  localStorage.getItem("anandnagar-last-complaint")
+ ) || null;
 
- const table =
-  document.getElementById("complaintTable");
+}
+
+function getManagement(){
+
+ return JSON.parse(
+  localStorage.getItem("anandnagar-management")
+ ) || {};
+
+}
+
+function saveManagement(data){
+
+ localStorage.setItem(
+  "anandnagar-management",
+  JSON.stringify(data)
+ );
+
+}
+
+
+/* STATUS LABEL */
+
+function statusLabel(status){
+
+ const labels={
+  pending:"Pending",
+  progress:"In Progress",
+  verify:"Awaiting Verification",
+  complete:"Closed",
+  returned:"Returned",
+  overdue:"Overdue"
+ };
+
+ return labels[status] || "Pending";
+}
+
+
+/* LOAD */
+
+function loadComplaints(filter="all"){
+
+ currentFilter=filter;
+
+ const saved=getComplaint();
+ const management=getManagement();
+
+ const table=document.getElementById("complaintTable");
 
  table.innerHTML="";
 
@@ -1553,89 +1475,95 @@ function loadComplaints(){
 
   table.innerHTML=`
    <tr>
-    <td colspan="5"
-     style="text-align:center;padding:35px;color:#789">
+    <td colspan="6" class="empty">
      अभी कोई शिकायत उपलब्ध नहीं है
     </td>
    </tr>
   `;
 
   updateStats(null);
-
+  updateReminderQueue(null,{});
+  updateVerificationPanel(null,{});
   return;
  }
 
 
- let management =
-  JSON.parse(
-   localStorage.getItem(
-    "anandnagar-management"
-   )
-  ) || {};
-
- const status =
-  management.status || "pending";
+ const status=management.status || "pending";
 
 
- const statusText = {
+ if(filter!=="all" && filter!==status){
 
-  pending:"Pending",
-  progress:"In Progress",
-  complete:"Completed",
-  overdue:"Overdue"
+  table.innerHTML=`
+   <tr>
+    <td colspan="6" class="empty">
+     इस श्रेणी में कोई शिकायत नहीं है
+    </td>
+   </tr>
+  `;
 
- };
+  updateStats(status);
+  updateReminderQueue(saved,management);
+  updateVerificationPanel(saved,management);
+  return;
+ }
 
 
- const statusClass =
-  status === "progress"
-   ? "progress"
-   : status;
+ const statusClass=
+  ["pending","progress","verify","complete","returned","overdue"]
+   .includes(status) ? status : "pending";
 
 
- const row =
-  document.createElement("tr");
+ const staff=
+  management.staff || "—";
 
+
+ const actionButton=
+  status==="verify"
+   ? `<button class="assign" onclick="openVerification()">Verify</button>`
+   : status==="progress"
+   ? `<button class="assign" onclick="openStaffDemo()">Staff Update</button>`
+   : status==="complete"
+   ? `<button class="assign" onclick="openVerification()">View</button>`
+   : `<button class="assign" onclick="openAssignment()">${management.staff?"Reassign":"Assign"}</button>`;
+
+
+ const row=document.createElement("tr");
 
  row.innerHTML=`
 
   <td>
-   <span class="ref">
-    ${saved.reference}
-   </span>
+   <span class="ref">${saved.reference}</span>
   </td>
 
   <td>
-   ${categoryNames[saved.category] || saved.category}
+   ${categoryNames[saved.category] || saved.category || "Other"}
   </td>
 
   <td>
-   ${saved.ward}
+   ${saved.ward || "—"}
   </td>
 
   <td>
    <span class="status ${statusClass}">
-    ${statusText[status] || "Pending"}
+    ${statusLabel(status)}
    </span>
   </td>
 
   <td>
-   <button
-    class="assign"
-    onclick="openAssignment()"
-   >
-    ${management.staff ? "Reassign" : "Assign"}
-   </button>
+   ${staff}
+  </td>
+
+  <td>
+   ${actionButton}
   </td>
 
  `;
 
-
  table.appendChild(row);
 
  updateStats(status);
-
  updateReminderQueue(saved,management);
+ updateVerificationPanel(saved,management);
 
 }
 
@@ -1644,32 +1572,38 @@ function loadComplaints(){
 
 function updateStats(status){
 
- document.getElementById("newCount").textContent =
-  status === "pending" ? "1" : "0";
+ const count=id =>
+  document.getElementById(id);
 
- document.getElementById("pendingCount").textContent =
-  status === "pending" || status === "overdue"
-   ? "1"
-   : "0";
+ count("newCount").textContent=
+  status==="pending" ? "1":"0";
 
- document.getElementById("progressCount").textContent =
-  status === "progress" ? "1" : "0";
+ count("pendingCount").textContent=
+  ["pending","overdue","returned"].includes(status)
+   ? "1":"0";
 
- document.getElementById("completeCount").textContent =
-  status === "complete" ? "1" : "0";
+ count("progressCount").textContent=
+  status==="progress" ? "1":"0";
 
- document.getElementById("overdueCount").textContent =
-  status === "overdue" ? "1" : "0";
+ count("verifyCount").textContent=
+  status==="verify" ? "1":"0";
 
+ count("completeCount").textContent=
+  status==="complete" ? "1":"0";
+
+ count("overdueCount").textContent=
+  status==="overdue" ? "1":"0";
+
+ document.getElementById("notificationCount").textContent=
+  status==="verify" || status==="pending" ? "1":"0";
 }
 
 
-/* REMINDER */
+/* REMINDER QUEUE */
 
 function updateReminderQueue(saved,management){
 
- const queue =
-  document.getElementById("reminderQueue");
+ const queue=document.getElementById("reminderQueue");
 
  if(!saved){
 
@@ -1683,18 +1617,45 @@ function updateReminderQueue(saved,management){
  }
 
 
- if(management.status === "complete"){
+ if(management.status==="complete"){
 
   queue.innerHTML=`
    <div class="queue-item">
+
     <div class="queue-head">
-     <strong>✓ Complaint Completed</strong>
-     <span class="status complete">DONE</span>
+     <strong>${saved.reference}</strong>
+     <span class="status complete">CLOSED</span>
     </div>
 
     <p>
-     Reminder automatically stopped after completion.
+     शिकायत EO द्वारा सत्यापित एवं बंद कर दी गई है।
     </p>
+
+   </div>
+  `;
+
+  return;
+ }
+
+
+ if(management.status==="verify"){
+
+  queue.innerHTML=`
+   <div class="queue-item">
+
+    <div class="queue-head">
+     <strong>${saved.reference}</strong>
+     <span class="status verify">VERIFY</span>
+    </div>
+
+    <p>
+     कर्मचारी ने कार्य पूर्ण करके सत्यापन के लिए भेज दिया है।
+    </p>
+
+    <div class="reminder">
+     🔎 EO verification required
+    </div>
+
    </div>
   `;
 
@@ -1709,9 +1670,7 @@ function updateReminderQueue(saved,management){
 
     <div class="queue-head">
 
-     <strong>
-      ${saved.reference}
-     </strong>
+     <strong>${saved.reference}</strong>
 
      <span class="status progress">
       ACTIVE
@@ -1720,13 +1679,16 @@ function updateReminderQueue(saved,management){
     </div>
 
     <p>
-     Assigned to:
-     ${management.staff}
+     Assigned to: ${management.staff}
     </p>
 
     <div class="reminder">
-     ⏰ Reminder every
-     ${management.interval} hours
+     ⏰ Reminder every ${management.interval || 24} hours
+    </div>
+
+    <div class="audit">
+     Assignment:
+     ${management.assignedAt || "—"}
     </div>
 
    </div>
@@ -1739,9 +1701,7 @@ function updateReminderQueue(saved,management){
 
     <div class="queue-head">
 
-     <strong>
-      ${saved.reference}
-     </strong>
+     <strong>${saved.reference}</strong>
 
      <span class="status pending">
       ACTION
@@ -1764,40 +1724,112 @@ function updateReminderQueue(saved,management){
 }
 
 
-/* OPEN ASSIGNMENT */
+/* VERIFICATION PANEL */
+
+function updateVerificationPanel(saved,management){
+
+ const panel=
+  document.getElementById("verificationPanel");
+
+
+ if(!saved){
+
+  panel.innerHTML=
+   "अभी कोई शिकायत सत्यापन के लिए लंबित नहीं है।";
+
+  return;
+ }
+
+
+ if(management.status==="verify"){
+
+  panel.innerHTML=`
+
+   <strong>${saved.reference}</strong>
+
+   <p style="margin-top:6px">
+    कर्मचारी:
+    ${management.staff || "—"}
+   </p>
+
+   <button
+    class="primary"
+    style="margin-top:12px"
+    onclick="openVerification()"
+   >
+    🔎
+    <span class="hi">सत्यापन खोलें</span>
+    <span class="en">Open Verification</span>
+   </button>
+
+  `;
+
+  return;
+ }
+
+
+ if(management.status==="complete"){
+
+  panel.innerHTML=`
+
+   <strong style="color:#078947">
+    ✓ ${saved.reference}
+   </strong>
+
+   <p style="margin-top:6px">
+    <span class="hi">
+     शिकायत सत्यापित एवं बंद है।
+    </span>
+
+    <span class="en">
+     Complaint verified and closed.
+    </span>
+   </p>
+
+  `;
+
+  return;
+ }
+
+
+ panel.innerHTML=`
+
+  <span class="hi">
+   अभी कोई शिकायत सत्यापन के लिए लंबित नहीं है।
+  </span>
+
+  <span class="en">
+   No complaint is currently awaiting verification.
+  </span>
+
+ `;
+
+}
+
+
+/* ASSIGNMENT */
 
 function openAssignmentFromLatest(){
 
- const saved =
-  JSON.parse(
-   localStorage.getItem(
-    "anandnagar-last-complaint"
-   )
-  );
+ const saved=getComplaint();
 
  if(!saved){
 
   showToast(
-   "No complaint",
-   "पहले नागरिक पोर्टल से एक शिकायत दर्ज करें।"
+   "No Complaint",
+   "पहले नागरिक पोर्टल से शिकायत दर्ज करें।"
   );
 
   return;
  }
 
  openAssignment();
-
 }
 
 
 function openAssignment(){
 
- const saved =
-  JSON.parse(
-   localStorage.getItem(
-    "anandnagar-last-complaint"
-   )
-  );
+ const saved=getComplaint();
 
  if(!saved){
 
@@ -1809,87 +1841,50 @@ function openAssignment(){
   return;
  }
 
-
  currentComplaint=saved;
 
-
- const management =
-  JSON.parse(
-   localStorage.getItem(
-    "anandnagar-management"
-   )
-  ) || {};
-
+ const management=getManagement();
 
  document.getElementById("modalReference")
-  .textContent=saved.reference;
+  .textContent=saved.reference || "—";
 
  document.getElementById("modalCategory")
   .textContent=
-   categoryNames[saved.category] || saved.category;
+   categoryNames[saved.category] || saved.category || "—";
 
  document.getElementById("modalWard")
-  .textContent=saved.ward;
+  .textContent=saved.ward || "—";
 
  document.getElementById("modalLocation")
   .textContent=
-   saved.locality +
-   (saved.landmark
-    ? " • " + saved.landmark
-    : "");
+   (saved.locality || "—") +
+   (saved.landmark ? " • "+saved.landmark : "");
 
 
- if(management.staff){
+ document.getElementById("staffSelect").value=
+  management.staff || "";
 
-  document.getElementById("staffSelect")
-   .value=management.staff;
+ document.getElementById("reminderSelect").value=
+  management.interval || "24";
 
- }
-
- if(management.interval){
-
-  document.getElementById("reminderSelect")
-   .value=management.interval;
-
- }
-
- if(management.remarks){
-
-  document.getElementById("assignmentRemarks")
-   .value=management.remarks;
-
- }
-
+ document.getElementById("assignmentRemarks").value=
+  management.remarks || "";
 
  document.getElementById("assignmentModal")
   .style.display="flex";
-
 }
 
-
-function closeModal(){
-
- document.getElementById("assignmentModal")
-  .style.display="none";
-
-}
-
-
-/* ASSIGN */
 
 function assignComplaint(){
 
- const staff =
-  document.getElementById("staffSelect")
-   .value;
+ const staff=
+  document.getElementById("staffSelect").value;
 
- const interval =
-  document.getElementById("reminderSelect")
-   .value;
+ const interval=
+  document.getElementById("reminderSelect").value;
 
- const remarks =
-  document.getElementById("assignmentRemarks")
-   .value;
+ const remarks=
+  document.getElementById("assignmentRemarks").value;
 
 
  if(!staff){
@@ -1903,48 +1898,260 @@ function assignComplaint(){
  }
 
 
+ const old=getManagement();
+
  const management={
 
+  ...old,
+
   staff:staff,
-
   interval:interval,
-
   remarks:remarks,
 
   status:"progress",
 
-  assignedAt:
-   new Date().toLocaleString()
+  assignedAt:new Date().toLocaleString(),
+
+  notificationSent:true,
+
+  lastReminder:new Date().toLocaleString()
 
  };
 
 
- localStorage.setItem(
-  "anandnagar-management",
-  JSON.stringify(management)
- );
+ saveManagement(management);
 
-
- closeModal();
+ closeModal("assignmentModal");
 
  loadComplaints();
 
-
  showToast(
   "Complaint Assigned",
-  "शिकायत " + staff +
-  " को आवंटित कर दी गई।"
+  "शिकायत "+staff+" को आवंटित कर दी गई। कर्मचारी को सूचना भेजी गई।"
  );
 
+}
 
- /*
-  REAL SYSTEM:
-  This action will also:
-  1. Create assignment record in database
-  2. Send SMS/push notification
-  3. Start EO-defined reminder timer
-  4. Create audit log
- */
+
+/* STAFF DEMO */
+
+function openStaffDemo(){
+
+ const saved=getComplaint();
+ const management=getManagement();
+
+ if(!saved || !management.staff)return;
+
+ document.getElementById("staffReference")
+  .textContent=saved.reference;
+
+ document.getElementById("staffAssigned")
+  .textContent=management.staff;
+
+ document.getElementById("staffCompletionRemarks")
+  .value=management.completionRemarks || "";
+
+ document.getElementById("completionPhoto").value="";
+
+ document.getElementById("staffDemoModal")
+  .style.display="flex";
+}
+
+
+function submitCompletion(){
+
+ const saved=getComplaint();
+ const management=getManagement();
+
+ if(!saved)return;
+
+ const remarks=
+  document.getElementById("staffCompletionRemarks")
+   .value.trim();
+
+ if(!remarks){
+
+  showToast(
+   "Remarks Required",
+   "कृपया कार्य पूर्णता टिप्पणी दर्ज करें।"
+  );
+
+  return;
+ }
+
+
+ const file=
+  document.getElementById("completionPhoto").files[0];
+
+
+ if(file){
+
+  const reader=new FileReader();
+
+  reader.onload=function(e){
+
+   finishCompletion(
+    e.target.result,
+    remarks
+   );
+
+  };
+
+  reader.readAsDataURL(file);
+
+ }else{
+
+  finishCompletion(
+   management.completionPhoto || "",
+   remarks
+  );
+
+ }
+
+}
+
+
+function finishCompletion(photo,remarks){
+
+ const management=getManagement();
+
+ management.status="verify";
+
+ management.completionRemarks=remarks;
+
+ management.completionPhoto=photo;
+
+ management.completedAt=
+  new Date().toLocaleString();
+
+ management.verificationRequired=true;
+
+ saveManagement(management);
+
+ closeModal("staffDemoModal");
+
+ loadComplaints();
+
+ showToast(
+  "Completion Submitted",
+  "कार्य पूर्णता EO सत्यापन के लिए भेज दी गई है।"
+ );
+
+}
+
+
+/* VERIFICATION */
+
+function openVerification(){
+
+ const saved=getComplaint();
+ const management=getManagement();
+
+ if(!saved)return;
+
+ document.getElementById("verifyReference")
+  .textContent=saved.reference || "—";
+
+ document.getElementById("verifyStaff")
+  .textContent=management.staff || "—";
+
+ document.getElementById("verifyWard")
+  .textContent=saved.ward || "—";
+
+ document.getElementById("verifyRemarks")
+  .value=management.completionRemarks || "—";
+
+ document.getElementById("eoVerificationRemarks")
+  .value=management.eoVerificationRemarks || "";
+
+
+ const photoContainer=
+  document.getElementById("verifyPhotoContainer");
+
+
+ if(management.completionPhoto){
+
+  photoContainer.innerHTML=`
+   <img
+    src="${management.completionPhoto}"
+    class="photo-preview"
+    alt="Completion Photo"
+   >
+  `;
+
+ }else{
+
+  photoContainer.innerHTML=`
+   <div class="file-box">
+    📷
+    <div style="font-size:9px;color:#718594;margin-top:5px">
+     No completion photograph uploaded
+    </div>
+   </div>
+  `;
+
+ }
+
+
+ document.getElementById("verificationModal")
+  .style.display="flex";
+}
+
+
+function verifyAndClose(){
+
+ const management=getManagement();
+
+ management.status="complete";
+
+ management.eoVerificationRemarks=
+  document.getElementById("eoVerificationRemarks")
+   .value.trim();
+
+ management.verifiedAt=
+  new Date().toLocaleString();
+
+ management.verificationRequired=false;
+
+ saveManagement(management);
+
+ closeModal("verificationModal");
+
+ loadComplaints();
+
+ showToast(
+  "Complaint Closed",
+  "शिकायत EO द्वारा सत्यापित एवं बंद कर दी गई है।"
+ );
+
+}
+
+
+function sendBackForRework(){
+
+ const management=getManagement();
+
+ management.status="returned";
+
+ management.eoVerificationRemarks=
+  document.getElementById("eoVerificationRemarks")
+   .value.trim();
+
+ management.verificationRequired=false;
+
+ management.reworkRequestedAt=
+  new Date().toLocaleString();
+
+ saveManagement(management);
+
+ closeModal("verificationModal");
+
+ loadComplaints();
+
+ showToast(
+  "Sent Back",
+  "शिकायत पुनः कार्यवाही के लिए कर्मचारी को भेज दी गई है।"
+ );
 
 }
 
@@ -1953,49 +2160,19 @@ function assignComplaint(){
 
 function filterComplaints(filter){
 
- const saved =
-  JSON.parse(
-   localStorage.getItem(
-    "anandnagar-last-complaint"
-   )
-  );
+ currentFilter=filter;
 
- const management =
-  JSON.parse(
-   localStorage.getItem(
-    "anandnagar-management"
-   )
-  ) || {};
+ loadComplaints(filter);
 
- if(!saved) return;
+}
 
- const status =
-  management.status || "pending";
 
- if(filter === "all"){
+/* MODAL */
 
-  loadComplaints();
-  return;
+function closeModal(id){
 
- }
-
- if(filter === status){
-
-  loadComplaints();
-
- }else{
-
-  document.getElementById("complaintTable")
-   .innerHTML=`
-    <tr>
-     <td colspan="5"
-      style="text-align:center;padding:35px;color:#789">
-      इस श्रेणी में कोई शिकायत नहीं है
-     </td>
-    </tr>
-   `;
-
- }
+ document.getElementById(id)
+  .style.display="none";
 
 }
 
@@ -2010,8 +2187,7 @@ function showToast(title,message){
  document.getElementById("toastMessage")
   .textContent=message;
 
- const toast =
-  document.getElementById("toast");
+ const toast=document.getElementById("toast");
 
  toast.style.display="block";
 
@@ -2020,6 +2196,21 @@ function showToast(title,message){
  },4500);
 
 }
+
+
+/* CLOSE ON OUTSIDE CLICK */
+
+document.querySelectorAll(".modal").forEach(modal=>{
+
+ modal.addEventListener("click",function(e){
+
+  if(e.target===modal){
+   modal.style.display="none";
+  }
+
+ });
+
+});
 
 
 /* INITIAL */
