@@ -3,902 +3,1601 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>जन शिकायत | नगर पंचायत आनंदनगर</title>
+
+<title>शिकायत दर्ज करें | नगर पंचायत आनंदनगर</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --navy:#063b63;
+  --blue:#087bb8;
+  --green:#10a957;
+  --bg:#f4f8fb;
+  --text:#17344c;
+  --muted:#708594;
+  --border:#dfe9ee;
+  --white:#fff;
+  --red:#dc4c4c;
+  --orange:#e98b24;
+  --shadow:0 15px 40px rgba(6,59,99,.09);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-font-family:Arial,"Noto Sans Devanagari",sans-serif;
-background:#f2f7fa;
-color:#17344c;
+  font-family:"Noto Sans Devanagari",Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
-a{text-decoration:none;color:inherit}
-
-.header{
-background:#063b63;
-color:white;
-padding:14px 5%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
+button,input,select,textarea{
+  font:inherit;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
+button{
+  cursor:pointer;
 }
 
-.logo{
-width:62px;
-height:62px;
-background:white;
-border-radius:50%;
-object-fit:contain;
-padding:5px;
-}
-
-.brand h1{
-font-size:24px;
-}
-
-.brand p{
-font-size:13px;
-opacity:.85;
-margin-top:3px;
+.topbar{
+  background:#032d4b;
+  color:#dcecf5;
+  padding:8px 4%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
 }
 
 .lang button{
-border:1px solid #ffffff66;
-background:transparent;
-color:white;
-padding:7px 12px;
-border-radius:6px;
-cursor:pointer;
+  background:transparent;
+  color:white;
+  border:1px solid #ffffff55;
+  padding:4px 9px;
+  border-radius:5px;
+  margin-left:4px;
 }
 
-.lang .active{
-background:white;
-color:#063b63;
-}
-
-.hero{
-background:linear-gradient(90deg,#063b63,#0878b5);
-color:white;
-padding:35px 5%;
-}
-
-.hero h2{
-font-size:34px;
-margin-bottom:8px;
-}
-
-.hero p{
-font-size:16px;
-opacity:.92;
-}
-
-.container{
-max-width:1050px;
-margin:25px auto;
-padding:0 15px;
-}
-
-.steps{
-display:flex;
-justify-content:space-between;
-margin-bottom:25px;
-gap:5px;
-}
-
-.step{
-flex:1;
-background:white;
-padding:12px;
-text-align:center;
-border-radius:9px;
-border:1px solid #dce6ec;
-font-size:13px;
-}
-
-.step.active{
-background:#10a957;
-color:white;
-border-color:#10a957;
-}
-
-.card{
-background:white;
-border:1px solid #dce6ec;
-border-radius:14px;
-padding:25px;
-margin-bottom:18px;
-box-shadow:0 4px 15px #17344c10;
-}
-
-.card h3{
-color:#063b63;
-margin-bottom:18px;
-}
-
-.categories{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:12px;
-}
-
-.category{
-border:2px solid #e0e8ed;
-background:white;
-border-radius:12px;
-padding:18px 8px;
-text-align:center;
-cursor:pointer;
-transition:.2s;
-}
-
-.category:hover{
-border-color:#0878b5;
-transform:translateY(-2px);
-}
-
-.category.selected{
-border-color:#10a957;
-background:#edfff4;
-}
-
-.category .icon{
-font-size:30px;
-margin-bottom:8px;
-}
-
-label{
-display:block;
-font-weight:bold;
-margin-bottom:6px;
-color:#29485c;
-}
-
-input,select,textarea{
-width:100%;
-padding:12px;
-border:1px solid #cdd9e0;
-border-radius:8px;
-font-size:15px;
-background:white;
-}
-
-textarea{
-min-height:130px;
-resize:vertical;
-}
-
-.row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-bottom:17px;
-}
-
-.full{
-margin-bottom:17px;
-}
-
-.photo-box{
-border:2px dashed #b9cbd5;
-padding:22px;
-border-radius:10px;
-text-align:center;
-background:#f8fbfd;
-}
-
-.location-box{
-background:#eef8fc;
-border:1px solid #cce3ee;
-padding:15px;
-border-radius:9px;
-}
-
-.location-btn{
-background:#0878b5;
-color:white;
-border:0;
-padding:10px 15px;
-border-radius:7px;
-cursor:pointer;
-margin-top:8px;
-}
-
-.submit-area{
-text-align:center;
-padding:10px;
-}
-
-.submit{
-background:#10a957;
-color:white;
-border:0;
-padding:15px 45px;
-font-size:17px;
-font-weight:bold;
-border-radius:9px;
-cursor:pointer;
-}
-
-.submit:hover{
-background:#088a45;
-}
-
-.note{
-font-size:13px;
-color:#687b88;
-margin-top:10px;
-}
-
-.success{
-display:none;
-text-align:center;
-}
-
-.success-icon{
-font-size:60px;
-margin-bottom:10px;
-}
-
-.reference{
-display:inline-block;
-background:#eef8ff;
-border:2px dashed #0878b5;
-padding:15px 25px;
-border-radius:10px;
-font-size:22px;
-font-weight:bold;
-color:#063b63;
-margin:15px 0;
-}
-
-.back{
-display:inline-block;
-background:#063b63;
-color:white;
-padding:11px 20px;
-border-radius:8px;
-margin-top:10px;
-}
-
-.en{display:none}
-
-body.english .hi{display:none}
-body.english .en{display:inline}
-
-@media(max-width:800px){
-
-.categories{
-grid-template-columns:repeat(2,1fr);
-}
-
-.row{
-grid-template-columns:1fr;
-gap:0;
+.lang button.active{
+  background:white;
+  color:var(--navy);
 }
 
 .header{
-align-items:flex-start;
+  background:white;
+  border-bottom:1px solid var(--border);
 }
 
-.steps{
-overflow-x:auto;
+.header-inner{
+  width:min(1400px,92%);
+  margin:auto;
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-.step{
-min-width:130px;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
 }
 
+.logo{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:contain;
+  border:1px solid var(--border);
+  padding:4px;
 }
-
-@media(max-width:500px){
 
 .brand h1{
-font-size:18px;
+  color:var(--navy);
+  font-size:22px;
+}
+
+.brand p{
+  color:var(--blue);
+  font-size:11px;
+}
+
+.back{
+  color:var(--blue);
+  font-weight:700;
+  font-size:13px;
+}
+
+.hero{
+  background:
+    linear-gradient(110deg,rgba(3,45,75,.97),rgba(6,86,125,.88));
+  color:white;
+  padding:42px 4%;
+}
+
+.hero-inner{
+  width:min(1100px,100%);
+  margin:auto;
+}
+
+.hero-kicker{
+  color:#6ae99d;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-transform:uppercase;
 }
 
 .hero h2{
-font-size:27px;
+  font-size:clamp(30px,5vw,48px);
+  margin:8px 0;
 }
 
-.card{
-padding:18px;
+.hero p{
+  color:#dcebf2;
+  max-width:750px;
+  line-height:1.7;
+  font-size:14px;
 }
 
-.categories{
-grid-template-columns:1fr 1fr;
+.container{
+  width:min(1100px,92%);
+  margin:28px auto 60px;
 }
 
+.tabs{
+  background:white;
+  padding:7px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  display:flex;
+  gap:6px;
+  box-shadow:var(--shadow);
+  margin-bottom:22px;
+}
+
+.tab{
+  flex:1;
+  border:0;
+  background:white;
+  padding:12px;
+  border-radius:9px;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.tab.active{
+  background:var(--navy);
+  color:white;
+}
+
+.panel{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:17px;
+  box-shadow:var(--shadow);
+  padding:28px;
+}
+
+.stepbar{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin-bottom:28px;
+  gap:8px;
+}
+
+.step{
+  text-align:center;
+  position:relative;
+  color:#9aaab4;
+  font-size:11px;
+}
+
+.step-number{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  margin:0 auto 6px;
+  display:grid;
+  place-items:center;
+  background:#edf2f5;
+  font-weight:800;
+}
+
+.step.active{
+  color:var(--blue);
+}
+
+.step.active .step-number{
+  background:var(--blue);
+  color:white;
+}
+
+.form-title{
+  margin-bottom:20px;
+}
+
+.form-title h3{
+  color:var(--navy);
+  font-size:22px;
+}
+
+.form-title p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+label{
+  font-size:12px;
+  font-weight:800;
+  color:#38566a;
+}
+
+.required{
+  color:var(--red);
+}
+
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:12px 13px;
+  outline:none;
+  color:var(--text);
+  background:white;
+  font-size:13px;
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(8,123,184,.09);
+}
+
+textarea{
+  min-height:125px;
+  resize:vertical;
+}
+
+.location-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.upload{
+  border:2px dashed #cbdde6;
+  border-radius:12px;
+  padding:20px;
+  text-align:center;
+  background:#f9fcfd;
+}
+
+.upload-icon{
+  font-size:30px;
+  margin-bottom:5px;
+}
+
+.upload p{
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:10px;
+}
+
+.upload input{
+  border:0;
+  padding:5px;
+}
+
+.preview{
+  display:none;
+  max-width:180px;
+  max-height:130px;
+  border-radius:8px;
+  margin:10px auto 0;
+  object-fit:cover;
+}
+
+.consent{
+  grid-column:1/-1;
+  background:#f3f8fb;
+  padding:13px;
+  border-radius:9px;
+  color:#557080;
+  font-size:11px;
+  line-height:1.6;
+}
+
+.actions{
+  margin-top:23px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:12px 20px;
+  font-weight:800;
+}
+
+.btn-primary{
+  background:var(--green);
+  color:white;
+  box-shadow:0 6px 16px rgba(16,169,87,.2);
+}
+
+.btn-secondary{
+  background:#edf4f7;
+  color:var(--navy);
+}
+
+.success{
+  display:none;
+  text-align:center;
+  padding:25px 10px;
+}
+
+.success-icon{
+  width:75px;
+  height:75px;
+  background:#e7f8ef;
+  color:var(--green);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:38px;
+  margin:0 auto 16px;
+}
+
+.success h3{
+  color:var(--navy);
+  font-size:24px;
+}
+
+.reference{
+  margin:20px auto;
+  max-width:420px;
+  background:#f1f8fb;
+  border:1px solid #d7e9ef;
+  border-radius:12px;
+  padding:15px;
+}
+
+.reference small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.reference strong{
+  display:block;
+  color:var(--blue);
+  font-size:25px;
+  letter-spacing:1px;
+  margin-top:4px;
+}
+
+.success-note{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+}
+
+.track-panel{
+  display:none;
+}
+
+.track-search{
+  display:flex;
+  gap:10px;
+  max-width:700px;
+  margin:0 auto 25px;
+}
+
+.track-search input{
+  flex:1;
+}
+
+.status-card{
+  display:none;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:22px;
+}
+
+.status-head{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  padding-bottom:17px;
+}
+
+.status-head h3{
+  color:var(--navy);
+}
+
+.status-badge{
+  background:#e7f8ef;
+  color:#078947;
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.timeline{
+  margin-top:25px;
+  position:relative;
+}
+
+.timeline-item{
+  display:flex;
+  gap:15px;
+  padding-bottom:25px;
+}
+
+.timeline-dot{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:#e7f8ef;
+  color:var(--green);
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  font-size:12px;
+  font-weight:800;
+}
+
+.timeline-content h4{
+  color:var(--navy);
+  font-size:13px;
+}
+
+.timeline-content p{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:3px;
+}
+
+.internal-info{
+  margin-top:20px;
+  background:#fff8eb;
+  border:1px solid #f4dfb8;
+  padding:13px;
+  border-radius:10px;
+  color:#806127;
+  font-size:11px;
+  line-height:1.6;
+}
+
+footer{
+  background:#032d4b;
+  color:#bcd0dc;
+  text-align:center;
+  padding:25px;
+  font-size:10px;
+}
+
+.en{
+  display:none;
+}
+
+body.english .hi{
+  display:none;
+}
+
+body.english .en{
+  display:inline;
+}
+
+@media(max-width:700px){
+
+  .topbar{
+    justify-content:flex-end;
+  }
+
+  .header-inner{
+    padding:12px 0;
+  }
+
+  .brand h1{
+    font-size:17px;
+  }
+
+  .brand p{
+    font-size:9px;
+  }
+
+  .logo{
+    width:48px;
+    height:48px;
+  }
+
+  .back{
+    font-size:10px;
+  }
+
+  .hero{
+    padding:32px 4%;
+  }
+
+  .hero h2{
+    font-size:34px;
+  }
+
+  .panel{
+    padding:18px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .consent{
+    grid-column:auto;
+  }
+
+  .location-row{
+    grid-template-columns:1fr;
+  }
+
+  .stepbar{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .step{
+    font-size:9px;
+  }
+
+  .step-number{
+    width:29px;
+    height:29px;
+  }
+
+  .track-search{
+    flex-direction:column;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<div class="topbar">
+
+  <span class="hi">नगर पंचायत आनंदनगर • नागरिक शिकायत सेवा</span>
+  <span class="en">Nagar Panchayat Anandnagar • Citizen Grievance Service</span>
+
+  <div class="lang">
+    <button id="hiBtn" class="active" onclick="setLanguage('hi')">हिंदी</button>
+    <button id="enBtn" onclick="setLanguage('en')">EN</button>
+  </div>
+
+</div>
+
+
 <header class="header">
 
-<div class="brand">
+  <div class="header-inner">
 
-<img
-class="logo"
-src="https://via.placeholder.com/100?text=NP"
-alt="नगर पंचायत लोगो"
->
+    <div class="brand">
 
-<div>
-<h1 class="hi">नगर पंचायत आनंदनगर</h1>
-<h1 class="en">Nagar Panchayat Anandnagar</h1>
+      <!-- Replace with actual Nagar Panchayat logo later -->
+      <img
+        class="logo"
+        src="https://via.placeholder.com/120?text=NP"
+        alt="Logo"
+      >
 
-<p class="hi">महाराजगंज, उत्तर प्रदेश</p>
-<p class="en">Maharajganj, Uttar Pradesh</p>
-</div>
+      <div>
+        <h1>
+          <span class="hi">नगर पंचायत आनंदनगर</span>
+          <span class="en">Nagar Panchayat Anandnagar</span>
+        </h1>
 
-</div>
+        <p>
+          <span class="hi">महाराजगंज, उत्तर प्रदेश</span>
+          <span class="en">Maharajganj, Uttar Pradesh</span>
+        </p>
+      </div>
 
-<div class="lang">
+    </div>
 
-<button id="hiBtn" class="active" onclick="language('hi')">
-हिंदी
-</button>
+    <a class="back" href="index.html">
+      ←
+      <span class="hi">मुख्य वेबसाइट</span>
+      <span class="en">Main Website</span>
+    </a>
 
-<button id="enBtn" onclick="language('en')">
-English
-</button>
-
-</div>
+  </div>
 
 </header>
 
 
 <section class="hero">
 
-<h2 class="hi">जन शिकायत दर्ज करें</h2>
-<h2 class="en">Register Public Grievance</h2>
+  <div class="hero-inner">
 
-<p class="hi">
-अपनी समस्या नगर पंचायत तक पहुंचाएं। आपकी शिकायत संबंधित विभाग को भेजी जाएगी।
-</p>
+    <div class="hero-kicker">
+      Citizen Grievance Portal
+    </div>
 
-<p class="en">
-Submit your civic issue. Your complaint will be forwarded to the concerned department.
-</p>
+    <h2>
+      <span class="hi">अपनी शिकायत दर्ज करें</span>
+      <span class="en">Register Your Complaint</span>
+    </h2>
+
+    <p>
+
+      <span class="hi">
+        नगर पंचायत आनंदनगर से संबंधित सफाई, स्ट्रीट लाइट,
+        जलापूर्ति, सड़क, नाली तथा अन्य नागरिक समस्याओं की
+        शिकायत ऑनलाइन दर्ज करें।
+      </span>
+
+      <span class="en">
+        Register complaints related to sanitation, street lights,
+        water supply, roads, drainage and other civic issues online.
+      </span>
+
+    </p>
+
+  </div>
 
 </section>
 
 
-<div class="container">
+<main class="container">
 
+  <div class="tabs">
 
-<div class="steps">
+    <button class="tab active" id="registerTab" onclick="showRegister()">
 
-<div class="step active">
-1<br>
-<span class="hi">शिकायत का प्रकार</span>
-<span class="en">Complaint Type</span>
-</div>
+      📝
+      <span class="hi">शिकायत दर्ज करें</span>
+      <span class="en">Register Complaint</span>
 
-<div class="step">
-2<br>
-<span class="hi">विवरण</span>
-<span class="en">Details</span>
-</div>
+    </button>
 
-<div class="step">
-3<br>
-<span class="hi">सत्यापन</span>
-<span class="en">Verification</span>
-</div>
+    <button class="tab" id="trackTab" onclick="showTrack()">
 
-<div class="step">
-4<br>
-<span class="hi">जमा करें</span>
-<span class="en">Submit</span>
-</div>
+      🔎
+      <span class="hi">शिकायत की स्थिति देखें</span>
+      <span class="en">Track Complaint</span>
 
-</div>
+    </button>
 
+  </div>
 
-<!-- FORM -->
 
-<div id="formArea">
+  <!-- REGISTER PANEL -->
 
+  <section class="panel" id="registerPanel">
 
-<div class="card">
+    <div class="stepbar">
 
-<h3>
-1. <span class="hi">शिकायत का प्रकार चुनें</span>
-<span class="en">Select Complaint Type</span>
-</h3>
+      <div class="step active">
+        <div class="step-number">1</div>
+        <span class="hi">विवरण</span>
+        <span class="en">Details</span>
+      </div>
 
+      <div class="step active">
+        <div class="step-number">2</div>
+        <span class="hi">स्थान</span>
+        <span class="en">Location</span>
+      </div>
 
-<div class="categories">
+      <div class="step active">
+        <div class="step-number">3</div>
+        <span class="hi">फोटो</span>
+        <span class="en">Photo</span>
+      </div>
 
+      <div class="step active">
+        <div class="step-number">4</div>
+        <span class="hi">जमा करें</span>
+        <span class="en">Submit</span>
+      </div>
 
-<div class="category" onclick="selectCategory(this,'Sanitation')">
-<div class="icon">🗑️</div>
+    </div>
 
-<strong class="hi">सफाई / कूड़ा</strong>
-<strong class="en">Sanitation / Garbage</strong>
 
-</div>
+    <div id="formArea">
 
+      <div class="form-title">
 
-<div class="category" onclick="selectCategory(this,'Street Light')">
-<div class="icon">💡</div>
+        <h3>
+          <span class="hi">शिकायत की जानकारी</span>
+          <span class="en">Complaint Information</span>
+        </h3>
 
-<strong class="hi">स्ट्रीट लाइट</strong>
-<strong class="en">Street Light</strong>
+        <p>
+          <span class="hi">
+            कृपया आवश्यक जानकारी सही-सही भरें।
+          </span>
 
-</div>
+          <span class="en">
+            Please enter the required information accurately.
+          </span>
+        </p>
 
+      </div>
 
-<div class="category" onclick="selectCategory(this,'Water')">
-<div class="icon">💧</div>
 
-<strong class="hi">जलापूर्ति</strong>
-<strong class="en">Water Supply</strong>
+      <form id="complaintForm">
 
-</div>
+        <div class="form-grid">
 
 
-<div class="category" onclick="selectCategory(this,'Road / Drainage')">
-<div class="icon">🛣️</div>
+          <!-- CATEGORY -->
 
-<strong class="hi">सड़क / नाली</strong>
-<strong class="en">Road / Drainage</strong>
+          <div class="field">
 
-</div>
+            <label>
+              <span class="hi">शिकायत की श्रेणी</span>
+              <span class="en">Complaint Category</span>
 
+              <span class="required">*</span>
+            </label>
 
-<div class="category" onclick="selectCategory(this,'Other')">
-<div class="icon">🏢</div>
+            <select id="category" required>
 
-<strong class="hi">अन्य</strong>
-<strong class="en">Other</strong>
+              <option value="">
+                शिकायत की श्रेणी चुनें
+              </option>
 
-</div>
+              <option value="sanitation">
+                सफाई / कूड़ा
+              </option>
 
+              <option value="streetlight">
+                स्ट्रीट लाइट
+              </option>
 
-</div>
+              <option value="water">
+                जलापूर्ति
+              </option>
 
-<input type="hidden" id="category">
+              <option value="road">
+                सड़क / नाली
+              </option>
 
-</div>
+              <option value="other">
+                अन्य नागरिक समस्या
+              </option>
 
+            </select>
 
-<div class="card">
+          </div>
 
-<h3>
-2. <span class="hi">नागरिक का विवरण</span>
-<span class="en">Citizen Details</span>
-</h3>
 
+          <!-- WARD -->
 
-<div class="row">
+          <div class="field">
 
-<div>
-<label class="hi">नाम *</label>
-<label class="en">Name *</label>
+            <label>
+              <span class="hi">वार्ड</span>
+              <span class="en">Ward</span>
 
-<input id="name" type="text" placeholder="अपना नाम दर्ज करें">
-</div>
+              <span class="required">*</span>
+            </label>
 
+            <select id="ward" required>
 
-<div>
-<label class="hi">मोबाइल नंबर *</label>
-<label class="en">Mobile Number *</label>
+              <option value="">वार्ड चुनें</option>
 
-<input
-id="mobile"
-type="tel"
-maxlength="10"
-placeholder="10 अंकों का मोबाइल नंबर"
->
-</div>
+              <option>वार्ड 1</option>
+              <option>वार्ड 2</option>
+              <option>वार्ड 3</option>
+              <option>वार्ड 4</option>
+              <option>वार्ड 5</option>
+              <option>वार्ड 6</option>
+              <option>वार्ड 7</option>
+              <option>वार्ड 8</option>
+              <option>वार्ड 9</option>
+              <option>वार्ड 10</option>
+              <option>वार्ड 11</option>
+              <option>वार्ड 12</option>
+              <option>वार्ड 13</option>
+              <option>वार्ड 14</option>
+              <option>वार्ड 15</option>
+              <option>वार्ड 16</option>
+              <option>वार्ड 17</option>
+              <option>वार्ड 18</option>
 
-</div>
+            </select>
 
+          </div>
 
-<div class="row">
 
-<div>
+          <!-- NAME -->
 
-<label class="hi">वार्ड *</label>
-<label class="en">Ward *</label>
+          <div class="field">
 
-<select id="ward">
+            <label>
+              <span class="hi">नाम</span>
+              <span class="en">Name</span>
+              <span class="required">*</span>
+            </label>
 
-<option value="">वार्ड चुनें</option>
+            <input
+              id="name"
+              type="text"
+              required
+              placeholder="अपना नाम दर्ज करें"
+            >
 
-<option>वार्ड 1</option>
-<option>वार्ड 2</option>
-<option>वार्ड 3</option>
-<option>वार्ड 4</option>
-<option>वार्ड 5</option>
-<option>वार्ड 6</option>
-<option>वार्ड 7</option>
-<option>वार्ड 8</option>
-<option>वार्ड 9</option>
-<option>वार्ड 10</option>
-<option>वार्ड 11</option>
-<option>वार्ड 12</option>
-<option>वार्ड 13</option>
-<option>वार्ड 14</option>
-<option>वार्ड 15</option>
+          </div>
 
-</select>
 
-</div>
+          <!-- MOBILE -->
 
+          <div class="field">
 
-<div>
+            <label>
+              <span class="hi">मोबाइल नंबर</span>
+              <span class="en">Mobile Number</span>
+              <span class="required">*</span>
+            </label>
 
-<label class="hi">मोहल्ला / स्थान *</label>
-<label class="en">Locality / Location *</label>
+            <input
+              id="mobile"
+              type="tel"
+              inputmode="numeric"
+              maxlength="10"
+              pattern="[0-9]{10}"
+              required
+              placeholder="10 अंकों का मोबाइल नंबर"
+            >
 
-<input
-id="locality"
-type="text"
-placeholder="मोहल्ला / स्थान"
->
+          </div>
 
-</div>
 
-</div>
+          <!-- LOCATION -->
 
-</div>
+          <div class="field full">
 
+            <label>
+              <span class="hi">समस्या का स्थान</span>
+              <span class="en">Location of Issue</span>
+              <span class="required">*</span>
+            </label>
 
-<div class="card">
+            <div class="location-row">
 
-<h3>
-3. <span class="hi">शिकायत का विवरण</span>
-<span class="en">Complaint Details</span>
-</h3>
+              <input
+                id="locality"
+                type="text"
+                required
+                placeholder="मोहल्ला / स्थान"
+              >
 
+              <input
+                id="landmark"
+                type="text"
+                placeholder="नजदीकी पहचान / Landmark"
+              >
 
-<div class="full">
+            </div>
 
-<label class="hi">समस्या का विवरण *</label>
-<label class="en">Describe the problem *</label>
+          </div>
 
-<textarea
-id="description"
-placeholder="अपनी समस्या विस्तार से लिखें..."
-></textarea>
 
-</div>
+          <!-- DESCRIPTION -->
 
+          <div class="field full">
 
-<div class="full">
+            <label>
+              <span class="hi">शिकायत का विवरण</span>
+              <span class="en">Complaint Description</span>
+              <span class="required">*</span>
+            </label>
 
-<label class="hi">फोटो संलग्न करें</label>
-<label class="en">Attach Photo</label>
+            <textarea
+              id="description"
+              required
+              placeholder="अपनी समस्या का संक्षिप्त विवरण लिखें..."
+            ></textarea>
 
-<div class="photo-box">
+          </div>
 
-<input
-id="photo"
-type="file"
-accept="image/*"
->
 
-<p class="note hi">
-यदि संभव हो तो समस्या की फोटो संलग्न करें।
-</p>
+          <!-- PHOTO -->
 
-<p class="note en">
-Attach a photo of the issue if possible.
-</p>
+          <div class="field full">
 
-</div>
+            <label>
+              <span class="hi">समस्या का फोटो</span>
+              <span class="en">Photograph of Issue</span>
+            </label>
 
-</div>
+            <div class="upload">
 
+              <div class="upload-icon">📷</div>
 
-<div class="location-box">
+              <p>
+                <span class="hi">
+                  समस्या का फोटो अपलोड करें (वैकल्पिक)
+                </span>
 
-<strong class="hi">📍 स्थान की जानकारी</strong>
-<strong class="en">📍 Location Information</strong>
+                <span class="en">
+                  Upload a photograph of the issue (optional)
+                </span>
+              </p>
 
-<p class="note hi">
-आप अपनी शिकायत का स्थान साझा कर सकते हैं।
-</p>
+              <input
+                id="photo"
+                type="file"
+                accept="image/*"
+                onchange="previewPhoto(event)"
+              >
 
-<p class="note en">
-You can share the location of your complaint.
-</p>
+              <img
+                id="photoPreview"
+                class="preview"
+                alt="Preview"
+              >
 
-<button
-type="button"
-class="location-btn"
-onclick="getLocation()"
->
+            </div>
 
-<span class="hi">मेरी लोकेशन प्राप्त करें</span>
-<span class="en">Get My Location</span>
+          </div>
 
-</button>
 
-<p id="locationStatus" class="note"></p>
+          <!-- CONSENT -->
 
-</div>
+          <div class="consent">
 
-</div>
+            ☑️
 
+            <span class="hi">
+              मैं प्रमाणित करता/करती हूं कि दी गई जानकारी
+              मेरी जानकारी के अनुसार सही है।
+            </span>
 
-<div class="card submit-area">
+            <span class="en">
+              I confirm that the information provided is correct
+              to the best of my knowledge.
+            </span>
 
-<button
-class="submit"
-onclick="submitComplaint()"
->
+          </div>
 
-<span class="hi">✓ शिकायत जमा करें</span>
-<span class="en">✓ Submit Complaint</span>
 
-</button>
+        </div>
 
-<p class="note hi">
-जमा करने के बाद आपको शिकायत संख्या दी जाएगी।
-</p>
 
-<p class="note en">
-You will receive a complaint reference number after submission.
-</p>
+        <div class="actions">
 
-</div>
+          <button
+            type="reset"
+            class="btn btn-secondary"
+          >
+            <span class="hi">साफ करें</span>
+            <span class="en">Clear</span>
+          </button>
 
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            <span class="hi">शिकायत जमा करें →</span>
+            <span class="en">Submit Complaint →</span>
+          </button>
 
-</div>
+        </div>
 
+      </form>
 
-<!-- SUCCESS -->
+    </div>
 
-<div id="success" class="card success">
 
-<div class="success-icon">
-✅
-</div>
+    <!-- SUCCESS -->
 
-<h2 class="hi">
-शिकायत सफलतापूर्वक दर्ज हो गई
-</h2>
+    <div class="success" id="successArea">
 
-<h2 class="en">
-Complaint Successfully Registered
-</h2>
+      <div class="success-icon">✓</div>
 
-<p class="hi">
-आपकी शिकायत नगर पंचायत के संबंधित विभाग को भेज दी गई है।
-</p>
+      <h3>
+        <span class="hi">शिकायत सफलतापूर्वक दर्ज हो गई</span>
+        <span class="en">Complaint Successfully Registered</span>
+      </h3>
 
-<p class="en">
-Your complaint has been forwarded to the concerned department.
-</p>
+      <div class="reference">
 
+        <small>
+          <span class="hi">आपका शिकायत संदर्भ नंबर</span>
+          <span class="en">Your Complaint Reference Number</span>
+        </small>
 
-<div class="reference" id="referenceNumber">
-NPAN-2026-000001
-</div>
+        <strong id="referenceNumber"></strong>
 
+      </div>
 
-<p class="hi">
-कृपया इस शिकायत संख्या को सुरक्षित रखें।
-</p>
+      <p class="success-note">
 
-<p class="en">
-Please keep this complaint number safe for future tracking.
-</p>
+        <span class="hi">
+          इस संदर्भ नंबर को सुरक्षित रखें। इसी नंबर से आप
+          अपनी शिकायत की स्थिति देख सकते हैं।
+          वास्तविक प्रणाली में आपको SMS/अन्य सूचना भी भेजी जाएगी।
+        </span>
 
+        <span class="en">
+          Please keep this reference number safe.
+          You can use it to track your complaint.
+          In the production system, SMS/other notifications will also be sent.
+        </span>
 
-<br>
+      </p>
 
-<a href="index.html" class="back">
+      <div class="actions" style="justify-content:center;">
 
-<span class="hi">← मुख्य वेबसाइट पर वापस जाएं</span>
-<span class="en">← Back to Website</span>
+        <button
+          class="btn btn-primary"
+          onclick="showTrackWithCurrent()"
+        >
+          <span class="hi">स्थिति देखें</span>
+          <span class="en">Track Status</span>
+        </button>
 
-</a>
+        <button
+          class="btn btn-secondary"
+          onclick="newComplaint()"
+        >
+          <span class="hi">नई शिकायत</span>
+          <span class="en">New Complaint</span>
+        </button>
 
-</div>
+      </div>
 
+    </div>
 
-</div>
+  </section>
+
+
+  <!-- TRACK PANEL -->
+
+  <section class="panel track-panel" id="trackPanel">
+
+    <div class="form-title">
+
+      <h3>
+        <span class="hi">शिकायत की स्थिति</span>
+        <span class="en">Track Complaint</span>
+      </h3>
+
+      <p>
+        <span class="hi">
+          अपना शिकायत संदर्भ नंबर दर्ज करें।
+        </span>
+
+        <span class="en">
+          Enter your complaint reference number.
+        </span>
+      </p>
+
+    </div>
+
+
+    <div class="track-search">
+
+      <input
+        id="trackNumber"
+        placeholder="उदाहरण: NPAN-2026-123456"
+      >
+
+      <button
+        class="btn btn-primary"
+        onclick="trackComplaint()"
+      >
+        🔎
+        <span class="hi">स्थिति देखें</span>
+        <span class="en">Track</span>
+      </button>
+
+    </div>
+
+
+    <div class="status-card" id="statusCard">
+
+      <div class="status-head">
+
+        <div>
+
+          <small style="color:var(--muted);font-size:10px;">
+            Complaint Reference
+          </small>
+
+          <h3 id="trackedReference"></h3>
+
+          <p
+            id="trackedCategory"
+            style="font-size:11px;color:var(--muted);margin-top:4px;"
+          ></p>
+
+        </div>
+
+        <div class="status-badge">
+          <span class="hi">कार्य प्रगति पर</span>
+          <span class="en">In Progress</span>
+        </div>
+
+      </div>
+
+
+      <div class="timeline">
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot">✓</div>
+
+          <div class="timeline-content">
+
+            <h4>
+              <span class="hi">शिकायत दर्ज</span>
+              <span class="en">Complaint Registered</span>
+            </h4>
+
+            <p id="registeredDate">
+              शिकायत प्राप्त हो गई।
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot">✓</div>
+
+          <div class="timeline-content">
+
+            <h4>
+              <span class="hi">EO / अधिकृत अधिकारी को प्राप्त</span>
+              <span class="en">Received by EO / Authorised Officer</span>
+            </h4>
+
+            <p>
+              <span class="hi">
+                शिकायत आवंटन हेतु उपलब्ध।
+              </span>
+
+              <span class="en">
+                Complaint available for assignment.
+              </span>
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot">3</div>
+
+          <div class="timeline-content">
+
+            <h4>
+              <span class="hi">कर्मचारी को आवंटित</span>
+              <span class="en">Assigned to Staff</span>
+            </h4>
+
+            <p>
+              <span class="hi">
+                EO द्वारा संबंधित कर्मचारी को आवंटित किया जाएगा।
+              </span>
+
+              <span class="en">
+                EO will assign the complaint to the responsible staff member.
+              </span>
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot">4</div>
+
+          <div class="timeline-content">
+
+            <h4>
+              <span class="hi">कार्य पूर्ण</span>
+              <span class="en">Work Completed</span>
+            </h4>
+
+            <p>
+              <span class="hi">
+                कर्मचारी या अधिकृत कंप्यूटर ऑपरेटर द्वारा पूर्ण किया जाएगा।
+              </span>
+
+              <span class="en">
+                Staff or authorised computer operator marks the work completed.
+              </span>
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot">5</div>
+
+          <div class="timeline-content">
+
+            <h4>
+              <span class="hi">EO सत्यापन एवं बंद</span>
+              <span class="en">EO Verification & Closure</span>
+            </h4>
+
+            <p>
+              <span class="hi">
+                अंतिम सत्यापन के बाद शिकायत बंद की जाएगी।
+              </span>
+
+              <span class="en">
+                Complaint will be closed after final verification.
+              </span>
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="internal-info">
+
+        <strong>
+          ⚙️
+          <span class="hi">आंतरिक प्रक्रिया</span>
+          <span class="en">Internal Process</span>
+        </strong>
+
+        <br>
+
+        <span class="hi">
+          वास्तविक प्रणाली में EO द्वारा निर्धारित अंतराल पर
+          लंबित शिकायत के लिए संबंधित कर्मचारी को स्वचालित
+          reminder भेजा जाएगा। शिकायत पूर्ण होने पर reminder बंद हो जाएगा।
+        </span>
+
+        <span class="en">
+          In the production system, automatic reminders will be sent
+          to the assigned staff at the interval defined by the EO.
+          Reminders will stop once the complaint is completed.
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  © 2026 नगर पंचायत आनंदनगर, महाराजगंज, उत्तर प्रदेश
+
+</footer>
 
 
 <script>
 
-let selectedCategory="";
-let latitude="";
-let longitude="";
+let currentReference = "";
+
+function setLanguage(language){
+
+  document.body.classList.toggle(
+    "english",
+    language === "en"
+  );
+
+  document.getElementById("hiBtn")
+    .classList.toggle(
+      "active",
+      language === "hi"
+    );
+
+  document.getElementById("enBtn")
+    .classList.toggle(
+      "active",
+      language === "en"
+    );
+
+  localStorage.setItem(
+    "anandnagar-language",
+    language
+  );
+}
 
 
-function language(lang){
+const savedLanguage =
+  localStorage.getItem("anandnagar-language");
 
-document.body.classList.toggle(
-"english",
-lang==="en"
-);
+if(savedLanguage === "en"){
+  setLanguage("en");
+}
 
-document.getElementById("hiBtn")
-.classList.toggle(
-"active",
-lang==="hi"
-);
 
-document.getElementById("enBtn")
-.classList.toggle(
-"active",
-lang==="en"
-);
+function showRegister(){
+
+  document.getElementById("registerPanel").style.display="block";
+  document.getElementById("trackPanel").style.display="none";
+
+  document.getElementById("registerTab").classList.add("active");
+  document.getElementById("trackTab").classList.remove("active");
 
 }
 
 
-function selectCategory(element,category){
+function showTrack(){
 
-document.querySelectorAll(".category")
-.forEach(function(item){
+  document.getElementById("registerPanel").style.display="none";
+  document.getElementById("trackPanel").style.display="block";
 
-item.classList.remove("selected");
+  document.getElementById("registerTab").classList.remove("active");
+  document.getElementById("trackTab").classList.add("active");
+
+}
+
+
+function previewPhoto(event){
+
+  const file = event.target.files[0];
+
+  if(!file) return;
+
+  const preview =
+    document.getElementById("photoPreview");
+
+  preview.src =
+    URL.createObjectURL(file);
+
+  preview.style.display="block";
+
+}
+
+
+function generateReference(){
+
+  const year =
+    new Date().getFullYear();
+
+  const random =
+    Math.floor(
+      100000 +
+      Math.random()*900000
+    );
+
+  return "NPAN-" + year + "-" + random;
+
+}
+
+
+document
+.getElementById("complaintForm")
+.addEventListener("submit",function(event){
+
+  event.preventDefault();
+
+  currentReference =
+    generateReference();
+
+  document.getElementById("referenceNumber")
+    .textContent =
+    currentReference;
+
+  const complaint = {
+
+    reference: currentReference,
+
+    category:
+      document.getElementById("category").value,
+
+    ward:
+      document.getElementById("ward").value,
+
+    name:
+      document.getElementById("name").value,
+
+    mobile:
+      document.getElementById("mobile").value,
+
+    locality:
+      document.getElementById("locality").value,
+
+    landmark:
+      document.getElementById("landmark").value,
+
+    description:
+      document.getElementById("description").value,
+
+    status:"Registered",
+
+    createdAt:
+      new Date().toLocaleString()
+
+  };
+
+  localStorage.setItem(
+    "anandnagar-last-complaint",
+    JSON.stringify(complaint)
+  );
+
+  document.getElementById("formArea")
+    .style.display="none";
+
+  document.getElementById("successArea")
+    .style.display="block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 });
 
-element.classList.add("selected");
 
-selectedCategory=category;
+function showTrackWithCurrent(){
 
-document.getElementById("category").value=category;
+  showTrack();
 
-}
+  document.getElementById("trackNumber")
+    .value=currentReference;
 
-
-function getLocation(){
-
-if(!navigator.geolocation){
-
-document.getElementById("locationStatus")
-.innerText="Location is not supported by this browser.";
-
-return;
-
-}
-
-document.getElementById("locationStatus")
-.innerText="Location प्राप्त की जा रही है...";
-
-navigator.geolocation.getCurrentPosition(
-
-function(position){
-
-latitude=position.coords.latitude;
-longitude=position.coords.longitude;
-
-document.getElementById("locationStatus")
-.innerText=
-"✓ Location captured";
-
-},
-
-function(){
-
-document.getElementById("locationStatus")
-.innerText=
-"Location प्राप्त नहीं हो सकी।";
-
-}
-
-);
+  trackComplaint();
 
 }
 
 
-function submitComplaint(){
+function trackComplaint(){
 
-let name=document.getElementById("name").value.trim();
+  const number =
+    document.getElementById("trackNumber")
+      .value.trim();
 
-let mobile=document.getElementById("mobile").value.trim();
+  if(!number){
 
-let ward=document.getElementById("ward").value;
+    alert(
+      document.body.classList.contains("english")
+      ?
+      "Please enter a complaint reference number."
+      :
+      "कृपया शिकायत संदर्भ नंबर दर्ज करें।"
+    );
 
-let locality=document.getElementById("locality").value.trim();
+    return;
+  }
 
-let description=document.getElementById("description").value.trim();
+
+  const saved =
+    JSON.parse(
+      localStorage.getItem(
+        "anandnagar-last-complaint"
+      )
+    );
 
 
-if(!selectedCategory){
+  if(!saved || saved.reference !== number){
 
-alert("कृपया शिकायत का प्रकार चुनें।");
+    alert(
+      document.body.classList.contains("english")
+      ?
+      "This demo can track the complaint created during the current browser session."
+      :
+      "इस डेमो में वर्तमान ब्राउज़र सत्र में दर्ज की गई शिकायत को ट्रैक किया जा सकता है।"
+    );
 
-return;
+    return;
+  }
+
+
+  document.getElementById("trackedReference")
+    .textContent =
+    saved.reference;
+
+
+  const categoryNames = {
+
+    sanitation:"सफाई / कूड़ा",
+    streetlight:"स्ट्रीट लाइट",
+    water:"जलापूर्ति",
+    road:"सड़क / नाली",
+    other:"अन्य नागरिक समस्या"
+
+  };
+
+
+  document.getElementById("trackedCategory")
+    .textContent =
+    categoryNames[saved.category]
+    + " • "
+    + saved.ward;
+
+
+  document.getElementById("registeredDate")
+    .textContent =
+    saved.createdAt;
+
+
+  document.getElementById("statusCard")
+    .style.display="block";
+
+}
+
+
+function newComplaint(){
+
+  document.getElementById("complaintForm")
+    .reset();
+
+  document.getElementById("formArea")
+    .style.display="block";
+
+  document.getElementById("successArea")
+    .style.display="none";
+
+  document.getElementById("photoPreview")
+    .style.display="none";
+
+  currentReference="";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
-
-if(!name){
-
-alert("कृपया अपना नाम दर्ज करें।");
-
-return;
-
-}
-
-
-if(!/^[0-9]{10}$/.test(mobile)){
-
-alert("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।");
-
-return;
-
-}
-
-
-if(!ward){
-
-alert("कृपया वार्ड चुनें।");
-
-return;
-
-}
-
-
-if(!locality){
-
-alert("कृपया स्थान दर्ज करें।");
-
-return;
-
-}
-
-
-if(!description){
-
-alert("कृपया शिकायत का विवरण दर्ज करें।");
-
-return;
-
-}
-
-
-/* DEMO REFERENCE NUMBER */
-
-let number=
-"NPAN-2026-"+
-
-Math.floor(
-100000+
-Math.random()*900000
-);
-
-
-document.getElementById(
-"referenceNumber"
-).innerText=number;
-
-
-document.getElementById("formArea")
-.style.display="none";
-
-
-document.getElementById("success")
-.style.display="block";
-
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
 
 </script>
 
