@@ -1979,7 +1979,192 @@ const savedLanguage =
 if(savedLanguage === "en"){
   setLanguage("en");
 }
+/* =========================================================
+   STAFF WORKFLOW — PRESENTATION DEMO
+   ========================================================= */
 
+function staffStartWork(){
+
+ const management =
+  JSON.parse(
+   localStorage.getItem("anandnagar-management")
+  ) || {};
+
+ if(!management.staff){
+
+  showToast(
+   "No Assignment",
+   "पहले शिकायत को कर्मचारी को आवंटित करें।"
+  );
+
+  return;
+ }
+
+ management.status="progress";
+ management.startedAt=
+  new Date().toLocaleString();
+
+ localStorage.setItem(
+  "anandnagar-management",
+  JSON.stringify(management)
+ );
+
+ loadComplaints();
+
+ showToast(
+  "Work Started",
+  "कर्मचारी ने शिकायत पर कार्य प्रारम्भ कर दिया।"
+ );
+}
+
+
+function staffCompleteWork(){
+
+ const management =
+  JSON.parse(
+   localStorage.getItem("anandnagar-management")
+  ) || {};
+
+ if(!management.staff){
+
+  showToast(
+   "No Assignment",
+   "इस शिकायत के लिए कोई कर्मचारी आवंटित नहीं है।"
+  );
+
+  return;
+ }
+
+ management.status="complete";
+
+ management.completedAt=
+  new Date().toLocaleString();
+
+ management.remindersStopped=true;
+
+ localStorage.setItem(
+  "anandnagar-management",
+  JSON.stringify(management)
+ );
+
+ loadComplaints();
+
+ showToast(
+  "Complaint Completed",
+  "शिकायत का कार्य पूर्ण कर दिया गया है। रिमाइंडर बंद कर दिए गए हैं।"
+ );
+}
+
+
+/* STAFF ACTION PANEL */
+
+function openStaffPanel(){
+
+ const saved =
+  JSON.parse(
+   localStorage.getItem(
+    "anandnagar-last-complaint"
+   )
+  );
+
+ const management =
+  JSON.parse(
+   localStorage.getItem(
+    "anandnagar-management"
+   )
+  ) || {};
+
+ if(!saved || !management.staff){
+
+  showToast(
+   "No Assigned Complaint",
+   "अभी कोई शिकायत कर्मचारी को आवंटित नहीं है।"
+  );
+
+  return;
+ }
+
+ const status =
+  management.status || "pending";
+
+ let message="";
+
+ if(status==="complete"){
+
+  message =
+   "✓ कार्य पूर्ण हो चुका है। रिमाइंडर बंद हैं।";
+
+ }else if(status==="progress"){
+
+  message =
+   "🔵 कार्य प्रगति पर है।";
+
+ }else{
+
+  message =
+   "🟡 कार्य प्रारम्भ होना बाकी है।";
+ }
+
+ showToast(
+  "Staff Panel",
+  message + " कर्मचारी: " + management.staff
+ );
+
+}
+
+
+/* QUICK STAFF ACTION */
+
+function staffAction(){
+
+ const management =
+  JSON.parse(
+   localStorage.getItem("anandnagar-management")
+  ) || {};
+
+ if(!management.staff){
+
+  showToast(
+   "No Assignment",
+   "पहले EO द्वारा शिकायत आवंटित करें।"
+  );
+
+  return;
+ }
+
+ if(management.status==="complete"){
+
+  showToast(
+   "Already Completed",
+   "यह शिकायत पहले ही पूर्ण की जा चुकी है।"
+  );
+
+  return;
+ }
+
+ if(management.status==="progress"){
+
+  staffCompleteWork();
+
+ }else{
+
+  staffStartWork();
+
+ }
+
+}
+
+
+/* REFRESH DASHBOARD AFTER STAFF ACTION */
+
+window.addEventListener(
+ "storage",
+ function(){
+
+  loadComplaints();
+
+ }
+);
 </script>
 
 </body>
