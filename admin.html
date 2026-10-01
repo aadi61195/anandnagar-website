@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>ULB Grievance Management | Anandnagar</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
+
+:root{
+ --navy:#063b63;
+ --blue:#087bb8;
+ --green:#10a957;
+ --orange:#e88b22;
+ --red:#dc4c4c;
+ --bg:#f3f7fa;
+ --white:#fff;
+ --text:#18384d;
+ --muted:#718594;
+ --border:#dfe9ee;
+ --shadow:0 10px 30px rgba(6,59,99,.08);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+ font-family:"Noto Sans Devanagari",Inter,Arial,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+}
+
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+
+.app{
+ display:flex;
+ min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+ width:245px;
+ background:#032d4b;
+ color:white;
+ padding:22px 14px;
+ position:fixed;
+ top:0;
+ bottom:0;
+ left:0;
+}
+
+.brand{
+ padding:4px 10px 25px;
+ border-bottom:1px solid rgba(255,255,255,.1);
+ margin-bottom:15px;
+}
+
+.brand-title{
+ font-size:18px;
+ font-weight:800;
+}
+
+.brand-sub{
+ color:#9fc0d1;
+ font-size:10px;
+ margin-top:3px;
+}
+
+.role{
+ display:inline-block;
+ margin-top:10px;
+ background:#0c587f;
+ padding:5px 9px;
+ border-radius:20px;
+ font-size:9px;
+ color:#dff2fb;
+}
+
+.menu-title{
+ color:#7899aa;
+ font-size:9px;
+ text-transform:uppercase;
+ letter-spacing:1px;
+ padding:13px 10px 7px;
+}
+
+.menu button{
+ width:100%;
+ border:0;
+ background:transparent;
+ color:#c5d8e2;
+ text-align:left;
+ padding:11px 12px;
+ border-radius:8px;
+ margin:2px 0;
+ font-size:12px;
+}
+
+.menu button:hover,
+.menu button.active{
+ background:#0b5478;
+ color:white;
+}
+
+.menu-icon{
+ width:25px;
+ display:inline-block;
+}
+
+.user-box{
+ position:absolute;
+ bottom:18px;
+ left:14px;
+ right:14px;
+ background:#073c5d;
+ border-radius:10px;
+ padding:12px;
+}
+
+.user-name{
+ font-size:12px;
+ font-weight:700;
+}
+
+.user-role{
+ color:#9fc0d1;
+ font-size:9px;
+ margin-top:2px;
+}
+
+/* MAIN */
+
+.main{
+ margin-left:245px;
+ width:calc(100% - 245px);
+}
+
+.top{
+ height:67px;
+ background:white;
+ border-bottom:1px solid var(--border);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 28px;
+}
+
+.top h1{
+ font-size:20px;
+ color:var(--navy);
+}
+
+.top p{
+ font-size:10px;
+ color:var(--muted);
+ margin-top:2px;
+}
+
+.top-right{
+ display:flex;
+ align-items:center;
+ gap:14px;
+}
+
+.language button{
+ border:1px solid var(--border);
+ background:white;
+ padding:5px 9px;
+ border-radius:5px;
+}
+
+.language button.active{
+ background:var(--navy);
+ color:white;
+}
+
+.notification{
+ position:relative;
+ font-size:19px;
+}
+
+.notification span{
+ position:absolute;
+ top:-6px;
+ right:-7px;
+ background:var(--red);
+ color:white;
+ width:15px;
+ height:15px;
+ border-radius:50%;
+ font-size:8px;
+ display:grid;
+ place-items:center;
+}
+
+.content{
+ padding:27px;
+ max-width:1450px;
+}
+
+.page-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:22px;
+}
+
+.page-head h2{
+ color:var(--navy);
+ font-size:23px;
+}
+
+.page-head p{
+ color:var(--muted);
+ font-size:11px;
+ margin-top:3px;
+}
+
+.primary{
+ border:0;
+ background:var(--green);
+ color:white;
+ padding:11px 17px;
+ border-radius:8px;
+ font-weight:800;
+ font-size:11px;
+}
+
+/* STATS */
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:13px;
+ margin-bottom:22px;
+}
+
+.stat{
+ background:white;
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:17px;
+ box-shadow:var(--shadow);
+}
+
+.stat-top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.stat-icon{
+ width:37px;
+ height:37px;
+ border-radius:9px;
+ display:grid;
+ place-items:center;
+ background:#eef6fa;
+}
+
+.stat strong{
+ display:block;
+ color:var(--navy);
+ font-size:27px;
+ margin-top:8px;
+}
+
+.stat label{
+ color:var(--muted);
+ font-size:10px;
+}
+
+.stat .change{
+ font-size:9px;
+ color:var(--green);
+ margin-top:6px;
+}
+
+/* GRID */
+
+.dashboard-grid{
+ display:grid;
+ grid-template-columns:1.55fr .8fr;
+ gap:17px;
+}
+
+.card{
+ background:white;
+ border:1px solid var(--border);
+ border-radius:13px;
+ box-shadow:var(--shadow);
+}
+
+.card-head{
+ padding:17px 19px;
+ border-bottom:1px solid var(--border);
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.card-head h3{
+ color:var(--navy);
+ font-size:15px;
+}
+
+.card-head small{
+ color:var(--muted);
+ font-size:9px;
+}
+
+/* TABLE */
+
+.table-wrap{
+ overflow-x:auto;
+}
+
+table{
+ width:100%;
+ border-collapse:collapse;
+}
+
+th{
+ background:#f7fafb;
+ color:#6b808d;
+ text-align:left;
+ padding:10px 13px;
+ font-size:9px;
+ white-space:nowrap;
+}
+
+td{
+ padding:13px;
+ border-top:1px solid #edf2f4;
+ font-size:10px;
+ white-space:nowrap;
+}
+
+.ref{
+ color:var(--blue);
+ font-weight:800;
+}
+
+.status{
+ display:inline-block;
+ padding:5px 8px;
+ border-radius:20px;
+ font-size:8px;
+ font-weight:800;
+}
+
+.status.new{
+ background:#edf4ff;
+ color:#2873bb;
+}
+
+.status.pending{
+ background:#fff5df;
+ color:#a56a13;
+}
+
+.status.progress{
+ background:#e9f4fb;
+ color:#0875aa;
+}
+
+.status.complete{
+ background:#e6f8ef;
+ color:#078947;
+}
+
+.status.overdue{
+ background:#ffecec;
+ color:#c13e3e;
+}
+
+.assign{
+ border:1px solid var(--border);
+ background:white;
+ color:var(--blue);
+ padding:6px 9px;
+ border-radius:6px;
+ font-size:9px;
+ font-weight:800;
+}
+
+.assign:hover{
+ background:#eef7fb;
+}
+
+/* RIGHT PANEL */
+
+.queue{
+ padding:17px;
+}
+
+.queue-item{
+ padding:13px 0;
+ border-bottom:1px solid #edf2f4;
+}
+
+.queue-item:last-child{
+ border-bottom:0;
+}
+
+.queue-head{
+ display:flex;
+ justify-content:space-between;
+ gap:8px;
+}
+
+.queue-head strong{
+ color:var(--navy);
+ font-size:11px;
+}
+
+.queue-item p{
+ color:var(--muted);
+ font-size:9px;
+ margin-top:4px;
+ line-height:1.6;
+}
+
+.reminder{
+ margin-top:8px;
+ background:#fff8eb;
+ color:#9a6b24;
+ border-radius:6px;
+ padding:6px 8px;
+ font-size:8px;
+}
+
+.workflow{
+ padding:18px;
+}
+
+.workflow-step{
+ display:flex;
+ gap:12px;
+ position:relative;
+ padding-bottom:20px;
+}
+
+.workflow-step:not(:last-child)::after{
+ content:"";
+ position:absolute;
+ left:13px;
+ top:29px;
+ bottom:0;
+ width:1px;
+ background:#d8e5ea;
+}
+
+.workflow-number{
+ width:27px;
+ height:27px;
+ border-radius:50%;
+ background:#edf6fa;
+ color:var(--blue);
+ display:grid;
+ place-items:center;
+ font-size:10px;
+ font-weight:800;
+ flex-shrink:0;
+ position:relative;
+ z-index:2;
+}
+
+.workflow-step.done .workflow-number{
+ background:#e5f8ed;
+ color:var(--green);
+}
+
+.workflow-step h4{
+ font-size:10px;
+ color:var(--navy);
+}
+
+.workflow-step p{
+ font-size:8px;
+ color:var(--muted);
+ margin-top:3px;
+}
+
+/* MODAL */
+
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:rgba(3,29,46,.62);
+ z-index:100;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+
+.modal-box{
+ width:min(600px,100%);
+ max-height:90vh;
+ overflow:auto;
+ background:white;
+ border-radius:16px;
+ box-shadow:0 25px 70px rgba(0,0,0,.2);
+}
+
+.modal-head{
+ padding:19px 21px;
+ border-bottom:1px solid var(--border);
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.modal-head h3{
+ color:var(--navy);
+ font-size:17px;
+}
+
+.close{
+ border:0;
+ background:#edf3f6;
+ width:30px;
+ height:30px;
+ border-radius:50%;
+}
+
+.modal-body{
+ padding:21px;
+}
+
+.info-box{
+ background:#f4f9fb;
+ border:1px solid var(--border);
+ padding:13px;
+ border-radius:9px;
+ margin-bottom:17px;
+}
+
+.info-row{
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+ padding:5px 0;
+ font-size:10px;
+}
+
+.info-row span:first-child{
+ color:var(--muted);
+}
+
+.info-row strong{
+ color:var(--navy);
+}
+
+.form-group{
+ margin-bottom:15px;
+}
+
+.form-group label{
+ display:block;
+ color:#526b7a;
+ font-size:10px;
+ font-weight:800;
+ margin-bottom:6px;
+}
+
+.form-group select,
+.form-group textarea{
+ width:100%;
+ border:1px solid var(--border);
+ border-radius:8px;
+ padding:10px;
+ outline:none;
+ font-size:11px;
+}
+
+.form-group textarea{
+ min-height:80px;
+ resize:vertical;
+}
+
+.modal-actions{
+ display:flex;
+ justify-content:flex-end;
+ gap:8px;
+ margin-top:18px;
+}
+
+.secondary{
+ border:0;
+ background:#edf3f6;
+ color:var(--navy);
+ padding:10px 16px;
+ border-radius:7px;
+ font-size:10px;
+ font-weight:800;
+}
+
+/* NOTIFICATION */
+
+.toast{
+ position:fixed;
+ right:25px;
+ bottom:25px;
+ background:#073b5b;
+ color:white;
+ padding:14px 17px;
+ border-radius:10px;
+ box-shadow:0 15px 35px rgba(0,0,0,.18);
+ display:none;
+ z-index:200;
+ font-size:11px;
+ max-width:330px;
+}
+
+.toast strong{
+ display:block;
+ color:#68e99c;
+ margin-bottom:3px;
+}
+
+/* LANGUAGE */
+
+.en{display:none}
+
+body.english .hi{display:none}
+body.english .en{display:inline}
+
+/* MOBILE */
+
+@media(max-width:1050px){
+
+ .sidebar{
+  width:205px;
+ }
+
+ .main{
+  margin-left:205px;
+  width:calc(100% - 205px);
+ }
+
+ .stats{
+  grid-template-columns:repeat(3,1fr);
+ }
+
+ .dashboard-grid{
+  grid-template-columns:1fr;
+ }
+
+}
+
+@media(max-width:700px){
+
+ .sidebar{
+  position:static;
+  width:100%;
+  height:auto;
+ }
+
+ .app{
+  display:block;
+ }
+
+ .main{
+  margin-left:0;
+  width:100%;
+ }
+
+ .sidebar .menu,
+ .sidebar .user-box{
+  display:none;
+ }
+
+ .brand{
+  text-align:center;
+ }
+
+ .top{
+  padding:0 15px;
+ }
+
+ .content{
+  padding:17px;
+ }
+
+ .stats{
+  grid-template-columns:1fr 1fr;
+ }
+
+ .stats .stat:last-child{
+  grid-column:span 2;
+ }
+
+ .page-head{
+  align-items:flex-start;
+  gap:10px;
+ }
+
+ .page-head .primary{
+  padding:9px;
+  font-size:9px;
+ }
+
+ .dashboard-grid{
+  display:block;
+ }
+
+ .card{
+  margin-bottom:15px;
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+  <div class="brand">
+
+    <div class="brand-title">
+      नगर पंचायत आनंदनगर
+    </div>
+
+    <div class="brand-sub">
+      ULB Digital Management System
+    </div>
+
+    <div class="role">
+      EO / AUTHORISED OFFICER
+    </div>
+
+  </div>
+
+
+  <div class="menu-title">
+    <span class="hi">मुख्य मेनू</span>
+    <span class="en">Main Menu</span>
+  </div>
+
+  <div class="menu">
+
+    <button class="active">
+      <span class="menu-icon">📊</span>
+      <span class="hi">डैशबोर्ड</span>
+      <span class="en">Dashboard</span>
+    </button>
+
+    <button onclick="filterComplaints('all')">
+      <span class="menu-icon">📝</span>
+      <span class="hi">सभी शिकायतें</span>
+      <span class="en">All Complaints</span>
+    </button>
+
+    <button onclick="filterComplaints('pending')">
+      <span class="menu-icon">🟡</span>
+      <span class="hi">लंबित</span>
+      <span class="en">Pending</span>
+    </button>
+
+    <button onclick="filterComplaints('progress')">
+      <span class="menu-icon">🔵</span>
+      <span class="hi">कार्य प्रगति पर</span>
+      <span class="en">In Progress</span>
+    </button>
+
+    <button onclick="filterComplaints('complete')">
+      <span class="menu-icon">🟢</span>
+      <span class="hi">पूर्ण</span>
+      <span class="en">Completed</span>
+    </button>
+
+  </div>
+
+
+  <div class="menu-title">
+    <span class="hi">प्रशासन</span>
+    <span class="en">Administration</span>
+  </div>
+
+  <div class="menu">
+
+    <button>
+      <span class="menu-icon">👥</span>
+      <span class="hi">कर्मचारी</span>
+      <span class="en">Staff</span>
+    </button>
+
+    <button>
+      <span class="menu-icon">📈</span>
+      <span class="hi">रिपोर्ट</span>
+      <span class="en">Reports</span>
+    </button>
+
+    <button>
+      <span class="menu-icon">⚙️</span>
+      <span class="hi">सेटिंग्स</span>
+      <span class="en">Settings</span>
+    </button>
+
+  </div>
+
+
+  <div class="user-box">
+
+    <div class="user-name">
+      👤 EO / अधिकृत अधिकारी
+    </div>
+
+    <div class="user-role">
+      Nagar Panchayat Anandnagar
+    </div>
+
+  </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+  <header class="top">
+
+    <div>
+
+      <h1>
+        <span class="hi">शिकायत प्रबंधन</span>
+        <span class="en">Grievance Management</span>
+      </h1>
+
+      <p>
+        <span class="hi">
+          नागरिक शिकायतों की निगरानी एवं कार्यवाही
+        </span>
+
+        <span class="en">
+          Monitor and manage citizen grievances
+        </span>
+      </p>
+
+    </div>
+
+
+    <div class="top-right">
+
+      <div class="notification">
+        🔔
+        <span id="notificationCount">1</span>
+      </div>
+
+      <div class="language">
+
+        <button
+          id="hiBtn"
+          class="active"
+          onclick="setLanguage('hi')"
+        >
+          हिंदी
+        </button>
+
+        <button
+          id="enBtn"
+          onclick="setLanguage('en')"
+        >
+          EN
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <div class="content">
+
+
+    <div class="page-head">
+
+      <div>
+
+        <h2>
+          <span class="hi">आज का अवलोकन</span>
+          <span class="en">Today's Overview</span>
+        </h2>
+
+        <p>
+          <span class="hi">
+            शिकायतों की वर्तमान स्थिति
+          </span>
+
+          <span class="en">
+            Current grievance status
+          </span>
+        </p>
+
+      </div>
+
+      <button
+        class="primary"
+        onclick="openAssignmentFromLatest()"
+      >
+        + <span class="hi">शिकायत आवंटित करें</span>
+        <span class="en">Assign Complaint</span>
+      </button>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat">
+
+        <div class="stat-top">
+          <label>
+            <span class="hi">नई शिकायतें</span>
+            <span class="en">New</span>
+          </label>
+
+          <div class="stat-icon">🆕</div>
+        </div>
+
+        <strong id="newCount">1</strong>
+
+        <div class="change">
+          ● आज प्राप्त
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-top">
+
+          <label>
+            <span class="hi">लंबित</span>
+            <span class="en">Pending</span>
+          </label>
+
+          <div class="stat-icon">🟡</div>
+
+        </div>
+
+        <strong id="pendingCount">1</strong>
+
+        <div class="change">
+          Action required
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-top">
+
+          <label>
+            <span class="hi">कार्य प्रगति पर</span>
+            <span class="en">In Progress</span>
+          </label>
+
+          <div class="stat-icon">🔵</div>
+
+        </div>
+
+        <strong id="progressCount">0</strong>
+
+        <div class="change">
+          Active cases
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-top">
+
+          <label>
+            <span class="hi">पूर्ण</span>
+            <span class="en">Completed</span>
+          </label>
+
+          <div class="stat-icon">🟢</div>
+
+        </div>
+
+        <strong id="completeCount">0</strong>
+
+        <div class="change">
+          Resolved
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-top">
+
+          <label>
+            <span class="hi">ओवरड्यू</span>
+            <span class="en">Overdue</span>
+          </label>
+
+          <div class="stat-icon">⚠️</div>
+
+        </div>
+
+        <strong id="overdueCount">0</strong>
+
+        <div class="change">
+          Needs attention
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+
+      <!-- COMPLAINT TABLE -->
+
+      <section class="card">
+
+        <div class="card-head">
+
+          <h3>
+            <span class="hi">हाल की शिकायतें</span>
+            <span class="en">Recent Complaints</span>
+          </h3>
+
+          <small>
+            <span class="hi">नवीनतम पहले</span>
+            <span class="en">Latest first</span>
+          </small>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>REFERENCE</th>
+                <th>
+                  <span class="hi">श्रेणी</span>
+                  <span class="en">CATEGORY</span>
+                </th>
+
+                <th>
+                  <span class="hi">वार्ड</span>
+                  <span class="en">WARD</span>
+                </th>
+
+                <th>
+                  <span class="hi">स्थिति</span>
+                  <span class="en">STATUS</span>
+                </th>
+
+                <th>
+                  <span class="hi">आवंटन</span>
+                  <span class="en">ASSIGN</span>
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody id="complaintTable">
+
+              <tr id="emptyRow" style="display:none">
+                <td colspan="5" style="text-align:center;padding:35px;color:#789">
+                  कोई शिकायत उपलब्ध नहीं
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- RIGHT COLUMN -->
+
+      <div>
+
+
+        <!-- REMINDER QUEUE -->
+
+        <section class="card">
+
+          <div class="card-head">
+
+            <h3>
+              ⏰
+              <span class="hi">रिमाइंडर / ध्यान आवश्यक</span>
+              <span class="en">Reminder Queue</span>
+            </h3>
+
+          </div>
+
+
+          <div class="queue" id="reminderQueue">
+
+            <div class="queue-item">
+
+              <div class="queue-head">
+
+                <strong>
+                  <span class="hi">नई शिकायत</span>
+                  <span class="en">New Complaint</span>
+                </strong>
+
+                <span class="status pending">
+                  ACTION
+                </span>
+
+              </div>
+
+              <p>
+                <span class="hi">
+                  EO द्वारा कर्मचारी को आवंटित किया जाना बाकी है।
+                </span>
+
+                <span class="en">
+                  Waiting for EO assignment.
+                </span>
+              </p>
+
+              <div class="reminder">
+                ⚠️ Assignment required
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- WORKFLOW -->
+
+        <section class="card" style="margin-top:17px">
+
+          <div class="card-head">
+
+            <h3>
+              🔄
+              <span class="hi">कार्यप्रवाह</span>
+              <span class="en">Workflow</span>
+            </h3>
+
+          </div>
+
+
+          <div class="workflow">
+
+            <div class="workflow-step done">
+
+              <div class="workflow-number">1</div>
+
+              <div>
+
+                <h4>
+                  <span class="hi">नागरिक शिकायत</span>
+                  <span class="en">Citizen Complaint</span>
+                </h4>
+
+                <p>
+                  Complaint registered online
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="workflow-step">
+
+              <div class="workflow-number">2</div>
+
+              <div>
+
+                <h4>
+                  <span class="hi">EO द्वारा आवंटन</span>
+                  <span class="en">EO Assignment</span>
+                </h4>
+
+                <p>
+                  Assign responsible staff
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="workflow-step">
+
+              <div class="workflow-number">3</div>
+
+              <div>
+
+                <h4>
+                  <span class="hi">कार्य प्रगति</span>
+                  <span class="en">Work in Progress</span>
+                </h4>
+
+                <p>
+                  Staff works on complaint
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="workflow-step">
+
+              <div class="workflow-number">4</div>
+
+              <div>
+
+                <h4>
+                  <span class="hi">पूर्ण एवं सत्यापन</span>
+                  <span class="en">Completion & Verification</span>
+                </h4>
+
+                <p>
+                  EO verifies and closes
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+</div>
+
+
+<!-- ASSIGNMENT MODAL -->
+
+<div class="modal" id="assignmentModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h3>
+        <span class="hi">शिकायत आवंटित करें</span>
+        <span class="en">Assign Complaint</span>
+      </h3>
+
+      <button class="close" onclick="closeModal()">×</button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+
+      <div class="info-box">
+
+        <div class="info-row">
+
+          <span>Reference</span>
+
+          <strong id="modalReference">
+            —
+          </strong>
+
+        </div>
+
+        <div class="info-row">
+
+          <span>
+            <span class="hi">श्रेणी</span>
+            <span class="en">Category</span>
+          </span>
+
+          <strong id="modalCategory">
+            —
+          </strong>
+
+        </div>
+
+        <div class="info-row">
+
+          <span>
+            <span class="hi">वार्ड</span>
+            <span class="en">Ward</span>
+          </span>
+
+          <strong id="modalWard">
+            —
+          </strong>
+
+        </div>
+
+        <div class="info-row">
+
+          <span>
+            <span class="hi">स्थान</span>
+            <span class="en">Location</span>
+          </span>
+
+          <strong id="modalLocation">
+            —
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          <span class="hi">जिम्मेदार कर्मचारी</span>
+          <span class="en">Responsible Staff</span>
+        </label>
+
+        <select id="staffSelect">
+
+          <option value="">
+            कर्मचारी चुनें
+          </option>
+
+          <option>
+            सफाई निरीक्षक — Team 1
+          </option>
+
+          <option>
+            सफाई निरीक्षक — Team 2
+          </option>
+
+          <option>
+            स्वच्छता कर्मचारी — Team 3
+          </option>
+
+          <option>
+            विद्युत कर्मचारी — Team 1
+          </option>
+
+          <option>
+            जलापूर्ति कर्मचारी — Team 1
+          </option>
+
+          <option>
+            निर्माण / सड़क टीम
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          <span class="hi">रिमाइंडर अंतराल</span>
+          <span class="en">Reminder Interval</span>
+        </label>
+
+        <select id="reminderSelect">
+
+          <option value="6">
+            प्रत्येक 6 घंटे
+          </option>
+
+          <option value="12">
+            प्रत्येक 12 घंटे
+          </option>
+
+          <option value="24" selected>
+            प्रत्येक 24 घंटे
+          </option>
+
+          <option value="48">
+            प्रत्येक 48 घंटे
+          </option>
+
+          <option value="72">
+            प्रत्येक 72 घंटे
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          <span class="hi">EO निर्देश / टिप्पणी</span>
+          <span class="en">EO Instructions / Remarks</span>
+        </label>
+
+        <textarea
+          id="assignmentRemarks"
+          placeholder="कर्मचारी के लिए निर्देश..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="modal-actions">
+
+        <button
+          class="secondary"
+          onclick="closeModal()"
+        >
+          <span class="hi">रद्द करें</span>
+          <span class="en">Cancel</span>
+        </button>
+
+        <button
+          class="primary"
+          onclick="assignComplaint()"
+        >
+          ✓
+          <span class="hi">आवंटित करें</span>
+          <span class="en">Assign</span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+
+  <strong id="toastTitle">
+    Notification
+  </strong>
+
+  <span id="toastMessage"></span>
+
+</div>
+
+
+<script>
+
+let currentComplaint = null;
+
+
+/* LANGUAGE */
+
+function setLanguage(language){
+
+ document.body.classList.toggle(
+  "english",
+  language === "en"
+ );
+
+ document.getElementById("hiBtn")
+  .classList.toggle(
+   "active",
+   language === "hi"
+  );
+
+ document.getElementById("enBtn")
+  .classList.toggle(
+   "active",
+   language === "en"
+  );
+
+ localStorage.setItem(
+  "anandnagar-language",
+  language
+ );
+}
+
+const savedLanguage =
+ localStorage.getItem("anandnagar-language");
+
+if(savedLanguage === "en"){
+ setLanguage("en");
+}
+
+
+/* CATEGORY */
+
+const categoryNames = {
+
+ sanitation:"सफाई / कूड़ा",
+ streetlight:"स्ट्रीट लाइट",
+ water:"जलापूर्ति",
+ road:"सड़क / नाली",
+ other:"अन्य नागरिक समस्या"
+
+};
+
+
+/* LOAD CITIZEN COMPLAINT */
+
+function loadComplaints(){
+
+ const saved =
+  JSON.parse(
+   localStorage.getItem(
+    "anandnagar-last-complaint"
+   )
+  );
+
+ const table =
+  document.getElementById("complaintTable");
+
+ table.innerHTML="";
+
+ if(!saved){
+
+  table.innerHTML=`
+   <tr>
+    <td colspan="5"
+     style="text-align:center;padding:35px;color:#789">
+     अभी कोई शिकायत उपलब्ध नहीं है
+    </td>
+   </tr>
+  `;
+
+  updateStats(null);
+
+  return;
+ }
+
+
+ let management =
+  JSON.parse(
+   localStorage.getItem(
+    "anandnagar-management"
+   )
+  ) || {};
+
+ const status =
+  management.status || "pending";
+
+
+ const statusText = {
+
+  pending:"Pending",
+  progress:"In Progress",
+  complete:"Completed",
+  overdue:"Overdue"
+
+ };
+
+
+ const statusClass =
+  status === "progress"
+   ? "progress"
+   : status;
+
+
+ const row =
+  document.createElement("tr");
+
+
+ row.innerHTML=`
+
+  <td>
+   <span class="ref">
+    ${saved.reference}
+   </span>
+  </td>
+
+  <td>
+   ${categoryNames[saved.category] || saved.category}
+  </td>
+
+  <td>
+   ${saved.ward}
+  </td>
+
+  <td>
+   <span class="status ${statusClass}">
+    ${statusText[status] || "Pending"}
+   </span>
+  </td>
+
+  <td>
+   <button
+    class="assign"
+    onclick="openAssignment()"
+   >
+    ${management.staff ? "Reassign" : "Assign"}
+   </button>
+  </td>
+
+ `;
+
+
+ table.appendChild(row);
+
+ updateStats(status);
+
+ updateReminderQueue(saved,management);
+
+}
+
+
+/* STATS */
+
+function updateStats(status){
+
+ document.getElementById("newCount").textContent =
+  status === "pending" ? "1" : "0";
+
+ document.getElementById("pendingCount").textContent =
+  status === "pending" || status === "overdue"
+   ? "1"
+   : "0";
+
+ document.getElementById("progressCount").textContent =
+  status === "progress" ? "1" : "0";
+
+ document.getElementById("completeCount").textContent =
+  status === "complete" ? "1" : "0";
+
+ document.getElementById("overdueCount").textContent =
+  status === "overdue" ? "1" : "0";
+
+}
+
+
+/* REMINDER */
+
+function updateReminderQueue(saved,management){
+
+ const queue =
+  document.getElementById("reminderQueue");
+
+ if(!saved){
+
+  queue.innerHTML=`
+   <div class="queue-item">
+    कोई सक्रिय शिकायत नहीं
+   </div>
+  `;
+
+  return;
+ }
+
+
+ if(management.status === "complete"){
+
+  queue.innerHTML=`
+   <div class="queue-item">
+    <div class="queue-head">
+     <strong>✓ Complaint Completed</strong>
+     <span class="status complete">DONE</span>
+    </div>
+
+    <p>
+     Reminder automatically stopped after completion.
+    </p>
+   </div>
+  `;
+
+  return;
+ }
+
+
+ if(management.staff){
+
+  queue.innerHTML=`
+   <div class="queue-item">
+
+    <div class="queue-head">
+
+     <strong>
+      ${saved.reference}
+     </strong>
+
+     <span class="status progress">
+      ACTIVE
+     </span>
+
+    </div>
+
+    <p>
+     Assigned to:
+     ${management.staff}
+    </p>
+
+    <div class="reminder">
+     ⏰ Reminder every
+     ${management.interval} hours
+    </div>
+
+   </div>
+  `;
+
+ }else{
+
+  queue.innerHTML=`
+   <div class="queue-item">
+
+    <div class="queue-head">
+
+     <strong>
+      ${saved.reference}
+     </strong>
+
+     <span class="status pending">
+      ACTION
+     </span>
+
+    </div>
+
+    <p>
+     EO assignment required.
+    </p>
+
+    <div class="reminder">
+     ⚠️ Staff assignment pending
+    </div>
+
+   </div>
+  `;
+ }
+
+}
+
+
+/* OPEN ASSIGNMENT */
+
+function openAssignmentFromLatest(){
+
+ const saved =
+  JSON.parse(
+   localStorage.getItem(
+    "anandnagar-last-complaint"
+   )
+  );
+
+ if(!saved){
+
+  showToast(
+   "No complaint",
+   "पहले नागरिक पोर्टल से एक शिकायत दर्ज करें।"
+  );
+
+  return;
+ }
+
+ openAssignment();
+
+}
+
+
+function openAssignment(){
+
+ const saved =
+  JSON.parse(
+   localStorage.getItem(
+    "anandnagar-last-complaint"
+   )
+  );
+
+ if(!saved){
+
+  showToast(
+   "No Complaint",
+   "कोई शिकायत उपलब्ध नहीं है।"
+  );
+
+  return;
+ }
+
+
+ currentComplaint=saved;
+
+
+ const management =
+  JSON.parse(
+   localStorage.getItem(
+    "anandnagar-management"
+   )
+  ) || {};
+
+
+ document.getElementById("modalReference")
+  .textContent=saved.reference;
+
+ document.getElementById("modalCategory")
+  .textContent=
+   categoryNames[saved.category] || saved.category;
+
+ document.getElementById("modalWard")
+  .textContent=saved.ward;
+
+ document.getElementById("modalLocation")
+  .textContent=
+   saved.locality +
+   (saved.landmark
+    ? " • " + saved.landmark
+    : "");
+
+
+ if(management.staff){
+
+  document.getElementById("staffSelect")
+   .value=management.staff;
+
+ }
+
+ if(management.interval){
+
+  document.getElementById("reminderSelect")
+   .value=management.interval;
+
+ }
+
+ if(management.remarks){
+
+  document.getElementById("assignmentRemarks")
+   .value=management.remarks;
+
+ }
+
+
+ document.getElementById("assignmentModal")
+  .style.display="flex";
+
+}
+
+
+function closeModal(){
+
+ document.getElementById("assignmentModal")
+  .style.display="none";
+
+}
+
+
+/* ASSIGN */
+
+function assignComplaint(){
+
+ const staff =
+  document.getElementById("staffSelect")
+   .value;
+
+ const interval =
+  document.getElementById("reminderSelect")
+   .value;
+
+ const remarks =
+  document.getElementById("assignmentRemarks")
+   .value;
+
+
+ if(!staff){
+
+  showToast(
+   "Assignment Required",
+   "कृपया जिम्मेदार कर्मचारी चुनें।"
+  );
+
+  return;
+ }
+
+
+ const management={
+
+  staff:staff,
+
+  interval:interval,
+
+  remarks:remarks,
+
+  status:"progress",
+
+  assignedAt:
+   new Date().toLocaleString()
+
+ };
+
+
+ localStorage.setItem(
+  "anandnagar-management",
+  JSON.stringify(management)
+ );
+
+
+ closeModal();
+
+ loadComplaints();
+
+
+ showToast(
+  "Complaint Assigned",
+  "शिकायत " + staff +
+  " को आवंटित कर दी गई।"
+ );
+
+
+ /*
+  REAL SYSTEM:
+  This action will also:
+  1. Create assignment record in database
+  2. Send SMS/push notification
+  3. Start EO-defined reminder timer
+  4. Create audit log
+ */
+
+}
+
+
+/* FILTER */
+
+function filterComplaints(filter){
+
+ const saved =
+  JSON.parse(
+   localStorage.getItem(
+    "anandnagar-last-complaint"
+   )
+  );
+
+ const management =
+  JSON.parse(
+   localStorage.getItem(
+    "anandnagar-management"
+   )
+  ) || {};
+
+ if(!saved) return;
+
+ const status =
+  management.status || "pending";
+
+ if(filter === "all"){
+
+  loadComplaints();
+  return;
+
+ }
+
+ if(filter === status){
+
+  loadComplaints();
+
+ }else{
+
+  document.getElementById("complaintTable")
+   .innerHTML=`
+    <tr>
+     <td colspan="5"
+      style="text-align:center;padding:35px;color:#789">
+      इस श्रेणी में कोई शिकायत नहीं है
+     </td>
+    </tr>
+   `;
+
+ }
+
+}
+
+
+/* TOAST */
+
+function showToast(title,message){
+
+ document.getElementById("toastTitle")
+  .textContent=title;
+
+ document.getElementById("toastMessage")
+  .textContent=message;
+
+ const toast =
+  document.getElementById("toast");
+
+ toast.style.display="block";
+
+ setTimeout(()=>{
+  toast.style.display="none";
+ },4500);
+
+}
+
+
+/* INITIAL */
+
+loadComplaints();
+
+</script>
+
+</body>
+</html>
