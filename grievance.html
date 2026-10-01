@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>जन शिकायत | नगर पंचायत आनंदनगर</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,"Noto Sans Devanagari",sans-serif;
+background:#f2f7fa;
+color:#17344c;
+}
+
+a{text-decoration:none;color:inherit}
+
+.header{
+background:#063b63;
+color:white;
+padding:14px 5%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo{
+width:62px;
+height:62px;
+background:white;
+border-radius:50%;
+object-fit:contain;
+padding:5px;
+}
+
+.brand h1{
+font-size:24px;
+}
+
+.brand p{
+font-size:13px;
+opacity:.85;
+margin-top:3px;
+}
+
+.lang button{
+border:1px solid #ffffff66;
+background:transparent;
+color:white;
+padding:7px 12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.lang .active{
+background:white;
+color:#063b63;
+}
+
+.hero{
+background:linear-gradient(90deg,#063b63,#0878b5);
+color:white;
+padding:35px 5%;
+}
+
+.hero h2{
+font-size:34px;
+margin-bottom:8px;
+}
+
+.hero p{
+font-size:16px;
+opacity:.92;
+}
+
+.container{
+max-width:1050px;
+margin:25px auto;
+padding:0 15px;
+}
+
+.steps{
+display:flex;
+justify-content:space-between;
+margin-bottom:25px;
+gap:5px;
+}
+
+.step{
+flex:1;
+background:white;
+padding:12px;
+text-align:center;
+border-radius:9px;
+border:1px solid #dce6ec;
+font-size:13px;
+}
+
+.step.active{
+background:#10a957;
+color:white;
+border-color:#10a957;
+}
+
+.card{
+background:white;
+border:1px solid #dce6ec;
+border-radius:14px;
+padding:25px;
+margin-bottom:18px;
+box-shadow:0 4px 15px #17344c10;
+}
+
+.card h3{
+color:#063b63;
+margin-bottom:18px;
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:12px;
+}
+
+.category{
+border:2px solid #e0e8ed;
+background:white;
+border-radius:12px;
+padding:18px 8px;
+text-align:center;
+cursor:pointer;
+transition:.2s;
+}
+
+.category:hover{
+border-color:#0878b5;
+transform:translateY(-2px);
+}
+
+.category.selected{
+border-color:#10a957;
+background:#edfff4;
+}
+
+.category .icon{
+font-size:30px;
+margin-bottom:8px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:6px;
+color:#29485c;
+}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+border:1px solid #cdd9e0;
+border-radius:8px;
+font-size:15px;
+background:white;
+}
+
+textarea{
+min-height:130px;
+resize:vertical;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-bottom:17px;
+}
+
+.full{
+margin-bottom:17px;
+}
+
+.photo-box{
+border:2px dashed #b9cbd5;
+padding:22px;
+border-radius:10px;
+text-align:center;
+background:#f8fbfd;
+}
+
+.location-box{
+background:#eef8fc;
+border:1px solid #cce3ee;
+padding:15px;
+border-radius:9px;
+}
+
+.location-btn{
+background:#0878b5;
+color:white;
+border:0;
+padding:10px 15px;
+border-radius:7px;
+cursor:pointer;
+margin-top:8px;
+}
+
+.submit-area{
+text-align:center;
+padding:10px;
+}
+
+.submit{
+background:#10a957;
+color:white;
+border:0;
+padding:15px 45px;
+font-size:17px;
+font-weight:bold;
+border-radius:9px;
+cursor:pointer;
+}
+
+.submit:hover{
+background:#088a45;
+}
+
+.note{
+font-size:13px;
+color:#687b88;
+margin-top:10px;
+}
+
+.success{
+display:none;
+text-align:center;
+}
+
+.success-icon{
+font-size:60px;
+margin-bottom:10px;
+}
+
+.reference{
+display:inline-block;
+background:#eef8ff;
+border:2px dashed #0878b5;
+padding:15px 25px;
+border-radius:10px;
+font-size:22px;
+font-weight:bold;
+color:#063b63;
+margin:15px 0;
+}
+
+.back{
+display:inline-block;
+background:#063b63;
+color:white;
+padding:11px 20px;
+border-radius:8px;
+margin-top:10px;
+}
+
+.en{display:none}
+
+body.english .hi{display:none}
+body.english .en{display:inline}
+
+@media(max-width:800px){
+
+.categories{
+grid-template-columns:repeat(2,1fr);
+}
+
+.row{
+grid-template-columns:1fr;
+gap:0;
+}
+
+.header{
+align-items:flex-start;
+}
+
+.steps{
+overflow-x:auto;
+}
+
+.step{
+min-width:130px;
+}
+
+}
+
+@media(max-width:500px){
+
+.brand h1{
+font-size:18px;
+}
+
+.hero h2{
+font-size:27px;
+}
+
+.card{
+padding:18px;
+}
+
+.categories{
+grid-template-columns:1fr 1fr;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="brand">
+
+<img
+class="logo"
+src="https://via.placeholder.com/100?text=NP"
+alt="नगर पंचायत लोगो"
+>
+
+<div>
+<h1 class="hi">नगर पंचायत आनंदनगर</h1>
+<h1 class="en">Nagar Panchayat Anandnagar</h1>
+
+<p class="hi">महाराजगंज, उत्तर प्रदेश</p>
+<p class="en">Maharajganj, Uttar Pradesh</p>
+</div>
+
+</div>
+
+<div class="lang">
+
+<button id="hiBtn" class="active" onclick="language('hi')">
+हिंदी
+</button>
+
+<button id="enBtn" onclick="language('en')">
+English
+</button>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<h2 class="hi">जन शिकायत दर्ज करें</h2>
+<h2 class="en">Register Public Grievance</h2>
+
+<p class="hi">
+अपनी समस्या नगर पंचायत तक पहुंचाएं। आपकी शिकायत संबंधित विभाग को भेजी जाएगी।
+</p>
+
+<p class="en">
+Submit your civic issue. Your complaint will be forwarded to the concerned department.
+</p>
+
+</section>
+
+
+<div class="container">
+
+
+<div class="steps">
+
+<div class="step active">
+1<br>
+<span class="hi">शिकायत का प्रकार</span>
+<span class="en">Complaint Type</span>
+</div>
+
+<div class="step">
+2<br>
+<span class="hi">विवरण</span>
+<span class="en">Details</span>
+</div>
+
+<div class="step">
+3<br>
+<span class="hi">सत्यापन</span>
+<span class="en">Verification</span>
+</div>
+
+<div class="step">
+4<br>
+<span class="hi">जमा करें</span>
+<span class="en">Submit</span>
+</div>
+
+</div>
+
+
+<!-- FORM -->
+
+<div id="formArea">
+
+
+<div class="card">
+
+<h3>
+1. <span class="hi">शिकायत का प्रकार चुनें</span>
+<span class="en">Select Complaint Type</span>
+</h3>
+
+
+<div class="categories">
+
+
+<div class="category" onclick="selectCategory(this,'Sanitation')">
+<div class="icon">🗑️</div>
+
+<strong class="hi">सफाई / कूड़ा</strong>
+<strong class="en">Sanitation / Garbage</strong>
+
+</div>
+
+
+<div class="category" onclick="selectCategory(this,'Street Light')">
+<div class="icon">💡</div>
+
+<strong class="hi">स्ट्रीट लाइट</strong>
+<strong class="en">Street Light</strong>
+
+</div>
+
+
+<div class="category" onclick="selectCategory(this,'Water')">
+<div class="icon">💧</div>
+
+<strong class="hi">जलापूर्ति</strong>
+<strong class="en">Water Supply</strong>
+
+</div>
+
+
+<div class="category" onclick="selectCategory(this,'Road / Drainage')">
+<div class="icon">🛣️</div>
+
+<strong class="hi">सड़क / नाली</strong>
+<strong class="en">Road / Drainage</strong>
+
+</div>
+
+
+<div class="category" onclick="selectCategory(this,'Other')">
+<div class="icon">🏢</div>
+
+<strong class="hi">अन्य</strong>
+<strong class="en">Other</strong>
+
+</div>
+
+
+</div>
+
+<input type="hidden" id="category">
+
+</div>
+
+
+<div class="card">
+
+<h3>
+2. <span class="hi">नागरिक का विवरण</span>
+<span class="en">Citizen Details</span>
+</h3>
+
+
+<div class="row">
+
+<div>
+<label class="hi">नाम *</label>
+<label class="en">Name *</label>
+
+<input id="name" type="text" placeholder="अपना नाम दर्ज करें">
+</div>
+
+
+<div>
+<label class="hi">मोबाइल नंबर *</label>
+<label class="en">Mobile Number *</label>
+
+<input
+id="mobile"
+type="tel"
+maxlength="10"
+placeholder="10 अंकों का मोबाइल नंबर"
+>
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div>
+
+<label class="hi">वार्ड *</label>
+<label class="en">Ward *</label>
+
+<select id="ward">
+
+<option value="">वार्ड चुनें</option>
+
+<option>वार्ड 1</option>
+<option>वार्ड 2</option>
+<option>वार्ड 3</option>
+<option>वार्ड 4</option>
+<option>वार्ड 5</option>
+<option>वार्ड 6</option>
+<option>वार्ड 7</option>
+<option>वार्ड 8</option>
+<option>वार्ड 9</option>
+<option>वार्ड 10</option>
+<option>वार्ड 11</option>
+<option>वार्ड 12</option>
+<option>वार्ड 13</option>
+<option>वार्ड 14</option>
+<option>वार्ड 15</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label class="hi">मोहल्ला / स्थान *</label>
+<label class="en">Locality / Location *</label>
+
+<input
+id="locality"
+type="text"
+placeholder="मोहल्ला / स्थान"
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+3. <span class="hi">शिकायत का विवरण</span>
+<span class="en">Complaint Details</span>
+</h3>
+
+
+<div class="full">
+
+<label class="hi">समस्या का विवरण *</label>
+<label class="en">Describe the problem *</label>
+
+<textarea
+id="description"
+placeholder="अपनी समस्या विस्तार से लिखें..."
+></textarea>
+
+</div>
+
+
+<div class="full">
+
+<label class="hi">फोटो संलग्न करें</label>
+<label class="en">Attach Photo</label>
+
+<div class="photo-box">
+
+<input
+id="photo"
+type="file"
+accept="image/*"
+>
+
+<p class="note hi">
+यदि संभव हो तो समस्या की फोटो संलग्न करें।
+</p>
+
+<p class="note en">
+Attach a photo of the issue if possible.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="location-box">
+
+<strong class="hi">📍 स्थान की जानकारी</strong>
+<strong class="en">📍 Location Information</strong>
+
+<p class="note hi">
+आप अपनी शिकायत का स्थान साझा कर सकते हैं।
+</p>
+
+<p class="note en">
+You can share the location of your complaint.
+</p>
+
+<button
+type="button"
+class="location-btn"
+onclick="getLocation()"
+>
+
+<span class="hi">मेरी लोकेशन प्राप्त करें</span>
+<span class="en">Get My Location</span>
+
+</button>
+
+<p id="locationStatus" class="note"></p>
+
+</div>
+
+</div>
+
+
+<div class="card submit-area">
+
+<button
+class="submit"
+onclick="submitComplaint()"
+>
+
+<span class="hi">✓ शिकायत जमा करें</span>
+<span class="en">✓ Submit Complaint</span>
+
+</button>
+
+<p class="note hi">
+जमा करने के बाद आपको शिकायत संख्या दी जाएगी।
+</p>
+
+<p class="note en">
+You will receive a complaint reference number after submission.
+</p>
+
+</div>
+
+
+</div>
+
+
+<!-- SUCCESS -->
+
+<div id="success" class="card success">
+
+<div class="success-icon">
+✅
+</div>
+
+<h2 class="hi">
+शिकायत सफलतापूर्वक दर्ज हो गई
+</h2>
+
+<h2 class="en">
+Complaint Successfully Registered
+</h2>
+
+<p class="hi">
+आपकी शिकायत नगर पंचायत के संबंधित विभाग को भेज दी गई है।
+</p>
+
+<p class="en">
+Your complaint has been forwarded to the concerned department.
+</p>
+
+
+<div class="reference" id="referenceNumber">
+NPAN-2026-000001
+</div>
+
+
+<p class="hi">
+कृपया इस शिकायत संख्या को सुरक्षित रखें।
+</p>
+
+<p class="en">
+Please keep this complaint number safe for future tracking.
+</p>
+
+
+<br>
+
+<a href="index.html" class="back">
+
+<span class="hi">← मुख्य वेबसाइट पर वापस जाएं</span>
+<span class="en">← Back to Website</span>
+
+</a>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+let selectedCategory="";
+let latitude="";
+let longitude="";
+
+
+function language(lang){
+
+document.body.classList.toggle(
+"english",
+lang==="en"
+);
+
+document.getElementById("hiBtn")
+.classList.toggle(
+"active",
+lang==="hi"
+);
+
+document.getElementById("enBtn")
+.classList.toggle(
+"active",
+lang==="en"
+);
+
+}
+
+
+function selectCategory(element,category){
+
+document.querySelectorAll(".category")
+.forEach(function(item){
+
+item.classList.remove("selected");
+
+});
+
+element.classList.add("selected");
+
+selectedCategory=category;
+
+document.getElementById("category").value=category;
+
+}
+
+
+function getLocation(){
+
+if(!navigator.geolocation){
+
+document.getElementById("locationStatus")
+.innerText="Location is not supported by this browser.";
+
+return;
+
+}
+
+document.getElementById("locationStatus")
+.innerText="Location प्राप्त की जा रही है...";
+
+navigator.geolocation.getCurrentPosition(
+
+function(position){
+
+latitude=position.coords.latitude;
+longitude=position.coords.longitude;
+
+document.getElementById("locationStatus")
+.innerText=
+"✓ Location captured";
+
+},
+
+function(){
+
+document.getElementById("locationStatus")
+.innerText=
+"Location प्राप्त नहीं हो सकी।";
+
+}
+
+);
+
+}
+
+
+function submitComplaint(){
+
+let name=document.getElementById("name").value.trim();
+
+let mobile=document.getElementById("mobile").value.trim();
+
+let ward=document.getElementById("ward").value;
+
+let locality=document.getElementById("locality").value.trim();
+
+let description=document.getElementById("description").value.trim();
+
+
+if(!selectedCategory){
+
+alert("कृपया शिकायत का प्रकार चुनें।");
+
+return;
+
+}
+
+
+if(!name){
+
+alert("कृपया अपना नाम दर्ज करें।");
+
+return;
+
+}
+
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+alert("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।");
+
+return;
+
+}
+
+
+if(!ward){
+
+alert("कृपया वार्ड चुनें।");
+
+return;
+
+}
+
+
+if(!locality){
+
+alert("कृपया स्थान दर्ज करें।");
+
+return;
+
+}
+
+
+if(!description){
+
+alert("कृपया शिकायत का विवरण दर्ज करें।");
+
+return;
+
+}
+
+
+/* DEMO REFERENCE NUMBER */
+
+let number=
+"NPAN-2026-"+
+
+Math.floor(
+100000+
+Math.random()*900000
+);
+
+
+document.getElementById(
+"referenceNumber"
+).innerText=number;
+
+
+document.getElementById("formArea")
+.style.display="none";
+
+
+document.getElementById("success")
+.style.display="block";
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+</script>
+
+</body>
+</html>
